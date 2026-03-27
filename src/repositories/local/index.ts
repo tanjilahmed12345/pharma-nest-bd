@@ -1,0 +1,11 @@
+export { localAuthRepository } from './auth.repository';
+export { localProductRepository } from './product.repository';
+export { localCategoryRepository } from './category.repository';
+export { localOrderRepository } from './order.repository';
+export { localPrescriptionRepository } from './prescription.repository';
+export { localAddressRepository } from './address.repository';
+export { localPaymentRepository } from './payment.repository';
+export { localUserRepository } from './user.repository';
+export { localCartRepository } from './cart.repository';
+export { localWishlistRepository } from './wishlist.repository';
+export { localSettingsRepository } from './settings.repository';

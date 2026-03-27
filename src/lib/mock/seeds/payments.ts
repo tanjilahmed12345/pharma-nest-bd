@@ -1,0 +1,42 @@
+import { PaymentSubmission, PaymentMethod, PaymentStatus } from '@/types';
+
+export const seedPayments: PaymentSubmission[] = [
+  {
+    id: 'pay-1',
+    orderId: 'order-1',
+    userId: 'user-cust-1',
+    method: PaymentMethod.BKASH,
+    senderNumber: '01712345678',
+    transactionId: 'TXN8A4K9M2',
+    amount: 202,
+    status: PaymentStatus.VERIFIED,
+    verifiedBy: 'user-admin-1',
+    verifiedAt: '2025-03-01T10:25:00.000Z',
+    createdAt: '2025-03-01T10:10:00.000Z',
+    updatedAt: '2025-03-01T10:25:00.000Z',
+  },
+  {
+    id: 'pay-2',
+    orderId: 'order-2',
+    userId: 'user-cust-1',
+    method: PaymentMethod.NAGAD,
+    senderNumber: '01712345678',
+    transactionId: 'NAG7B3X1P5',
+    amount: 240,
+    status: PaymentStatus.SUBMITTED,
+    createdAt: '2025-03-10T08:10:00.000Z',
+    updatedAt: '2025-03-10T08:10:00.000Z',
+  },
+  {
+    id: 'pay-3',
+    orderId: 'order-4',
+    userId: 'user-cust-2',
+    method: PaymentMethod.ROCKET,
+    senderNumber: '01898765432',
+    transactionId: 'RKT2C6Y8N3',
+    amount: 174,
+    status: PaymentStatus.PENDING,
+    createdAt: '2025-03-20T09:05:00.000Z',
+    updatedAt: '2025-03-20T09:05:00.000Z',
+  },
+];

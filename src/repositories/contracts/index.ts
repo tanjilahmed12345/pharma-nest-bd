@@ -1,0 +1,11 @@
+export type { IAuthRepository } from './auth.repository';
+export type { IUserRepository } from './user.repository';
+export type { IProductRepository } from './product.repository';
+export type { ICategoryRepository } from './category.repository';
+export type { IAddressRepository } from './address.repository';
+export type { ICartRepository } from './cart.repository';
+export type { IWishlistRepository } from './wishlist.repository';
+export type { IOrderRepository } from './order.repository';
+export type { IPrescriptionRepository } from './prescription.repository';
+export type { IPaymentRepository } from './payment.repository';
+export type { ISettingsRepository } from './settings.repository';

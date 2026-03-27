@@ -1,0 +1,108 @@
+import { Order, OrderStatus, PaymentMethod, PaymentStatus } from '@/types';
+import { seedAddresses } from './addresses';
+import { seedProducts } from './products';
+
+const p = (id: string) => {
+  const prod = seedProducts.find((p) => p.id === id)!;
+  return {
+    productId: prod.id,
+    productName: prod.name,
+    genericName: prod.genericName,
+    manufacturer: prod.manufacturer,
+    strength: prod.strength,
+    packSize: prod.packSize,
+    price: prod.price,
+    discountPrice: prod.discountPrice,
+    quantity: 1,
+    isPrescriptionRequired: prod.isPrescriptionRequired,
+    image: prod.image,
+  };
+};
+
+export const seedOrders: Order[] = [
+  {
+    id: 'order-1',
+    orderNumber: 'PN-20250301-A1B',
+    userId: 'user-cust-1',
+    items: [p('prod-1'), { ...p('prod-6'), quantity: 2 }, p('prod-13')],
+    shippingAddress: seedAddresses[0],
+    paymentMethod: PaymentMethod.BKASH,
+    paymentStatus: PaymentStatus.VERIFIED,
+    orderStatus: OrderStatus.DELIVERED,
+    statusTimeline: [
+      { status: OrderStatus.PENDING, timestamp: '2025-03-01T10:00:00.000Z' },
+      { status: OrderStatus.APPROVED, timestamp: '2025-03-01T10:30:00.000Z' },
+      { status: OrderStatus.PROCESSING, timestamp: '2025-03-01T14:00:00.000Z' },
+      { status: OrderStatus.PACKED, timestamp: '2025-03-02T09:00:00.000Z' },
+      { status: OrderStatus.SHIPPED, timestamp: '2025-03-02T15:00:00.000Z' },
+      { status: OrderStatus.DELIVERED, timestamp: '2025-03-03T12:00:00.000Z' },
+    ],
+    subtotal: 155,
+    deliveryCharge: 60,
+    discount: 13,
+    total: 202,
+    createdAt: '2025-03-01T10:00:00.000Z',
+    updatedAt: '2025-03-03T12:00:00.000Z',
+  },
+  {
+    id: 'order-2',
+    orderNumber: 'PN-20250310-C2D',
+    userId: 'user-cust-1',
+    items: [p('prod-7'), p('prod-12')],
+    shippingAddress: seedAddresses[0],
+    paymentMethod: PaymentMethod.NAGAD,
+    paymentStatus: PaymentStatus.SUBMITTED,
+    orderStatus: OrderStatus.PRESCRIPTION_REVIEW_PENDING,
+    statusTimeline: [
+      { status: OrderStatus.PENDING, timestamp: '2025-03-10T08:00:00.000Z' },
+      { status: OrderStatus.PRESCRIPTION_REVIEW_PENDING, timestamp: '2025-03-10T08:05:00.000Z' },
+    ],
+    prescriptionId: 'presc-1',
+    subtotal: 193,
+    deliveryCharge: 60,
+    discount: 13,
+    total: 240,
+    createdAt: '2025-03-10T08:00:00.000Z',
+    updatedAt: '2025-03-10T08:05:00.000Z',
+  },
+  {
+    id: 'order-3',
+    orderNumber: 'PN-20250315-E3F',
+    userId: 'user-cust-2',
+    items: [p('prod-18'), p('prod-20'), p('prod-34')],
+    shippingAddress: seedAddresses[2],
+    paymentMethod: PaymentMethod.COD,
+    paymentStatus: PaymentStatus.COD_PENDING,
+    orderStatus: OrderStatus.PROCESSING,
+    statusTimeline: [
+      { status: OrderStatus.PENDING, timestamp: '2025-03-15T11:00:00.000Z' },
+      { status: OrderStatus.APPROVED, timestamp: '2025-03-15T11:30:00.000Z' },
+      { status: OrderStatus.PROCESSING, timestamp: '2025-03-15T16:00:00.000Z' },
+    ],
+    subtotal: 1060,
+    deliveryCharge: 0,
+    discount: 60,
+    total: 1000,
+    createdAt: '2025-03-15T11:00:00.000Z',
+    updatedAt: '2025-03-15T16:00:00.000Z',
+  },
+  {
+    id: 'order-4',
+    orderNumber: 'PN-20250320-G4H',
+    userId: 'user-cust-2',
+    items: [p('prod-32'), { ...p('prod-37'), quantity: 2 }],
+    shippingAddress: seedAddresses[2],
+    paymentMethod: PaymentMethod.ROCKET,
+    paymentStatus: PaymentStatus.PENDING,
+    orderStatus: OrderStatus.PENDING,
+    statusTimeline: [
+      { status: OrderStatus.PENDING, timestamp: '2025-03-20T09:00:00.000Z' },
+    ],
+    subtotal: 114,
+    deliveryCharge: 60,
+    discount: 0,
+    total: 174,
+    createdAt: '2025-03-20T09:00:00.000Z',
+    updatedAt: '2025-03-20T09:00:00.000Z',
+  },
+];
