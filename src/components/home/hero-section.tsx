@@ -24,15 +24,12 @@ export function HeroSection() {
                 Shop Now
               </Button>
             </Link>
-            <Link href="/upload-prescription">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white/10 w-full sm:w-auto"
-              >
-                <Upload className="h-4 w-4" />
-                Upload Prescription
-              </Button>
+            <Link
+              href="/upload-prescription"
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 text-base font-medium rounded-lg border-2 border-white text-white hover:bg-white/10 transition-colors w-full sm:w-auto"
+            >
+              <Upload className="h-4 w-4" />
+              Upload Prescription
             </Link>
           </div>
         </div>

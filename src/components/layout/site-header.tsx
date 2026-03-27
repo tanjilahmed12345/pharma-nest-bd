@@ -88,7 +88,7 @@ export function SiteHeader() {
         </div>
 
         {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-6 h-10 text-sm font-medium -mb-px">
+        <nav className="hidden md:flex items-center gap-6 h-10 text-sm font-medium border-t border-border -mb-px">
           {[
             { href: '/shop', label: 'Shop All' },
             { href: '/otc', label: 'OTC Medicines' },
