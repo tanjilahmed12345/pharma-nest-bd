@@ -5,3 +5,5 @@ export { useCart } from './use-cart';
 export { useCheckoutPreview } from './use-checkout-preview';
 export { useProductFilters } from './use-product-filters';
 export { useOrderTracking } from './use-order-tracking';
+export { useCheckout } from './use-checkout';
+export { useAddressForm } from './use-address-form';
