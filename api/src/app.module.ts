@@ -12,6 +12,9 @@ import { SearchModule } from './modules/search/search.module';
 import { CartsModule } from './modules/carts/carts.module';
 import { WishlistsModule } from './modules/wishlists/wishlists.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
+import { OrdersModule } from './modules/orders/orders.module';
+import { PrescriptionsModule } from './modules/prescriptions/prescriptions.module';
+import { PaymentsModule } from './modules/payments/payments.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 import authConfig from './config/auth.config';
@@ -34,6 +37,9 @@ import authConfig from './config/auth.config';
     CartsModule,
     WishlistsModule,
     CheckoutModule,
+    OrdersModule,
+    PrescriptionsModule,
+    PaymentsModule,
   ],
 })
 export class AppModule {}

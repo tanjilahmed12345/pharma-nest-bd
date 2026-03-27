@@ -24,6 +24,9 @@ const search_module_1 = require("./modules/search/search.module");
 const carts_module_1 = require("./modules/carts/carts.module");
 const wishlists_module_1 = require("./modules/wishlists/wishlists.module");
 const checkout_module_1 = require("./modules/checkout/checkout.module");
+const orders_module_1 = require("./modules/orders/orders.module");
+const prescriptions_module_1 = require("./modules/prescriptions/prescriptions.module");
+const payments_module_1 = require("./modules/payments/payments.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const auth_config_1 = __importDefault(require("./config/auth.config"));
@@ -49,6 +52,9 @@ exports.AppModule = AppModule = __decorate([
             carts_module_1.CartsModule,
             wishlists_module_1.WishlistsModule,
             checkout_module_1.CheckoutModule,
+            orders_module_1.OrdersModule,
+            prescriptions_module_1.PrescriptionsModule,
+            payments_module_1.PaymentsModule,
         ],
     })
 ], AppModule);
