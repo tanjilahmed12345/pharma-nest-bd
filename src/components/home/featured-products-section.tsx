@@ -20,7 +20,7 @@ export function FeaturedProductsSection({
   if (products.length === 0) return null;
 
   return (
-    <section className="py-8 md:py-12">
+    <section className="py-6 md:py-8">
       <div className="container-custom">
         <SectionHeader title={title} subtitle={subtitle} viewAllHref={viewAllHref} />
         <ProductGrid products={products} onAddToCart={onAddToCart} columns={4} />

@@ -4,7 +4,7 @@ import { Upload, ShieldCheck } from 'lucide-react';
 
 export function PrescriptionCta() {
   return (
-    <section className="py-8 md:py-12">
+    <section className="py-6 md:py-8">
       <div className="container-custom">
         <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-6">
           <div className="flex-1">

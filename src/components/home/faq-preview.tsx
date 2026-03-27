@@ -32,7 +32,7 @@ export function FaqPreview() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-8 md:py-12 bg-muted/30">
+    <section className="py-6 md:py-8 bg-muted/30">
       <div className="container-custom">
         <SectionHeader title="Frequently Asked Questions" viewAllHref="/faq" viewAllLabel="View All FAQ" />
         <div className="max-w-2xl space-y-2">

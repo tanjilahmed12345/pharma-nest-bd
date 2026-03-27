@@ -13,7 +13,7 @@ const brands = [
 
 export function BrandStrip() {
   return (
-    <section className="py-8 md:py-12">
+    <section className="py-6 md:py-8">
       <div className="container-custom">
         <SectionHeader title="Popular Brands" subtitle="Trusted pharmaceutical companies" />
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

@@ -28,7 +28,7 @@ const policyLinks = [
 export function SiteFooter() {
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="container-custom py-10 md:py-14">
+      <div className="container-custom py-8 md:py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">

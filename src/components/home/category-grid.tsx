@@ -9,7 +9,7 @@ export interface CategoryGridProps {
 
 export function CategoryGrid({ categories }: CategoryGridProps) {
   return (
-    <section className="py-8 md:py-12">
+    <section className="pt-8 pb-4">
       <div className="container-custom">
         <SectionHeader title="Shop by Category" subtitle="Browse our medicine categories" viewAllHref="/shop" />
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">

@@ -36,7 +36,7 @@ export function CartDrawer() {
           </div>
 
           {/* Footer */}
-          <div className="border-t border-border p-4 space-y-3">
+          <div className="border-t border-border p-4 space-y-2">
             <div className="flex justify-between text-sm font-bold">
               <span>Subtotal</span>
               <span className="text-primary">{formatPrice(subtotal)}</span>
@@ -45,7 +45,7 @@ export function CartDrawer() {
               <Button fullWidth variant="outline">View Cart</Button>
             </Link>
             <Link href="/checkout" onClick={() => setOpen(false)}>
-              <Button fullWidth className="mt-2">Checkout</Button>
+              <Button fullWidth>Checkout</Button>
             </Link>
           </div>
         </div>

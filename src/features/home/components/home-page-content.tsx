@@ -56,7 +56,7 @@ export function HomePageContent() {
 
       {/* Featured */}
       {isLoading ? (
-        <section className="py-8 md:py-12"><div className="container-custom"><ProductGridSkeleton /></div></section>
+        <section className="py-6 md:py-8"><div className="container-custom"><ProductGridSkeleton /></div></section>
       ) : (
         <FeaturedProductsSection
           products={featured.slice(0, 8)}
