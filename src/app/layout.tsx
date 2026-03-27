@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { SeedInitializer } from '@/components/common/SeedInitializer';
+import { DevTools } from '@/components/common/dev-tools';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SeedInitializer />
         {children}
+        <DevTools />
       </body>
     </html>
   );
