@@ -27,6 +27,7 @@ const checkout_module_1 = require("./modules/checkout/checkout.module");
 const orders_module_1 = require("./modules/orders/orders.module");
 const prescriptions_module_1 = require("./modules/prescriptions/prescriptions.module");
 const payments_module_1 = require("./modules/payments/payments.module");
+const admin_module_1 = require("./modules/admin/admin.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const auth_config_1 = __importDefault(require("./config/auth.config"));
@@ -55,6 +56,7 @@ exports.AppModule = AppModule = __decorate([
             orders_module_1.OrdersModule,
             prescriptions_module_1.PrescriptionsModule,
             payments_module_1.PaymentsModule,
+            admin_module_1.AdminModule,
         ],
     })
 ], AppModule);

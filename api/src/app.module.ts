@@ -15,6 +15,7 @@ import { CheckoutModule } from './modules/checkout/checkout.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { PrescriptionsModule } from './modules/prescriptions/prescriptions.module';
 import { PaymentsModule } from './modules/payments/payments.module';
+import { AdminModule } from './modules/admin/admin.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 import authConfig from './config/auth.config';
@@ -40,6 +41,7 @@ import authConfig from './config/auth.config';
     OrdersModule,
     PrescriptionsModule,
     PaymentsModule,
+    AdminModule,
   ],
 })
 export class AppModule {}
