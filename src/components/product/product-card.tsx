@@ -18,7 +18,7 @@ export function ProductCard({ product, onAddToCart, className }: ProductCardProp
   const isOutOfStock = product.stockQty <= 0;
 
   return (
-    <div className={cn('group bg-white rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow', className)}>
+    <div className={cn('group bg-card rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow', className)}>
       {/* Image */}
       <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-muted overflow-hidden">
         <div className="flex items-center justify-center h-full">

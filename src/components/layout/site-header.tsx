@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu, Upload } from 'lucide-react';
 import { Logo } from '@/components/common/logo';
+import { ThemeToggle } from '@/components/common/theme-toggle';
 import { useCartStore } from '@/store/cart.store';
 import { useUIStore } from '@/store/ui.store';
 import { useCurrentUser } from '@/hooks';
-import { cn } from '@/lib/utils';
 
 export function SiteHeader() {
   const itemCount = useCartStore((s) => s.getItemCount)();
@@ -16,7 +16,7 @@ export function SiteHeader() {
   const { isAuthenticated, isAdmin } = useCurrentUser();
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-border shadow-sm">
+    <header className="sticky top-0 z-40 bg-header-bg border-b border-border shadow-sm">
       <div className="container-custom">
         {/* Main header row */}
         <div className="flex items-center justify-between h-14 md:h-16 gap-4">
@@ -56,11 +56,13 @@ export function SiteHeader() {
             {/* Upload Rx (desktop) */}
             <Link
               href="/upload-prescription"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-primary bg-primary/5 hover:bg-primary/10 rounded-lg transition-colors"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 rounded-lg transition-colors"
             >
               <Upload className="h-3.5 w-3.5" />
               Upload Rx
             </Link>
+
+            <ThemeToggle />
 
             {/* Account */}
             <Link

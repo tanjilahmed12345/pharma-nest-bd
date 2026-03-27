@@ -23,7 +23,7 @@ export function ProductSearchBar({ value, onChange, onSubmit, placeholder = 'Sea
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full h-10 pl-9 pr-4 rounded-lg border border-border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+        className="w-full h-10 pl-9 pr-4 rounded-lg border border-border text-sm bg-input-bg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
       />
     </form>
   );

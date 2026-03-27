@@ -8,22 +8,22 @@ export interface StatusPillProps {
 
 const statusColors: Record<string, string> = {
   // Order
-  pending: 'bg-amber-50 text-amber-700',
-  prescription_review_pending: 'bg-purple-50 text-purple-700',
-  approved: 'bg-blue-50 text-blue-700',
-  processing: 'bg-blue-50 text-blue-700',
-  packed: 'bg-indigo-50 text-indigo-700',
-  shipped: 'bg-cyan-50 text-cyan-700',
-  out_for_delivery: 'bg-teal-50 text-teal-700',
-  delivered: 'bg-green-50 text-green-700',
-  cancelled: 'bg-gray-100 text-gray-600',
-  rejected: 'bg-red-50 text-red-700',
+  pending: 'bg-warning/15 text-warning',
+  prescription_review_pending: 'bg-secondary/15 text-secondary',
+  approved: 'bg-primary/15 text-primary',
+  processing: 'bg-primary/15 text-primary',
+  packed: 'bg-accent/15 text-accent',
+  shipped: 'bg-primary-light/15 text-primary-light',
+  out_for_delivery: 'bg-primary-light/15 text-primary-light',
+  delivered: 'bg-secondary/15 text-secondary',
+  cancelled: 'bg-muted text-muted-foreground',
+  rejected: 'bg-danger/15 text-danger',
   // Payment
-  cod_pending: 'bg-amber-50 text-amber-700',
-  submitted: 'bg-blue-50 text-blue-700',
-  verified: 'bg-green-50 text-green-700',
+  cod_pending: 'bg-warning/15 text-warning',
+  submitted: 'bg-primary/15 text-primary',
+  verified: 'bg-secondary/15 text-secondary',
   // Prescription
-  needs_clarification: 'bg-orange-50 text-orange-700',
+  needs_clarification: 'bg-warning/15 text-warning',
 };
 
 export function StatusPill({ status, label, className }: StatusPillProps) {

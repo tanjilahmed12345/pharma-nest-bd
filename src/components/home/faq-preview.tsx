@@ -37,7 +37,7 @@ export function FaqPreview() {
         <SectionHeader title="Frequently Asked Questions" viewAllHref="/faq" viewAllLabel="View All FAQ" />
         <div className="max-w-2xl space-y-2">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="bg-white rounded-xl border border-border overflow-hidden">
+            <div key={idx} className="bg-card rounded-xl border border-border overflow-hidden">
               <button
                 onClick={() => setOpen(open === idx ? null : idx)}
                 className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground text-left hover:bg-muted/30 transition-colors"

@@ -24,8 +24,8 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0 bg-gray-900 text-white">
-      <div className="flex items-center h-16 px-5 border-b border-gray-800">
+    <aside className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0 bg-footer-bg text-white">
+      <div className="flex items-center h-16 px-5 border-b border-white/10">
         <Logo size="sm" className="[&_span]:text-white [&_svg]:text-primary-light" />
       </div>
 
@@ -40,7 +40,7 @@ export function AdminSidebar() {
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                 isActive
                   ? 'bg-primary text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  : 'text-footer-text hover:text-white hover:bg-white/10'
               )}
             >
               <link.icon className="h-4 w-4" />
@@ -50,10 +50,10 @@ export function AdminSidebar() {
         })}
       </nav>
 
-      <div className="px-3 py-4 border-t border-gray-800">
+      <div className="px-3 py-4 border-t border-white/10">
         <Link
           href="/"
-          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-footer-text hover:text-white hover:bg-white/10 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Store

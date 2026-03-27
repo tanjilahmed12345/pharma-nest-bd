@@ -28,7 +28,7 @@ export function PaymentMethodSelector({ selected, onSelect }: PaymentMethodSelec
             onClick={() => onSelect(m.id)}
             className={cn(
               'flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all text-center',
-              isSelected ? `${m.color} border-2` : 'border-border hover:border-primary/30 bg-white'
+              isSelected ? `${m.color} border-2` : 'border-border hover:border-primary/30 bg-card'
             )}
           >
             <Icon className="h-6 w-6" />

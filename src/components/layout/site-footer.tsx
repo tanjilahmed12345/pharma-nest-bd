@@ -27,16 +27,16 @@ const policyLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-footer-bg text-footer-text">
       <div className="container-custom py-8 md:py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Logo size="lg" className="mb-4 [&_span]:text-white [&_svg]:text-primary-light" />
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-sm opacity-70 mb-4">
               Your trusted online pharmacy in Bangladesh. Genuine medicines delivered to your door.
             </p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-sm opacity-80">
               <p className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> 01700-000000</p>
               <p className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> support@pharmanest.com.bd</p>
               <p className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" /> Dhanmondi, Dhaka-1205</p>
@@ -49,7 +49,7 @@ export function SiteFooter() {
             <ul className="space-y-2">
               {quickLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -63,7 +63,7 @@ export function SiteFooter() {
             <ul className="space-y-2">
               {accountLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -77,7 +77,7 @@ export function SiteFooter() {
             <ul className="space-y-2">
               {policyLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -87,14 +87,14 @@ export function SiteFooter() {
         </div>
 
         {/* Payment methods */}
-        <div className="mt-8 pt-6 border-t border-gray-800">
+        <div className="mt-8 pt-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-gray-500">We accept: bKash, Nagad, Rocket, Cash on Delivery</p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs opacity-50">We accept: bKash, Nagad, Rocket, Cash on Delivery</p>
+            <p className="text-xs opacity-50">
               &copy; {new Date().getFullYear()} PharmaNest BD. All rights reserved.
             </p>
           </div>
-          <p className="text-[10px] text-gray-600 mt-3 text-center">
+          <p className="text-[10px] opacity-40 mt-3 text-center">
             Disclaimer: This website is for informational purposes only and does not constitute medical advice. Always consult a healthcare professional before taking any medicine.
           </p>
         </div>

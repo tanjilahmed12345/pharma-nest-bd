@@ -23,7 +23,7 @@ export function AdminTableToolbar({ searchValue, onSearchChange, searchPlacehold
             value={searchValue || ''}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={searchPlaceholder}
-            className="w-full h-9 pl-9 pr-3 rounded-lg border border-border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="w-full h-9 pl-9 pr-3 rounded-lg border border-border text-sm bg-input-bg focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
         </div>
       )}

@@ -20,7 +20,7 @@ export function BrandStrip() {
           {brands.map((brand) => (
             <div
               key={brand}
-              className="flex items-center justify-center h-16 bg-white rounded-xl border border-border text-sm font-medium text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors cursor-pointer"
+              className="flex items-center justify-center h-16 bg-card rounded-xl border border-border text-sm font-medium text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors cursor-pointer"
             >
               {brand}
             </div>

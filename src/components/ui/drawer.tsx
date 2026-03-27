@@ -47,7 +47,7 @@ export function Drawer({ isOpen, onClose, title, children, side = 'right', class
     >
       <div
         className={cn(
-          'fixed top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col transition-transform',
+          'fixed top-0 h-full w-full max-w-sm bg-card shadow-xl flex flex-col transition-transform',
           side === 'right' ? 'right-0' : 'left-0',
           className
         )}

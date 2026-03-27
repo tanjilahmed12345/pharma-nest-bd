@@ -11,7 +11,7 @@ export interface DashboardStatCardProps {
 
 export function DashboardStatCard({ title, value, icon, trend, trendUp, className }: DashboardStatCardProps) {
   return (
-    <div className={cn('bg-white rounded-xl border border-border p-4 md:p-5', className)}>
+    <div className={cn('bg-card rounded-xl border border-border p-4 md:p-5', className)}>
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm text-muted-foreground">{title}</p>

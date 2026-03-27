@@ -14,7 +14,7 @@ const variantStyles: Record<string, string> = {
   success: 'bg-green-50 text-green-700',
   warning: 'bg-amber-50 text-amber-700',
   danger: 'bg-red-50 text-red-700',
-  outline: 'border border-border text-muted-foreground bg-white',
+  outline: 'border border-border text-muted-foreground bg-card',
 };
 
 export function Badge({ variant = 'default', size = 'sm', children, className }: BadgeProps) {

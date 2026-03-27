@@ -21,7 +21,7 @@ export function ProductSort({ value, onChange, className }: ProductSortProps) {
       value={value || 'latest'}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'h-9 px-3 rounded-lg border border-border text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/20',
+        'h-9 px-3 rounded-lg border border-border text-sm bg-input-bg focus:outline-none focus:ring-2 focus:ring-primary/20',
         className
       )}
     >

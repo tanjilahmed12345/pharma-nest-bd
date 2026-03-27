@@ -49,7 +49,7 @@ export function SearchOverlay() {
   return (
     <div className="fixed inset-0 z-50 bg-black/50" onClick={() => setOpen(false)}>
       <div
-        className="bg-white w-full max-w-2xl mx-auto mt-0 md:mt-20 md:rounded-xl shadow-2xl max-h-[80vh] flex flex-col"
+        className="bg-card w-full max-w-2xl mx-auto mt-0 md:mt-20 md:rounded-xl shadow-2xl max-h-[80vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search input */}

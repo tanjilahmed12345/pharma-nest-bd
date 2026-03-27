@@ -14,8 +14,8 @@ export function PrescriptionCard({ prescription, onReview }: PrescriptionCardPro
     <Card hover className="cursor-pointer" padding="md">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
-            <FileText className="h-5 w-5 text-purple-600" />
+          <div className="h-10 w-10 bg-secondary/10 rounded-lg flex items-center justify-center shrink-0">
+            <FileText className="h-5 w-5 text-secondary" />
           </div>
           <div>
             <p className="text-sm font-semibold">{prescription.fileName}</p>

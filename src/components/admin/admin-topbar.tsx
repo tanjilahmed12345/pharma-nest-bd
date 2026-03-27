@@ -12,7 +12,7 @@ export function AdminTopbar({ title, onMenuToggle }: AdminTopbarProps) {
   const { userName } = useCurrentUser();
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-border h-16 flex items-center px-4 lg:px-6">
+    <header className="sticky top-0 z-30 bg-header-bg border-b border-border h-16 flex items-center px-4 lg:px-6">
       {onMenuToggle && (
         <button
           onClick={onMenuToggle}

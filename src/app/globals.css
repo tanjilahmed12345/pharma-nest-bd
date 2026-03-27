@@ -1,23 +1,56 @@
 @import "tailwindcss";
 
+/* ========================================
+   LIGHT MODE — dark-teal palette
+   ======================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a2e;
-  --primary: #0d9488;
-  --primary-light: #5eead4;
-  --primary-dark: #0f766e;
-  --secondary: #16a34a;
-  --secondary-light: #86efac;
-  --accent: #2563eb;
-  --accent-light: #93c5fd;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
+  --background: #f5f7f7;
+  --foreground: #0a2c2d;
+  --primary: #004D4F;
+  --primary-light: #2a9d8f;
+  --primary-dark: #003536;
+  --secondary: #e76f51;
+  --secondary-light: #f4a261;
+  --accent: #264653;
+  --accent-light: #4a7c8a;
+  --warning: #e9c46a;
+  --danger: #e63946;
+  --muted: #eef1f1;
+  --muted-foreground: #5f7a7b;
+  --border: #d0dada;
   --card: #ffffff;
-  --card-foreground: #1a1a2e;
+  --card-foreground: #0a2c2d;
   --radius: 0.5rem;
+  --header-bg: #ffffff;
+  --footer-bg: #002829;
+  --footer-text: #8aabac;
+  --input-bg: #ffffff;
+}
+
+/* ========================================
+   DARK MODE — dark-teal palette
+   ======================================== */
+.dark {
+  --background: #061212;
+  --foreground: #dce8e8;
+  --primary: #2ec4b6;
+  --primary-light: #5ee8d9;
+  --primary-dark: #1a9e92;
+  --secondary: #f4a261;
+  --secondary-light: #f7c59f;
+  --accent: #5aa8b5;
+  --accent-light: #8ccbd5;
+  --warning: #e9c46a;
+  --danger: #ff6b6b;
+  --muted: #0f2424;
+  --muted-foreground: #7fa3a3;
+  --border: #1c3838;
+  --card: #0f2424;
+  --card-foreground: #dce8e8;
+  --header-bg: #091919;
+  --footer-bg: #030e0e;
+  --footer-text: #5e8585;
+  --input-bg: #0f2424;
 }
 
 @theme inline {
@@ -37,6 +70,10 @@
   --color-border: var(--border);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-header-bg: var(--header-bg);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-text: var(--footer-text);
+  --color-input-bg: var(--input-bg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -47,7 +84,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -61,7 +98,7 @@ body {
   border-radius: 3px;
 }
 
-/* Custom utilities */
+/* Container */
 .container-custom {
   width: 100%;
   max-width: 1280px;

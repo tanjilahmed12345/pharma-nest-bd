@@ -98,7 +98,7 @@ function ShopContent() {
         {/* Mobile filters */}
         {showMobileFilters && (
           <div className="fixed inset-0 z-50 bg-black/50 md:hidden" onClick={() => setShowMobileFilters(false)}>
-            <div className="absolute right-0 top-0 h-full w-72 bg-white p-4 shadow-xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="absolute right-0 top-0 h-full w-72 bg-card p-4 shadow-xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold">Filters</h3>
                 <button onClick={() => setShowMobileFilters(false)}>

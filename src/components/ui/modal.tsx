@@ -54,7 +54,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', className
     >
       <div
         className={cn(
-          'w-full bg-white rounded-xl shadow-xl animate-in fade-in zoom-in-95',
+          'w-full bg-card rounded-xl shadow-xl animate-in fade-in zoom-in-95',
           sizeStyles[size],
           className
         )}

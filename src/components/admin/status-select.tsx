@@ -16,7 +16,7 @@ export function StatusSelect({ value, onChange, options, className }: StatusSele
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={cn(
-        'h-8 px-2 rounded-md border border-border text-xs font-medium bg-white focus:outline-none focus:ring-2 focus:ring-primary/20',
+        'h-8 px-2 rounded-md border border-border text-xs font-medium bg-input-bg focus:outline-none focus:ring-2 focus:ring-primary/20',
         className
       )}
     >

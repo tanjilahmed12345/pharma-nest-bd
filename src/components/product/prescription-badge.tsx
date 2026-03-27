@@ -10,7 +10,7 @@ export function PrescriptionBadge({ size = 'sm', className }: PrescriptionBadgeP
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 bg-purple-50 text-purple-700 font-medium rounded-full',
+        'inline-flex items-center gap-1 bg-secondary/10 text-secondary font-medium rounded-full',
         size === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs',
         className
       )}
