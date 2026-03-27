@@ -14,6 +14,9 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const prisma_module_1 = require("./prisma/prisma.module");
 const health_module_1 = require("./modules/health/health.module");
+const auth_module_1 = require("./modules/auth/auth.module");
+const users_module_1 = require("./modules/users/users.module");
+const addresses_module_1 = require("./modules/addresses/addresses.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const auth_config_1 = __importDefault(require("./config/auth.config"));
@@ -29,6 +32,9 @@ exports.AppModule = AppModule = __decorate([
             }),
             prisma_module_1.PrismaModule,
             health_module_1.HealthModule,
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+            addresses_module_1.AddressesModule,
         ],
     })
 ], AppModule);

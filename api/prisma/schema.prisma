@@ -122,6 +122,7 @@ model User {
   email           String     @unique
   phone           String     @unique
   passwordHash    String     @map("password_hash")
+  refreshTokenHash String?   @map("refresh_token_hash")
   fullName        String     @map("full_name")
   role            UserRole   @default(CUSTOMER)
   status          UserStatus @default(ACTIVE)
