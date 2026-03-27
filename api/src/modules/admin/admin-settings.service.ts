@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UpdateSettingsDto } from './dto/update-settings.dto';
+import { AuditLogsService } from '../audit-logs/audit-logs.service';
+import { AuditAction } from '../../common/enums';
 
 @Injectable()
 export class AdminSettingsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private auditLogs: AuditLogsService,
+  ) {}
 
   async getSettings() {
     let settings = await this.prisma.appSetting.findFirst();
@@ -27,6 +32,13 @@ export class AdminSettingsService {
         data: dto,
       });
     }
+
+    this.auditLogs.log({
+      actionType: AuditAction.UPDATE,
+      entityType: 'AppSetting',
+      entityId: settings.id,
+      details: { updatedFields: Object.keys(dto) },
+    });
 
     return this.formatSettings(settings);
   }

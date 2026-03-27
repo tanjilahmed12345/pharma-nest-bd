@@ -27,12 +27,12 @@ export declare class SearchController {
                 isPrimary: boolean;
                 productId: string;
             }[];
-            description: string | null;
             id: string;
-            status: import("@prisma/client").$Enums.ProductStatus;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            status: import("@prisma/client").$Enums.ProductStatus;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             manufacturerName: string;
             genericName: string;

@@ -7,8 +7,8 @@ export declare class BrandsController {
     findAll(): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -16,8 +16,8 @@ export declare class BrandsController {
     findBySlug(slug: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -25,8 +25,8 @@ export declare class BrandsController {
     create(dto: CreateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -34,8 +34,8 @@ export declare class BrandsController {
     update(id: string, dto: UpdateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;

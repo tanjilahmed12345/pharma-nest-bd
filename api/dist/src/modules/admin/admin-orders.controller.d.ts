@@ -47,17 +47,17 @@ export declare class AdminOrdersController {
         deliveredAt: Date | null;
         cancelledAt: Date | null;
         customer: {
-            fullName: string;
+            id: string;
             email: string;
             phone: string;
-            id: string;
+            fullName: string;
         };
         address: {
             division: string;
             district: string;
-            phone: string;
             id: string;
             createdAt: Date;
+            phone: string;
             updatedAt: Date;
             isDefault: boolean;
             userId: string;
@@ -101,8 +101,8 @@ export declare class AdminOrdersController {
         payments: {
             amount: number;
             id: string;
-            status: import("@prisma/client").$Enums.PaymentStatus;
             createdAt: Date;
+            status: import("@prisma/client").$Enums.PaymentStatus;
             updatedAt: Date;
             senderNumber: string | null;
             transactionId: string | null;

@@ -30,11 +30,16 @@ export declare class AdminPrescriptionsController {
     }>;
     findOne(id: string): Promise<{
         user: {
-            fullName: string;
+            id: string;
             email: string;
             phone: string;
-            id: string;
+            fullName: string;
         };
+        orders: {
+            id: string;
+            orderStatus: import("@prisma/client").$Enums.OrderStatus;
+            orderNumber: string;
+        }[];
         items: ({
             product: {
                 id: string;
@@ -51,25 +56,20 @@ export declare class AdminPrescriptionsController {
             requestedQty: number | null;
             approvedQty: number | null;
         })[];
-        orders: {
-            id: string;
-            orderStatus: import("@prisma/client").$Enums.OrderStatus;
-            orderNumber: string;
-        }[];
         reviewedBy: {
-            fullName: string;
             id: string;
+            fullName: string;
             role: import("@prisma/client").$Enums.UserRole;
         } | null;
     } & {
         id: string;
-        status: import("@prisma/client").$Enums.PrescriptionStatus;
         createdAt: Date;
+        status: import("@prisma/client").$Enums.PrescriptionStatus;
         updatedAt: Date;
+        fileName: string | null;
         userId: string;
         orderId: string | null;
         fileUrl: string | null;
-        fileName: string | null;
         fileType: string | null;
         patientName: string;
         doctorName: string;

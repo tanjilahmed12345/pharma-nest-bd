@@ -11,6 +11,8 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { hashPassword, comparePassword } from '../../common/utils/password.util';
 import { sanitizeUser } from '../users/utils/user-response.util';
+import { AuditLogsService } from '../audit-logs/audit-logs.service';
+import { AuditAction } from '../../common/enums';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +20,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwtService: JwtService,
     private configService: ConfigService,
+    private auditLogs: AuditLogsService,
   ) {}
 
   async register(dto: RegisterDto) {
@@ -53,6 +56,14 @@ export class AuthService {
       data: { lastLoginAt: new Date() },
     });
 
+    this.auditLogs.log({
+      actorUserId: user.id,
+      actionType: AuditAction.CREATE,
+      entityType: 'User',
+      entityId: user.id,
+      details: { action: 'register', email: user.email },
+    });
+
     return {
       user: sanitizeUser(user),
       ...tokens,
@@ -82,6 +93,14 @@ export class AuthService {
     await this.prisma.user.update({
       where: { id: user.id },
       data: { lastLoginAt: new Date() },
+    });
+
+    this.auditLogs.log({
+      actorUserId: user.id,
+      actionType: AuditAction.LOGIN,
+      entityType: 'User',
+      entityId: user.id,
+      details: { email: user.email },
     });
 
     return {

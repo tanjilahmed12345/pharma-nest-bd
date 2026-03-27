@@ -11,8 +11,8 @@ export declare class AdminBrandsController {
     } & {
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -24,8 +24,8 @@ export declare class AdminBrandsController {
     } & {
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -33,8 +33,8 @@ export declare class AdminBrandsController {
     create(dto: CreateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -42,8 +42,8 @@ export declare class AdminBrandsController {
     update(id: string, dto: UpdateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;

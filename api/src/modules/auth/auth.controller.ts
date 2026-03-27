@@ -13,6 +13,7 @@ import {
   ApiOperation,
   ApiResponse,
 } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -28,6 +29,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('register')
+  @Throttle({ short: { ttl: 60000, limit: 5 } })
   @ApiOperation({ summary: 'Register a new customer account' })
   @ApiResponse({ status: 201, description: 'Registration successful' })
   @ApiResponse({ status: 409, description: 'Email or phone already exists' })
@@ -36,6 +38,7 @@ export class AuthController {
   }
 
   @Post('login')
+  @Throttle({ short: { ttl: 60000, limit: 10 } })
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Login with email and password' })
   @ApiResponse({ status: 200, description: 'Login successful' })

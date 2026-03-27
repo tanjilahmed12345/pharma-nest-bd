@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const throttler_1 = require("@nestjs/throttler");
 const auth_service_1 = require("./auth.service");
 const register_dto_1 = require("./dto/register.dto");
 const login_dto_1 = require("./dto/login.dto");
@@ -46,6 +47,7 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
+    (0, throttler_1.Throttle)({ short: { ttl: 60000, limit: 5 } }),
     (0, swagger_1.ApiOperation)({ summary: 'Register a new customer account' }),
     (0, swagger_1.ApiResponse)({ status: 201, description: 'Registration successful' }),
     (0, swagger_1.ApiResponse)({ status: 409, description: 'Email or phone already exists' }),
@@ -56,6 +58,7 @@ __decorate([
 ], AuthController.prototype, "register", null);
 __decorate([
     (0, common_1.Post)('login'),
+    (0, throttler_1.Throttle)({ short: { ttl: 60000, limit: 10 } }),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     (0, swagger_1.ApiOperation)({ summary: 'Login with email and password' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Login successful' }),

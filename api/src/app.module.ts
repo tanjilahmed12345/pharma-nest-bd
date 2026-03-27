@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuditLogsModule } from './modules/audit-logs/audit-logs.module';
+import { UploadsModule } from './modules/uploads/uploads.module';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
@@ -19,14 +22,22 @@ import { AdminModule } from './modules/admin/admin.module';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 import authConfig from './config/auth.config';
+import uploadConfig from './config/upload.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig, databaseConfig, authConfig],
+      load: [appConfig, databaseConfig, authConfig, uploadConfig],
     }),
+    ThrottlerModule.forRoot([
+      { name: 'short', ttl: 1000, limit: 10 },
+      { name: 'medium', ttl: 10000, limit: 50 },
+      { name: 'long', ttl: 60000, limit: 200 },
+    ]),
     PrismaModule,
+    AuditLogsModule,
+    UploadsModule,
     HealthModule,
     AuthModule,
     UsersModule,

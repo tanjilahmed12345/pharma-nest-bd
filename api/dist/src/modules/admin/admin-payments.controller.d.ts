@@ -32,10 +32,10 @@ export declare class AdminPaymentsController {
         order: {
             total: number;
             user: {
-                fullName: string;
+                id: string;
                 email: string;
                 phone: string;
-                id: string;
+                fullName: string;
             };
             id: string;
             orderStatus: import("@prisma/client").$Enums.OrderStatus;
@@ -43,13 +43,13 @@ export declare class AdminPaymentsController {
             orderNumber: string;
         };
         verifiedBy: {
-            fullName: string;
             id: string;
+            fullName: string;
             role: import("@prisma/client").$Enums.UserRole;
         } | null;
         id: string;
-        status: import("@prisma/client").$Enums.PaymentStatus;
         createdAt: Date;
+        status: import("@prisma/client").$Enums.PaymentStatus;
         updatedAt: Date;
         senderNumber: string | null;
         transactionId: string | null;

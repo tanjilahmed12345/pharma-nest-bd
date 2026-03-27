@@ -3,28 +3,30 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../../prisma/prisma.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
+import { AuditLogsService } from '../audit-logs/audit-logs.service';
 export declare class AuthService {
     private prisma;
     private jwtService;
     private configService;
-    constructor(prisma: PrismaService, jwtService: JwtService, configService: ConfigService);
+    private auditLogs;
+    constructor(prisma: PrismaService, jwtService: JwtService, configService: ConfigService, auditLogs: AuditLogsService);
     register(dto: RegisterDto): Promise<{
         accessToken: string;
         refreshToken: string;
         user: Omit<{
-            fullName: string;
+            id: string;
+            createdAt: Date;
             email: string;
             phone: string;
             passwordHash: string;
             refreshTokenHash: string | null;
-            id: string;
+            fullName: string;
             role: import("@prisma/client").$Enums.UserRole;
             status: import("@prisma/client").$Enums.UserStatus;
             avatar: string | null;
             emailVerifiedAt: Date | null;
             phoneVerifiedAt: Date | null;
             lastLoginAt: Date | null;
-            createdAt: Date;
             updatedAt: Date;
         }, "passwordHash" | "refreshTokenHash">;
     }>;
@@ -32,19 +34,19 @@ export declare class AuthService {
         accessToken: string;
         refreshToken: string;
         user: Omit<{
-            fullName: string;
+            id: string;
+            createdAt: Date;
             email: string;
             phone: string;
             passwordHash: string;
             refreshTokenHash: string | null;
-            id: string;
+            fullName: string;
             role: import("@prisma/client").$Enums.UserRole;
             status: import("@prisma/client").$Enums.UserStatus;
             avatar: string | null;
             emailVerifiedAt: Date | null;
             phoneVerifiedAt: Date | null;
             lastLoginAt: Date | null;
-            createdAt: Date;
             updatedAt: Date;
         }, "passwordHash" | "refreshTokenHash">;
     }>;
@@ -52,19 +54,19 @@ export declare class AuthService {
         accessToken: string;
         refreshToken: string;
         user: Omit<{
-            fullName: string;
+            id: string;
+            createdAt: Date;
             email: string;
             phone: string;
             passwordHash: string;
             refreshTokenHash: string | null;
-            id: string;
+            fullName: string;
             role: import("@prisma/client").$Enums.UserRole;
             status: import("@prisma/client").$Enums.UserStatus;
             avatar: string | null;
             emailVerifiedAt: Date | null;
             phoneVerifiedAt: Date | null;
             lastLoginAt: Date | null;
-            createdAt: Date;
             updatedAt: Date;
         }, "passwordHash" | "refreshTokenHash">;
     }>;
@@ -75,9 +77,9 @@ export declare class AuthService {
         addresses: {
             division: string;
             district: string;
-            phone: string;
             id: string;
             createdAt: Date;
+            phone: string;
             updatedAt: Date;
             isDefault: boolean;
             userId: string;
@@ -93,19 +95,19 @@ export declare class AuthService {
             deliveryNote: string | null;
         }[];
     } & {
-        fullName: string;
+        id: string;
+        createdAt: Date;
         email: string;
         phone: string;
         passwordHash: string;
         refreshTokenHash: string | null;
-        id: string;
+        fullName: string;
         role: import("@prisma/client").$Enums.UserRole;
         status: import("@prisma/client").$Enums.UserStatus;
         avatar: string | null;
         emailVerifiedAt: Date | null;
         phoneVerifiedAt: Date | null;
         lastLoginAt: Date | null;
-        createdAt: Date;
         updatedAt: Date;
     }, "passwordHash" | "refreshTokenHash">>;
     private generateTokens;

@@ -7,8 +7,8 @@ export declare class BrandsService {
     getActiveBrands(): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -16,8 +16,8 @@ export declare class BrandsService {
     getBrandBySlug(slug: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -29,8 +29,8 @@ export declare class BrandsService {
     } & {
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -38,8 +38,8 @@ export declare class BrandsService {
     createBrand(dto: CreateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;
@@ -47,8 +47,8 @@ export declare class BrandsService {
     updateBrand(id: string, dto: UpdateBrandDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
         slug: string;
         isActive: boolean;
         manufacturerName: string | null;

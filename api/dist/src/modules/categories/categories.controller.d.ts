@@ -12,11 +12,11 @@ export declare class CategoriesController {
             products: number;
         };
         children: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -24,11 +24,11 @@ export declare class CategoriesController {
             sortOrder: number;
         }[];
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -40,11 +40,11 @@ export declare class CategoriesController {
             products: number;
         };
         parent: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -52,11 +52,11 @@ export declare class CategoriesController {
             sortOrder: number;
         } | null;
         children: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -64,11 +64,11 @@ export declare class CategoriesController {
             sortOrder: number;
         }[];
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -76,11 +76,11 @@ export declare class CategoriesController {
         sortOrder: number;
     }>;
     create(dto: CreateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -88,11 +88,11 @@ export declare class CategoriesController {
         sortOrder: number;
     }>;
     update(id: string, dto: UpdateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;

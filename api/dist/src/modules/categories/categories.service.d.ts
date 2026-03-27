@@ -12,11 +12,11 @@ export declare class CategoriesService {
             products: number;
         };
         children: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -24,11 +24,11 @@ export declare class CategoriesService {
             sortOrder: number;
         }[];
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -40,11 +40,11 @@ export declare class CategoriesService {
             products: number;
         };
         parent: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -52,11 +52,11 @@ export declare class CategoriesService {
             sortOrder: number;
         } | null;
         children: {
-            description: string | null;
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
+            updatedAt: Date;
+            description: string | null;
             slug: string;
             imageUrl: string | null;
             parentId: string | null;
@@ -64,11 +64,11 @@ export declare class CategoriesService {
             sortOrder: number;
         }[];
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -85,11 +85,11 @@ export declare class CategoriesService {
             name: string;
         } | null;
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -97,11 +97,11 @@ export declare class CategoriesService {
         sortOrder: number;
     })[]>;
     createCategory(dto: CreateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -109,11 +109,11 @@ export declare class CategoriesService {
         sortOrder: number;
     }>;
     updateCategory(id: string, dto: UpdateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;

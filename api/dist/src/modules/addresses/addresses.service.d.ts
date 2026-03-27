@@ -7,9 +7,9 @@ export declare class AddressesService {
     findAll(userId: string): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -27,9 +27,9 @@ export declare class AddressesService {
     create(userId: string, dto: CreateAddressDto): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -47,9 +47,9 @@ export declare class AddressesService {
     update(userId: string, addressId: string, dto: UpdateAddressDto): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -70,9 +70,9 @@ export declare class AddressesService {
     setDefault(userId: string, addressId: string): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;

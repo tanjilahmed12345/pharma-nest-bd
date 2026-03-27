@@ -14,11 +14,11 @@ export declare class AdminCategoriesController {
             name: string;
         } | null;
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -35,11 +35,11 @@ export declare class AdminCategoriesController {
             name: string;
         } | null;
     } & {
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -47,11 +47,11 @@ export declare class AdminCategoriesController {
         sortOrder: number;
     }>;
     create(dto: CreateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;
@@ -59,11 +59,11 @@ export declare class AdminCategoriesController {
         sortOrder: number;
     }>;
     update(id: string, dto: UpdateCategoryDto): Promise<{
-        description: string | null;
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         name: string;
+        updatedAt: Date;
+        description: string | null;
         slug: string;
         imageUrl: string | null;
         parentId: string | null;

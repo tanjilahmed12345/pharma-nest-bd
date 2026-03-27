@@ -12,10 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminSettingsService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../prisma/prisma.service");
+const audit_logs_service_1 = require("../audit-logs/audit-logs.service");
+const enums_1 = require("../../common/enums");
 let AdminSettingsService = class AdminSettingsService {
     prisma;
-    constructor(prisma) {
+    auditLogs;
+    constructor(prisma, auditLogs) {
         this.prisma = prisma;
+        this.auditLogs = auditLogs;
     }
     async getSettings() {
         let settings = await this.prisma.appSetting.findFirst();
@@ -35,6 +39,12 @@ let AdminSettingsService = class AdminSettingsService {
                 data: dto,
             });
         }
+        this.auditLogs.log({
+            actionType: enums_1.AuditAction.UPDATE,
+            entityType: 'AppSetting',
+            entityId: settings.id,
+            details: { updatedFields: Object.keys(dto) },
+        });
         return this.formatSettings(settings);
     }
     formatSettings(settings) {
@@ -63,6 +73,7 @@ let AdminSettingsService = class AdminSettingsService {
 exports.AdminSettingsService = AdminSettingsService;
 exports.AdminSettingsService = AdminSettingsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService,
+        audit_logs_service_1.AuditLogsService])
 ], AdminSettingsService);
 //# sourceMappingURL=admin-settings.service.js.map

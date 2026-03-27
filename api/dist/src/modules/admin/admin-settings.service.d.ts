@@ -1,8 +1,10 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { UpdateSettingsDto } from './dto/update-settings.dto';
+import { AuditLogsService } from '../audit-logs/audit-logs.service';
 export declare class AdminSettingsService {
     private prisma;
-    constructor(prisma: PrismaService);
+    private auditLogs;
+    constructor(prisma: PrismaService, auditLogs: AuditLogsService);
     getSettings(): Promise<{
         id: any;
         storeName: any;

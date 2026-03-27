@@ -16,14 +16,18 @@ const jwt_1 = require("@nestjs/jwt");
 const prisma_service_1 = require("../../prisma/prisma.service");
 const password_util_1 = require("../../common/utils/password.util");
 const user_response_util_1 = require("../users/utils/user-response.util");
+const audit_logs_service_1 = require("../audit-logs/audit-logs.service");
+const enums_1 = require("../../common/enums");
 let AuthService = class AuthService {
     prisma;
     jwtService;
     configService;
-    constructor(prisma, jwtService, configService) {
+    auditLogs;
+    constructor(prisma, jwtService, configService, auditLogs) {
         this.prisma = prisma;
         this.jwtService = jwtService;
         this.configService = configService;
+        this.auditLogs = auditLogs;
     }
     async register(dto) {
         const existingEmail = await this.prisma.user.findUnique({
@@ -53,6 +57,13 @@ let AuthService = class AuthService {
             where: { id: user.id },
             data: { lastLoginAt: new Date() },
         });
+        this.auditLogs.log({
+            actorUserId: user.id,
+            actionType: enums_1.AuditAction.CREATE,
+            entityType: 'User',
+            entityId: user.id,
+            details: { action: 'register', email: user.email },
+        });
         return {
             user: (0, user_response_util_1.sanitizeUser)(user),
             ...tokens,
@@ -77,6 +88,13 @@ let AuthService = class AuthService {
         await this.prisma.user.update({
             where: { id: user.id },
             data: { lastLoginAt: new Date() },
+        });
+        this.auditLogs.log({
+            actorUserId: user.id,
+            actionType: enums_1.AuditAction.LOGIN,
+            entityType: 'User',
+            entityId: user.id,
+            details: { email: user.email },
         });
         return {
             user: (0, user_response_util_1.sanitizeUser)(user),
@@ -149,6 +167,7 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService,
         jwt_1.JwtService,
-        config_1.ConfigService])
+        config_1.ConfigService,
+        audit_logs_service_1.AuditLogsService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

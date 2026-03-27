@@ -8,9 +8,9 @@ export declare class UsersController {
         addresses: {
             division: string;
             district: string;
-            phone: string;
             id: string;
             createdAt: Date;
+            phone: string;
             updatedAt: Date;
             isDefault: boolean;
             userId: string;
@@ -26,35 +26,35 @@ export declare class UsersController {
             deliveryNote: string | null;
         }[];
     } & {
-        fullName: string;
+        id: string;
+        createdAt: Date;
         email: string;
         phone: string;
         passwordHash: string;
         refreshTokenHash: string | null;
-        id: string;
+        fullName: string;
         role: import("@prisma/client").$Enums.UserRole;
         status: import("@prisma/client").$Enums.UserStatus;
         avatar: string | null;
         emailVerifiedAt: Date | null;
         phoneVerifiedAt: Date | null;
         lastLoginAt: Date | null;
-        createdAt: Date;
         updatedAt: Date;
     }, "passwordHash" | "refreshTokenHash">>;
     updateProfile(user: JwtPayload, dto: UpdateProfileDto): Promise<Omit<{
-        fullName: string;
+        id: string;
+        createdAt: Date;
         email: string;
         phone: string;
         passwordHash: string;
         refreshTokenHash: string | null;
-        id: string;
+        fullName: string;
         role: import("@prisma/client").$Enums.UserRole;
         status: import("@prisma/client").$Enums.UserStatus;
         avatar: string | null;
         emailVerifiedAt: Date | null;
         phoneVerifiedAt: Date | null;
         lastLoginAt: Date | null;
-        createdAt: Date;
         updatedAt: Date;
     }, "passwordHash" | "refreshTokenHash">>;
 }

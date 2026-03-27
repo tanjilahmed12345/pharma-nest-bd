@@ -12,7 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
+const throttler_1 = require("@nestjs/throttler");
 const prisma_module_1 = require("./prisma/prisma.module");
+const audit_logs_module_1 = require("./modules/audit-logs/audit-logs.module");
+const uploads_module_1 = require("./modules/uploads/uploads.module");
 const health_module_1 = require("./modules/health/health.module");
 const auth_module_1 = require("./modules/auth/auth.module");
 const users_module_1 = require("./modules/users/users.module");
@@ -31,6 +34,7 @@ const admin_module_1 = require("./modules/admin/admin.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const auth_config_1 = __importDefault(require("./config/auth.config"));
+const upload_config_1 = __importDefault(require("./config/upload.config"));
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -39,9 +43,16 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
-                load: [app_config_1.default, database_config_1.default, auth_config_1.default],
+                load: [app_config_1.default, database_config_1.default, auth_config_1.default, upload_config_1.default],
             }),
+            throttler_1.ThrottlerModule.forRoot([
+                { name: 'short', ttl: 1000, limit: 10 },
+                { name: 'medium', ttl: 10000, limit: 50 },
+                { name: 'long', ttl: 60000, limit: 200 },
+            ]),
             prisma_module_1.PrismaModule,
+            audit_logs_module_1.AuditLogsModule,
+            uploads_module_1.UploadsModule,
             health_module_1.HealthModule,
             auth_module_1.AuthModule,
             users_module_1.UsersModule,

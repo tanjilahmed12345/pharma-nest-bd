@@ -8,9 +8,9 @@ export declare class AddressesController {
     findAll(user: JwtPayload): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -28,9 +28,9 @@ export declare class AddressesController {
     create(user: JwtPayload, dto: CreateAddressDto): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -48,9 +48,9 @@ export declare class AddressesController {
     update(user: JwtPayload, id: string, dto: UpdateAddressDto): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
@@ -71,9 +71,9 @@ export declare class AddressesController {
     setDefault(user: JwtPayload, id: string): Promise<{
         division: string;
         district: string;
-        phone: string;
         id: string;
         createdAt: Date;
+        phone: string;
         updatedAt: Date;
         isDefault: boolean;
         userId: string;
