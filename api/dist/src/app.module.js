@@ -17,6 +17,10 @@ const health_module_1 = require("./modules/health/health.module");
 const auth_module_1 = require("./modules/auth/auth.module");
 const users_module_1 = require("./modules/users/users.module");
 const addresses_module_1 = require("./modules/addresses/addresses.module");
+const categories_module_1 = require("./modules/categories/categories.module");
+const brands_module_1 = require("./modules/brands/brands.module");
+const products_module_1 = require("./modules/products/products.module");
+const search_module_1 = require("./modules/search/search.module");
 const app_config_1 = __importDefault(require("./config/app.config"));
 const database_config_1 = __importDefault(require("./config/database.config"));
 const auth_config_1 = __importDefault(require("./config/auth.config"));
@@ -35,6 +39,10 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             addresses_module_1.AddressesModule,
+            categories_module_1.CategoriesModule,
+            brands_module_1.BrandsModule,
+            products_module_1.ProductsModule,
+            search_module_1.SearchModule,
         ],
     })
 ], AppModule);
