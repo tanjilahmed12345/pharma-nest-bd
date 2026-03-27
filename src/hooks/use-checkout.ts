@@ -176,7 +176,8 @@ export function useCheckout() {
     }
   }, [state]);
 
-  const placeOrder = useCallback(async (): Promise<Order | null> => {
+  // Not wrapped in useCallback — depends on entire state, so caching provides no benefit
+  const placeOrder = async (): Promise<Order | null> => {
     if (!userId || !state.preview || !selectedAddress) return null;
 
     setState((s) => ({ ...s, isPlacingOrder: true, orderError: null }));
@@ -198,7 +199,7 @@ export function useCheckout() {
       setState((s) => ({ ...s, isPlacingOrder: false, orderError: err.message || 'Failed to place order' }));
       return null;
     }
-  }, [userId, state.preview, selectedAddress, state.paymentMethod, state.prescriptionId, state.couponCode, state.note, state.senderNumber, state.transactionId]);
+  };
 
   return {
     ...state,

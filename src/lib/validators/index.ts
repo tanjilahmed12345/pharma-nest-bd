@@ -16,7 +16,7 @@ export const registerSchema = z
     email: z.string().email('Enter a valid email'),
     phone: bdPhone,
     password: z.string().min(6, 'Password must be at least 6 characters'),
-    confirmPassword: z.string(),
+    confirmPassword: z.string().min(1, 'Please confirm your password'),
   })
   .refine((d) => d.password === d.confirmPassword, {
     message: 'Passwords do not match',

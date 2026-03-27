@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState, useCallback, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Product, Category, PaginatedResponse, ProductFilters as Filters } from '@/types';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { Product, Category, PaginatedResponse } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
 
@@ -18,6 +18,8 @@ import { Button } from '@/components/ui/button';
 
 function CategoryContent({ slug }: { slug: string }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const addItem = useCartStore((s) => s.addItem);
   const [category, setCategory] = useState<Category | null>(null);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
@@ -46,6 +48,13 @@ function CategoryContent({ slug }: { slug: string }) {
   useEffect(() => {
     loadData();
   }, [loadData]);
+
+  const updateParam = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(key, value);
+    if (key !== 'page') params.delete('page');
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
   if (notFound) {
     return (
@@ -80,13 +89,7 @@ function CategoryContent({ slug }: { slug: string }) {
         </div>
         <ProductSort
           value={sort}
-          onChange={(s) => {
-            const params = new URLSearchParams(searchParams.toString());
-            params.set('sort', s);
-            params.delete('page');
-            window.history.pushState(null, '', `?${params.toString()}`);
-            window.location.reload();
-          }}
+          onChange={(s) => updateParam('sort', s)}
         />
       </div>
 
@@ -107,12 +110,7 @@ function CategoryContent({ slug }: { slug: string }) {
             <Pagination
               currentPage={result.page}
               totalPages={result.totalPages}
-              onPageChange={(p) => {
-                const params = new URLSearchParams(searchParams.toString());
-                params.set('page', String(p));
-                window.history.pushState(null, '', `?${params.toString()}`);
-                window.location.reload();
-              }}
+              onPageChange={(p) => updateParam('page', String(p))}
               className="mt-8"
             />
           )}

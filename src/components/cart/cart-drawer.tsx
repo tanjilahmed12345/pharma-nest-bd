@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Drawer } from '@/components/ui/drawer';
 import { useUIStore } from '@/store/ui.store';
 import { useCart } from '@/hooks';
@@ -13,6 +13,12 @@ export function CartDrawer() {
   const isOpen = useUIStore((s) => s.isCartDrawerOpen);
   const setOpen = useUIStore((s) => s.setCartDrawer);
   const { cartItems, itemCount, subtotal, removeItem, updateQuantity } = useCart();
+  const router = useRouter();
+
+  const navigateTo = (path: string) => {
+    setOpen(false);
+    router.push(path);
+  };
 
   return (
     <Drawer isOpen={isOpen} onClose={() => setOpen(false)} title={`Cart (${itemCount})`}>
@@ -41,12 +47,8 @@ export function CartDrawer() {
               <span>Subtotal</span>
               <span className="text-primary">{formatPrice(subtotal)}</span>
             </div>
-            <Link href="/cart" onClick={() => setOpen(false)}>
-              <Button fullWidth variant="outline">View Cart</Button>
-            </Link>
-            <Link href="/checkout" onClick={() => setOpen(false)}>
-              <Button fullWidth>Checkout</Button>
-            </Link>
+            <Button fullWidth variant="outline" onClick={() => navigateTo('/cart')}>View Cart</Button>
+            <Button fullWidth onClick={() => navigateTo('/checkout')}>Checkout</Button>
           </div>
         </div>
       )}

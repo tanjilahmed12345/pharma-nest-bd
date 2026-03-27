@@ -40,13 +40,11 @@ export function ProductDetailsContent({ slug }: { slug: string }) {
         }
         setProduct(prod);
 
-        const [cat, rel] = await Promise.all([
-          catalogService.getCategoryBySlug('').then(() => null).catch(() => null),
+        const [allCats, rel] = await Promise.all([
+          catalogService.getCategories(),
           catalogService.getRelatedProducts(prod.id, 6),
         ]);
 
-        // Load category by iterating (simple approach)
-        const allCats = await catalogService.getCategories();
         const productCat = allCats.find((c) => c.id === prod.categoryId) || null;
         setCategory(productCat);
         setRelated(rel);

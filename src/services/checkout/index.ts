@@ -10,6 +10,7 @@ import {
 import { generateOrderNumber, nowISO } from '@/lib/utils';
 import { AppError } from '@/lib/utils/app-error';
 import { cartService } from '@/services/cart';
+import { DELIVERY_CHARGE, FREE_DELIVERY_THRESHOLD } from '@/lib/constants';
 
 export const checkoutService = {
   /**
@@ -62,8 +63,6 @@ export const checkoutService = {
       0
     );
 
-    // Use settings delivery charge — hardcoded for now from constants
-    const { DELIVERY_CHARGE, FREE_DELIVERY_THRESHOLD } = await import('@/lib/constants');
     const deliveryCharge = subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
     const total = subtotal + deliveryCharge;
 

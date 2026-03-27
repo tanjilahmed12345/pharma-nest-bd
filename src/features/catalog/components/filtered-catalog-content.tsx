@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState, useCallback, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useState, useCallback, useMemo, Suspense } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Product, PaginatedResponse, ProductFilters as Filters } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
@@ -23,6 +23,8 @@ export interface FilteredCatalogProps {
 
 function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: FilteredCatalogProps) {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const addItem = useCartStore((s) => s.addItem);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,11 +32,14 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
   const sort = searchParams.get('sort') || 'latest';
   const page = Number(searchParams.get('page')) || 1;
 
+  // Stabilize baseFilters reference to prevent unnecessary re-renders
+  const stableFilters = useMemo(() => baseFilters, [JSON.stringify(baseFilters)]);
+
   const loadData = useCallback(async () => {
     setIsLoading(true);
     try {
       const products = await catalogService.getProducts({
-        ...baseFilters,
+        ...stableFilters,
         sort,
         page,
       });
@@ -42,7 +47,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
     } finally {
       setIsLoading(false);
     }
-  }, [sort, page, baseFilters]);
+  }, [sort, page, stableFilters]);
 
   useEffect(() => {
     loadData();
@@ -52,8 +57,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
     const params = new URLSearchParams(searchParams.toString());
     params.set(key, value);
     if (key !== 'page') params.delete('page');
-    window.history.pushState(null, '', `?${params.toString()}`);
-    window.location.reload();
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (

@@ -37,6 +37,7 @@ export function AdminProductForm({ productId }: AdminProductFormProps) {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
 
+  // Cast needed: z.coerce.number() infers as `unknown` which conflicts with react-hook-form resolver types
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema) as any,
     defaultValues: {
