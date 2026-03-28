@@ -49,7 +49,7 @@ export function SiteHeader() {
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             {/* Mobile search */}
             <button
               className="md:hidden p-2 hover:bg-muted rounded-lg"
@@ -58,15 +58,6 @@ export function SiteHeader() {
             >
               <Search className="h-5 w-5" />
             </button>
-
-            {/* Upload Rx (desktop) */}
-            <Link
-              href="/upload-prescription"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 rounded-lg transition-colors"
-            >
-              <Upload className="h-3.5 w-3.5" />
-              {t('nav.uploadRxShort')}
-            </Link>
 
             <LanguageToggle />
 
@@ -78,7 +69,7 @@ export function SiteHeader() {
             >
               <Bell className="h-5 w-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4.5 min-w-4.5 px-1 flex items-center justify-center text-[10px] font-bold bg-secondary text-white rounded-full">
+                <span className="absolute -top-0.5 -right-0.5 h-4 min-w-4 px-0.5 flex items-center justify-center text-[9px] font-bold bg-secondary text-white rounded-full">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
