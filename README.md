@@ -1,54 +1,56 @@
 <div align="center">
 
-# 💊 PharmaNest BD
+<img src="https://img.icons8.com/3d-fluency/94/pill.png" alt="PharmaNest BD Logo" width="80" />
+
+# PharmaNest BD
 
 ### Your Trusted Online Pharmacy in Bangladesh
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-7.6-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 <br />
 
-**A full-stack, production-ready pharmacy e-commerce platform** built for the Bangladesh market with prescription management, mobile wallet payments (bKash, Nagad, Rocket), and a complete admin dashboard.
+A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh market — featuring prescription management, mobile wallet payments (bKash, Nagad, Rocket), and a powerful admin dashboard.
 
 <br />
 
-[Live Demo](#) &nbsp;&bull;&nbsp; [Report Bug](../../issues) &nbsp;&bull;&nbsp; [Request Feature](../../issues)
-
-</div>
+[Live Demo](#) &nbsp;&middot;&nbsp; [Report Bug](../../issues) &nbsp;&middot;&nbsp; [Request Feature](../../issues)
 
 ---
 
+</div>
+
 <br />
 
-## 🌟 Highlights
+## At a Glance
 
 <table>
 <tr>
 <td width="50%">
 
-**🛒 Customer Experience**
-- Browse & search medicines by name, brand, or generic name
-- Filter by category, price range, prescription type
-- Cart, wishlist & saved addresses
-- Upload prescriptions for Rx medicines
+### Storefront
+- Browse & search 1000s of medicines
+- Filter by category, brand, price & prescription type
+- Persistent cart, wishlist & saved addresses
+- Upload prescriptions for Rx-only medicines
+- Pay via **bKash / Nagad / Rocket / COD**
 - Real-time order tracking
-- Mobile wallet & COD payments
 
 </td>
 <td width="50%">
 
-**🔐 Admin Dashboard**
-- Revenue analytics & order metrics
-- Product & category management (CRUD)
+### Admin Panel
+- Revenue & order analytics dashboard
+- Full product & category CRUD
 - Prescription review & approval workflow
 - Payment verification system
 - Customer management
-- Store settings configuration
+- Configurable store settings
 
 </td>
 </tr>
@@ -56,11 +58,11 @@
 
 <br />
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |:------|:-----------|
-| **Framework** | Next.js 16 (App Router + Turbopack) |
+| **Framework** | Next.js 16 (App Router, Turbopack) |
 | **Language** | TypeScript 5 |
 | **Database** | PostgreSQL + Prisma ORM 7.6 |
 | **Styling** | Tailwind CSS 4 |
@@ -69,144 +71,63 @@
 | **State** | Zustand 5 |
 | **Forms** | React Hook Form 7 |
 | **Icons** | Lucide React |
-| **Deployment** | Vercel |
+| **Hosting** | Vercel |
 
 <br />
 
-## 📁 Project Structure
+## Pages & Routes
 
-```
-pharma-nest-bd/
-├── prisma/
-│   ├── schema.prisma          # Database schema (11 models)
-│   └── seed.ts                # Sample data seeder
-├── src/
-│   ├── app/
-│   │   ├── (public)/          # 🌐 Public pages
-│   │   │   ├── page.tsx       #    Homepage
-│   │   │   ├── shop/          #    Product listing
-│   │   │   ├── product/[slug] #    Product details
-│   │   │   ├── category/[slug]#    Category page
-│   │   │   ├── search/        #    Search results
-│   │   │   ├── otc/           #    OTC medicines
-│   │   │   ├── rx/            #    Prescription medicines
-│   │   │   ├── offers/        #    Discounted products
-│   │   │   ├── upload-prescription/
-│   │   │   ├── about/         #    About us
-│   │   │   ├── contact/       #    Contact page
-│   │   │   ├── faq/           #    FAQ
-│   │   │   ├── terms/         #    Terms & conditions
-│   │   │   └── privacy/       #    Privacy policy
-│   │   ├── (auth)/            # 🔑 Authentication
-│   │   │   ├── login/
-│   │   │   ├── register/
-│   │   │   └── forgot-password/
-│   │   ├── (account)/         # 👤 Customer account
-│   │   │   └── account/
-│   │   │       ├── orders/
-│   │   │       ├── prescriptions/
-│   │   │       ├── addresses/
-│   │   │       ├── wishlist/
-│   │   │       └── profile/
-│   │   ├── admin/             # ⚙️ Admin dashboard
-│   │   │   ├── dashboard/
-│   │   │   ├── products/
-│   │   │   ├── categories/
-│   │   │   ├── orders/
-│   │   │   ├── prescriptions/
-│   │   │   ├── payments/
-│   │   │   ├── customers/
-│   │   │   └── settings/
-│   │   ├── cart/              # 🛒 Shopping cart
-│   │   ├── checkout/          # 💳 Checkout
-│   │   ├── order-success/     # ✅ Order confirmation
-│   │   ├── track-order/       # 📦 Order tracking
-│   │   └── api/               # 🔌 40 API routes (see below)
-│   ├── components/            # Reusable UI components
-│   ├── lib/                   # Core utilities
-│   │   ├── auth.ts            #    JWT & password helpers
-│   │   ├── db.ts              #    Prisma client
-│   │   ├── api-utils.ts       #    Response formatters
-│   │   ├── validators/        #    Zod schemas
-│   │   ├── constants/         #    App constants
-│   │   ├── utils/             #    Helper functions
-│   │   └── api/               #    API client & endpoints
-│   └── stores/                # Zustand state stores
-└── package.json
-```
+### Public Pages
+
+| Page | Path | Description |
+|:-----|:-----|:------------|
+| Home | `/` | Hero, featured products, categories, trust badges |
+| Shop | `/shop` | Full product listing with filters & sorting |
+| Product | `/product/[slug]` | Details, gallery, specs, related products |
+| Category | `/category/[slug]` | Category-specific listing |
+| Search | `/search` | Full-text search results |
+| OTC Medicines | `/otc` | Over-the-counter products |
+| Rx Medicines | `/rx` | Prescription-required products |
+| Offers | `/offers` | Discounted products |
+| Upload Prescription | `/upload-prescription` | Prescription image upload |
+| About / Contact / FAQ | `/about` `/contact` `/faq` | Informational pages |
+| Terms / Privacy | `/terms` `/privacy` | Legal pages |
+
+### Customer Account
+
+| Page | Path |
+|:-----|:-----|
+| Dashboard | `/account` |
+| My Orders | `/account/orders` |
+| Order Details | `/account/orders/[id]` |
+| Prescriptions | `/account/prescriptions` |
+| Addresses | `/account/addresses` |
+| Wishlist | `/account/wishlist` |
+| Profile | `/account/profile` |
+| Track Order | `/track-order` |
+
+### Admin Dashboard
+
+| Page | Path |
+|:-----|:-----|
+| Analytics | `/admin/dashboard` |
+| Products | `/admin/products` |
+| Add / Edit Product | `/admin/products/new` &middot; `/admin/products/[id]/edit` |
+| Categories | `/admin/categories` |
+| Orders | `/admin/orders` &middot; `/admin/orders/[id]` |
+| Prescriptions | `/admin/prescriptions` |
+| Payments | `/admin/payments` |
+| Customers | `/admin/customers` |
+| Settings | `/admin/settings` |
 
 <br />
 
-## 🗄️ Database Schema
+## API Reference
 
-> **11 Models** &bull; **4 Enums** &bull; PostgreSQL
-
-```
-┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
-│     User     │────<│   CartItem   │     │    Category       │
-│              │────<│ WishlistItem │     │  (self-referential│
-│  - customer  │────<│   Address    │     │   parent/children)│
-│  - admin     │────<│    Order     │     └────────┬─────────┘
-│              │────<│ Prescription │              │
-│              │────<│   Payment    │     ┌────────┴─────────┐
-└──────────────┘     └──────────────┘     │    Product        │
-                                          │  - medicine info  │
-┌──────────────┐     ┌──────────────┐     │  - pricing        │
-│    Order     │────<│  OrderItem   │<────│  - stock          │
-│              │────<│OrderStatusLog│     │  - Rx required?   │
-│              │────<│   Payment    │     └──────────────────┘
-└──────────────┘     └──────────────┘
-                                          ┌──────────────────┐
-                                          │  StoreSetting     │
-                                          │  (single record)  │
-                                          └──────────────────┘
-```
+> **40 RESTful endpoints** &mdash; all return standard JSON responses
 
 <details>
-<summary><b>📋 View all models & fields</b></summary>
-
-<br />
-
-| Model | Key Fields |
-|:------|:-----------|
-| **User** | email, password, name, phone, role (`customer`/`admin`), isActive |
-| **Category** | name, slug, image, parentId (hierarchical) |
-| **Product** | name, slug, genericName, brand, manufacturer, dosageForm, strength, packSize, price, discountPrice, stockQty, isPrescriptionRequired, isFeatured, indications, sideEffects, warnings |
-| **CartItem** | userId, productId, quantity (unique per user+product) |
-| **WishlistItem** | userId, productId (unique per user+product) |
-| **Address** | fullName, phone, division, district, upazila, postcode, area, isDefault |
-| **Order** | orderNumber, paymentMethod, paymentStatus, orderStatus, subtotal, deliveryCharge, discount, total |
-| **OrderItem** | productName, price, quantity (denormalized snapshot) |
-| **OrderStatusLog** | status, note, timestamp (audit trail) |
-| **Prescription** | imageUrl, patientName, doctorName, status, pharmacistNote |
-| **PaymentSubmission** | method, senderNumber, transactionId, amount, screenshotUrl |
-| **StoreSetting** | storeName, deliveryCharge, freeDeliveryThreshold, merchant numbers |
-
-</details>
-
-<details>
-<summary><b>📋 View enums</b></summary>
-
-<br />
-
-| Enum | Values |
-|:-----|:-------|
-| **UserRole** | `customer` `admin` |
-| **OrderStatus** | `pending` `prescription_review_pending` `approved` `processing` `packed` `shipped` `out_for_delivery` `delivered` `cancelled` `rejected` |
-| **PaymentMethod** | `bkash` `nagad` `rocket` `cod` |
-| **PaymentStatus** | `pending` `cod_pending` `submitted` `verified` `rejected` |
-| **PrescriptionStatus** | `pending` `approved` `rejected` `needs_clarification` |
-
-</details>
-
-<br />
-
-## 🔌 API Reference
-
-> **40 RESTful endpoints** organized by domain
-
-<details>
-<summary><b>🔑 Authentication</b> &mdash; 5 routes</summary>
+<summary><b>Authentication</b> &mdash; 5 routes</summary>
 
 <br />
 
@@ -221,7 +142,7 @@ pharma-nest-bd/
 </details>
 
 <details>
-<summary><b>💊 Products</b> &mdash; 7 routes</summary>
+<summary><b>Products</b> &mdash; 7 routes</summary>
 
 <br />
 
@@ -238,7 +159,7 @@ pharma-nest-bd/
 </details>
 
 <details>
-<summary><b>📂 Categories</b> &mdash; 5 routes</summary>
+<summary><b>Categories</b> &mdash; 5 routes</summary>
 
 <br />
 
@@ -253,37 +174,35 @@ pharma-nest-bd/
 </details>
 
 <details>
-<summary><b>🛒 Cart</b> &mdash; 5 routes</summary>
+<summary><b>Cart</b> &mdash; 5 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
 | `GET` | `/api/cart` | Get cart items |
-| `POST` | `/api/cart/items` | Add/update item (upsert) |
+| `POST` | `/api/cart/items` | Add / update item (upsert) |
 | `PUT` | `/api/cart/items/[productId]` | Update quantity |
 | `DELETE` | `/api/cart/items/[productId]` | Remove item |
 | `DELETE` | `/api/cart/clear` | Clear entire cart |
 
-> All cart routes require authentication
-
 </details>
 
 <details>
-<summary><b>❤️ Wishlist</b> &mdash; 3 routes</summary>
+<summary><b>Wishlist</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
 | `GET` | `/api/wishlist` | Get wishlist |
-| `POST` | `/api/wishlist` | Toggle product (add/remove) |
+| `POST` | `/api/wishlist` | Toggle product (add / remove) |
 | `DELETE` | `/api/wishlist/[productId]` | Remove from wishlist |
 
 </details>
 
 <details>
-<summary><b>📍 Addresses</b> &mdash; 4 routes</summary>
+<summary><b>Addresses</b> &mdash; 4 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
@@ -294,31 +213,29 @@ pharma-nest-bd/
 | `PUT` | `/api/addresses/[id]` | Update address |
 | `DELETE` | `/api/addresses/[id]` | Delete address |
 
-> Supports Bangladesh divisions, districts, upazilas
-
 </details>
 
 <details>
-<summary><b>📦 Orders</b> &mdash; 3 routes</summary>
+<summary><b>Orders</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
 | `GET` | `/api/orders` | List user's orders (paginated) |
-| `POST` | `/api/orders` | Create order from cart |
-| `GET` | `/api/orders/[id]` | Order details with timeline |
+| `POST` | `/api/orders` | Place order from cart |
+| `GET` | `/api/orders/[id]` | Order details with status timeline |
 
 </details>
 
 <details>
-<summary><b>📋 Prescriptions</b> &mdash; 5 routes</summary>
+<summary><b>Prescriptions</b> &mdash; 5 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
-| `GET` | `/api/prescriptions` | List user's prescriptions |
+| `GET` | `/api/prescriptions` | List prescriptions |
 | `POST` | `/api/prescriptions` | Upload prescription |
 | `GET` | `/api/prescriptions/[id]` | Prescription details |
 | `PUT` | `/api/prescriptions/[id]` | Update prescription |
@@ -327,229 +244,319 @@ pharma-nest-bd/
 </details>
 
 <details>
-<summary><b>💳 Payments</b> &mdash; 3 routes</summary>
+<summary><b>Payments</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
 
 <br />
 
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
-| `POST` | `/api/payments` | Submit payment (bKash/Nagad/Rocket/COD) |
+| `POST` | `/api/payments` | Submit payment (bKash / Nagad / Rocket / COD) |
 | `GET` | `/api/payments/[id]` | Payment details |
 | `PUT` | `/api/payments/[id]` | Update payment |
 
 </details>
 
 <details>
-<summary><b>⚙️ Admin</b> &mdash; 20+ routes</summary>
+<summary><b>Admin</b> &mdash; 20+ routes &nbsp; <code>Admin role required</code></summary>
 
 <br />
 
-All admin routes require the `admin` role.
-
-| Area | Endpoints | Capabilities |
-|:-----|:----------|:-------------|
-| **Dashboard** | `GET /api/admin/dashboard` | Revenue, order count, pending items, low stock alerts |
-| **Products** | `GET` `POST` `PUT` `DELETE` | Full CRUD with all medicine fields |
+| Area | Operations | Capabilities |
+|:-----|:-----------|:-------------|
+| **Dashboard** | `GET` | Revenue, order count, pending items, low stock alerts |
+| **Products** | `GET` `POST` `PUT` `DELETE` | Full CRUD with medicine-specific fields |
 | **Categories** | `GET` `POST` `PUT` `DELETE` | Hierarchical category management |
 | **Orders** | `GET` `PUT` `DELETE` | View, update status, manage orders |
-| **Prescriptions** | `GET` `PUT` `DELETE` | Review, approve/reject, add pharmacist notes |
+| **Prescriptions** | `GET` `PUT` `DELETE` | Review, approve/reject, pharmacist notes |
 | **Payments** | `GET` `PUT` | View & verify/reject payments |
 | **Customers** | `GET` `PUT` `DELETE` | Search, view, manage customers |
-| **Settings** | `GET` `PUT` | Store name, delivery charges, merchant numbers |
+| **Settings** | `GET` `PUT` | Store config, delivery charges, merchant numbers |
 
 </details>
 
 <br />
 
-## 🔐 Authentication & Security
+## Database Schema
+
+> **11 Models** &middot; **4 Enums** &middot; PostgreSQL
 
 ```
-┌─────────────┐    POST /login     ┌─────────────┐    Set Cookie     ┌──────────┐
-│   Client    │ ─────────────────> │   Server    │ ────────────────> │  Browser │
-│  (email +   │                    │  (verify    │    httpOnly       │  (stores │
-│   password) │                    │   bcrypt)   │    secure         │   JWT)   │
-└─────────────┘                    └──────┬──────┘    sameSite=lax   └──────────┘
-                                          │
-                                   Sign JWT token
-                                   { userId, email, role }
-                                   Expiry: 7 days
+┌──────────────┐       ┌──────────────┐       ┌───────────────────┐
+│     User     │──────<│   CartItem   │       │    Category        │
+│              │──────<│ WishlistItem │       │  (self-referential │
+│  - customer  │──────<│   Address    │       │   parent/children) │
+│  - admin     │──────<│    Order     │       └─────────┬─────────┘
+│              │──────<│ Prescription │                 │
+│              │──────<│   Payment    │       ┌─────────┴─────────┐
+└──────────────┘       └──────────────┘       │     Product        │
+                                              │  - medicine info   │
+┌──────────────┐       ┌──────────────┐       │  - pricing/stock   │
+│    Order     │──────<│  OrderItem   │<──────│  - Rx required?    │
+│              │──────<│OrderStatusLog│       └───────────────────┘
+│              │──────<│   Payment    │
+└──────────────┘       └──────────────┘       ┌───────────────────┐
+                                              │   StoreSetting     │
+                                              │   (single record)  │
+                                              └───────────────────┘
 ```
 
-| Feature | Implementation |
-|:--------|:---------------|
-| Password hashing | bcryptjs (12 salt rounds) |
-| Token | JWT with 7-day expiry |
-| Storage | HTTP-only cookie (no JS access) |
-| CSRF protection | `sameSite: lax` |
-| HTTPS | `secure: true` in production |
-| Role-based access | `requireAuth()` / `requireAdmin()` guards |
+<details>
+<summary><b>View all models & fields</b></summary>
 
 <br />
 
-## 🛍️ Order & Payment Flow
+| Model | Key Fields |
+|:------|:-----------|
+| **User** | email, password, name, phone, role (`customer` / `admin`), isActive |
+| **Category** | name, slug, image, parentId (hierarchical) |
+| **Product** | name, slug, genericName, brand, manufacturer, dosageForm, strength, packSize, price, discountPrice, stockQty, isPrescriptionRequired, isFeatured, indications, sideEffects, warnings |
+| **CartItem** | userId, productId, quantity &mdash; unique per user + product |
+| **WishlistItem** | userId, productId &mdash; unique per user + product |
+| **Address** | fullName, phone, division, district, upazila, postcode, area, isDefault |
+| **Order** | orderNumber, paymentMethod, paymentStatus, orderStatus, subtotal, deliveryCharge, discount, total |
+| **OrderItem** | productName, price, quantity &mdash; denormalized snapshot |
+| **OrderStatusLog** | status, note, timestamp &mdash; audit trail |
+| **Prescription** | imageUrl, patientName, doctorName, status, pharmacistNote |
+| **PaymentSubmission** | method, senderNumber, transactionId, amount, screenshotUrl |
+| **StoreSetting** | storeName, deliveryCharge, freeDeliveryThreshold, merchant numbers |
 
-```
- Customer Journey                          Admin Actions
- ─────────────────                         ─────────────
+</details>
 
- 1. Browse & Search Products
-         │
- 2. Add to Cart
-         │
- 3. Checkout
-         │
- 4. Create Order ──────────────────────────────────────────┐
-         │                                                 │
-         ├── Has Rx items? ── YES ──> prescription_review  │
-         │                            pending              │
-         │                               │                 │
-         │                    Admin reviews prescription ──┘
-         │                               │
-         │                         approved / rejected
-         │
- 5. Submit Payment
-    (bKash / Nagad / Rocket / COD)
-         │                               │
-         │                    Admin verifies payment ──────┘
-         │
- 6. Track Order Status:
-    pending ─> approved ─> processing ─> packed
-         ─> shipped ─> out_for_delivery ─> delivered ✅
-```
-
-**Supported Payment Methods:**
-
-| Method | Type | Details |
-|:-------|:-----|:--------|
-| 💜 **bKash** | Mobile Wallet | Merchant number + transaction ID |
-| 🧡 **Nagad** | Mobile Wallet | Merchant number + transaction ID |
-| 💙 **Rocket** | Mobile Wallet | Merchant number + transaction ID |
-| 💵 **COD** | Cash on Delivery | Pay when delivered |
+<details>
+<summary><b>View enums</b></summary>
 
 <br />
 
-## 🚀 Getting Started
+| Enum | Values |
+|:-----|:-------|
+| **UserRole** | `customer` `admin` |
+| **OrderStatus** | `pending` `prescription_review_pending` `approved` `processing` `packed` `shipped` `out_for_delivery` `delivered` `cancelled` `rejected` |
+| **PaymentMethod** | `bkash` `nagad` `rocket` `cod` |
+| **PaymentStatus** | `pending` `cod_pending` `submitted` `verified` `rejected` |
+| **PrescriptionStatus** | `pending` `approved` `rejected` `needs_clarification` |
+
+</details>
+
+<br />
+
+## Project Structure
+
+```
+pharma-nest-bd/
+├── prisma/
+│   ├── schema.prisma              # 11 models, 4 enums
+│   ├── seed.ts                    # Sample data seeder
+│   └── migrations/                # Database migrations
+├── src/
+│   ├── app/
+│   │   ├── (public)/              # Storefront pages (13 pages)
+│   │   ├── (auth)/                # Login, register, forgot-password
+│   │   ├── (account)/             # Customer dashboard (7 pages)
+│   │   ├── admin/                 # Admin panel (11 pages)
+│   │   ├── cart/                  # Shopping cart
+│   │   ├── checkout/              # Checkout flow
+│   │   ├── order-success/         # Order confirmation
+│   │   ├── track-order/           # Order tracking
+│   │   └── api/                   # 40 REST API routes
+│   ├── components/
+│   │   ├── ui/                    # Base UI (button, input, modal, table...)
+│   │   ├── layout/                # Header, footer, sidebar, nav
+│   │   ├── product/               # Cards, grid, filters, gallery
+│   │   ├── cart/                  # Cart drawer, item card, summary
+│   │   ├── checkout/              # Steps, address, payment
+│   │   ├── order/                 # Status badge, timeline, cards
+│   │   ├── prescription/          # Upload, status, alerts
+│   │   ├── account/               # Sidebar, stat cards
+│   │   ├── admin/                 # Topbar, sidebar, table toolbar
+│   │   ├── home/                  # Hero, categories, featured, CTA
+│   │   └── common/                # Logo, theme toggle, utilities
+│   ├── lib/
+│   │   ├── auth.ts                # JWT, bcrypt, role guards
+│   │   ├── db.ts                  # Prisma client (lazy-init)
+│   │   ├── api-utils.ts           # Response helpers & pagination
+│   │   ├── validators/            # Zod schemas
+│   │   ├── constants/             # App-wide constants
+│   │   ├── utils/                 # Helpers (formatting, slugify...)
+│   │   └── api/                   # API client & endpoint map
+│   ├── stores/                    # Zustand state stores
+│   └── types/                     # TypeScript type definitions
+├── public/                        # Static assets
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── tailwind / postcss / eslint configs
+```
+
+<br />
+
+## Order & Payment Flow
+
+```
+  Customer                                     Admin
+  ────────                                     ─────
+
+  1. Browse & search products
+           │
+  2. Add to cart
+           │
+  3. Proceed to checkout
+           │
+  4. Place order ─────────────────────────────────────────┐
+           │                                              │
+           ├── Rx items? ─ YES ──> prescription_review    │
+           │                       pending                │
+           │                          │                   │
+           │               Admin reviews prescription ────┘
+           │                          │
+           │                    approved / rejected
+           │
+  5. Submit payment
+     (bKash / Nagad / Rocket / COD)
+           │                          │
+           │               Admin verifies payment ────────┘
+           │
+  6. Track status:
+     pending > approved > processing > packed
+           > shipped > out_for_delivery > delivered
+```
+
+| Method | Type | How it works |
+|:-------|:-----|:-------------|
+| **bKash** | Mobile Wallet | Send to merchant number, submit transaction ID |
+| **Nagad** | Mobile Wallet | Send to merchant number, submit transaction ID |
+| **Rocket** | Mobile Wallet | Send to merchant number, submit transaction ID |
+| **COD** | Cash on Delivery | Pay when your order arrives |
+
+<br />
+
+## Getting Started
 
 ### Prerequisites
 
-- **Node.js** 18+
-- **PostgreSQL** database
-- **npm** or **yarn**
+- [Node.js](https://nodejs.org/) 18+
+- [PostgreSQL](https://www.postgresql.org/) database
+- npm or yarn
 
-### 1. Clone the repository
+### 1. Clone & install
 
 ```bash
 git clone https://github.com/tanjilahmed12345/pharma-nest-bd.git
 cd pharma-nest-bd
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
 ```
 
-### 3. Set up environment variables
+### 2. Configure environment
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root:
 
 ```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/pharmanest?schema=public"
-
-# Authentication
-JWT_SECRET="your-super-secret-key-change-this-in-production"
-
-# Environment
+DATABASE_URL="postgresql://user:password@localhost:5432/pharmanest"
+JWT_SECRET="your-secret-key"
 NODE_ENV="development"
 ```
 
-### 4. Set up the database
+### 3. Set up database
 
 ```bash
-# Run migrations
-npm run db:migrate
-
-# Seed with sample data (optional)
-npm run db:seed
+npm run db:migrate    # Run migrations
+npm run db:seed       # Load sample data (optional)
 ```
 
-### 5. Start the development server
+### 4. Start developing
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
+Visit [http://localhost:3000](http://localhost:3000)
 
 <br />
 
-## 📜 Available Scripts
+## Scripts
 
 | Command | Description |
 |:--------|:------------|
-| `npm run dev` | Start development server (Turbopack) |
-| `npm run build` | Create production build |
+| `npm run dev` | Start dev server (Turbopack) |
+| `npm run build` | Production build |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm run db:migrate` | Run Prisma migrations |
-| `npm run db:seed` | Seed database with sample data |
-| `npm run db:reset` | Reset database (drop + migrate + seed) |
+| `npm run db:seed` | Seed sample data |
+| `npm run db:reset` | Reset DB (drop + migrate + seed) |
 
 <br />
 
-## 🌐 Deployment (Vercel)
+## Deployment
 
-1. Push your code to GitHub
-2. Import the repository on [Vercel](https://vercel.com)
-3. Add these environment variables in Vercel project settings:
+### Vercel (Recommended)
 
-   | Variable | Value |
-   |:---------|:------|
-   | `DATABASE_URL` | Your PostgreSQL connection string |
-   | `JWT_SECRET` | A strong random secret |
-   | `NODE_ENV` | `production` |
+1. Push code to GitHub
+2. Import repo on [vercel.com](https://vercel.com)
+3. Add environment variables:
 
-4. Deploy!
+   | Variable | Description |
+   |:---------|:------------|
+   | `DATABASE_URL` | PostgreSQL connection string |
+   | `JWT_SECRET` | Strong random secret |
 
-> The `postinstall` script automatically runs `prisma generate` during deployment.
-
-<br />
-
-## 🇧🇩 Bangladesh-Specific Features
-
-- **Currency**: Bengali Taka (৳ BDT)
-- **Phone validation**: Bangladesh mobile numbers (`01X-XXXXXXXX`)
-- **Address structure**: Division > District > Upazila > Postcode
-- **Payment methods**: bKash, Nagad, Rocket (popular mobile wallets)
-- **Delivery**: Configurable charges with free delivery threshold
-- **Prescription system**: Required for controlled/Rx medicines
-- **Date formatting**: Localized to `en-BD`
+4. Deploy &mdash; `prisma generate` runs automatically via `postinstall`
 
 <br />
 
-## 📊 Feature Checklist
+## Built for Bangladesh
 
-- [x] User registration & login
-- [x] JWT authentication with HTTP-only cookies
-- [x] Role-based access control (Customer / Admin)
-- [x] Product catalog with advanced filtering & search
-- [x] Category management (hierarchical)
-- [x] Shopping cart (persistent, server-side)
-- [x] Wishlist
-- [x] Address management (Bangladesh format)
-- [x] Order placement & tracking
-- [x] Prescription upload & review workflow
-- [x] Mobile wallet payments (bKash, Nagad, Rocket)
-- [x] Cash on delivery (COD)
-- [x] Admin dashboard with analytics
-- [x] Admin CRUD for all resources
-- [x] Payment verification system
-- [x] Store settings management
-- [x] Responsive UI with Tailwind CSS
-- [x] Form validation with Zod
-- [x] Pagination across all listings
-- [x] Database seeding with sample data
+| Feature | Details |
+|:--------|:--------|
+| **Currency** | ৳ BDT (Bengali Taka) |
+| **Phone validation** | BD mobile format (`01X-XXXXXXXX`) |
+| **Address system** | Division > District > Upazila > Postcode |
+| **Payments** | bKash, Nagad, Rocket, Cash on Delivery |
+| **Delivery** | Configurable charges + free delivery threshold |
+| **Prescriptions** | Upload & pharmacist review for Rx medicines |
+| **Localization** | Date formatting in `en-BD` locale |
+
+<br />
+
+## Feature Status
+
+| Feature | Status |
+|:--------|:------:|
+| User registration & login | Done |
+| JWT auth with HTTP-only cookies | Done |
+| Role-based access (Customer / Admin) | Done |
+| Product catalog with filters & search | Done |
+| Hierarchical categories | Done |
+| Server-side cart | Done |
+| Wishlist | Done |
+| Address management (BD format) | Done |
+| Order placement & tracking | Done |
+| Prescription upload & review | Done |
+| Mobile wallet payments | Done |
+| Cash on delivery | Done |
+| Admin dashboard & analytics | Done |
+| Admin CRUD for all resources | Done |
+| Payment verification | Done |
+| Store settings | Done |
+| Responsive UI | Done |
+| Zod form validation | Done |
+| Pagination | Done |
+| Database seeding | Done |
+
+<br />
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+<br />
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
 
 <br />
 
@@ -557,8 +564,8 @@ Open [http://localhost:3000](http://localhost:3000) to see the app.
 
 <div align="center">
 
-**Built with ❤️ for Bangladesh**
+**Built with care for Bangladesh**
 
-Made with [Next.js](https://nextjs.org/) &bull; [Prisma](https://prisma.io/) &bull; [Tailwind CSS](https://tailwindcss.com/)
+[Next.js](https://nextjs.org/) &middot; [Prisma](https://prisma.io/) &middot; [Tailwind CSS](https://tailwindcss.com/) &middot; [Vercel](https://vercel.com/)
 
 </div>

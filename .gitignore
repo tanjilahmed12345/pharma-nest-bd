@@ -44,3 +44,10 @@ next-env.d.ts
 
 # project docs
 backend-summary.txt
+
+# AI tooling
+CLAUDE.md
+AGENTS.md
+
+# editor config
+.vscode/
