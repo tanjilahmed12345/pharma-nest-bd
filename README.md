@@ -34,7 +34,7 @@ A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh m
 <td width="50%">
 
 ### Storefront
-- Browse & search 1000s of medicines
+- Browse & search medicines by name, brand or generic name
 - Filter by category, brand, price & prescription type
 - Persistent cart, wishlist & saved addresses
 - Upload prescriptions for Rx-only medicines
@@ -46,7 +46,7 @@ A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh m
 
 ### Admin Panel
 - Revenue & order analytics dashboard
-- Full product & category CRUD
+- Full product & category management
 - Prescription review & approval workflow
 - Payment verification system
 - Customer management
@@ -66,7 +66,7 @@ A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh m
 | **Language** | TypeScript 5 |
 | **Database** | PostgreSQL + Prisma ORM 7.6 |
 | **Styling** | Tailwind CSS 4 |
-| **Auth** | JWT (HTTP-only cookies) + bcryptjs |
+| **Auth** | JWT + bcryptjs |
 | **Validation** | Zod 4 |
 | **State** | Zustand 5 |
 | **Forms** | React Hook Form 7 |
@@ -122,157 +122,22 @@ A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh m
 
 <br />
 
-## API Reference
+## API Overview
 
-> **40 RESTful endpoints** &mdash; all return standard JSON responses
+> **40 RESTful endpoints** &mdash; standard JSON responses with pagination support
 
-<details>
-<summary><b>Authentication</b> &mdash; 5 routes</summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `POST` | `/api/auth/register` | Create new account |
-| `POST` | `/api/auth/login` | Login & receive JWT cookie |
-| `POST` | `/api/auth/logout` | Clear auth cookie |
-| `GET` | `/api/auth/me` | Get current user profile |
-| `POST` | `/api/auth/forgot-password` | Request password reset |
-
-</details>
-
-<details>
-<summary><b>Products</b> &mdash; 7 routes</summary>
-
-<br />
-
-| Method | Endpoint | Description | Auth |
-|:-------|:---------|:------------|:-----|
-| `GET` | `/api/products` | List with filters (category, brand, price, stock) | Public |
-| `GET` | `/api/products/featured` | Get featured products | Public |
-| `GET` | `/api/products/search?q=` | Full-text search | Public |
-| `GET` | `/api/products/[slug]` | Product details | Public |
-| `POST` | `/api/products` | Create product | Admin |
-| `PUT` | `/api/products/[slug]` | Update product | Admin |
-| `DELETE` | `/api/products/[slug]` | Delete product | Admin |
-
-</details>
-
-<details>
-<summary><b>Categories</b> &mdash; 5 routes</summary>
-
-<br />
-
-| Method | Endpoint | Description | Auth |
-|:-------|:---------|:------------|:-----|
-| `GET` | `/api/categories` | List with parent/children hierarchy | Public |
-| `GET` | `/api/categories/[slug]` | Category details | Public |
-| `POST` | `/api/categories` | Create category | Admin |
-| `PUT` | `/api/categories/[slug]` | Update category | Admin |
-| `DELETE` | `/api/categories/[slug]` | Delete category | Admin |
-
-</details>
-
-<details>
-<summary><b>Cart</b> &mdash; 5 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/api/cart` | Get cart items |
-| `POST` | `/api/cart/items` | Add / update item (upsert) |
-| `PUT` | `/api/cart/items/[productId]` | Update quantity |
-| `DELETE` | `/api/cart/items/[productId]` | Remove item |
-| `DELETE` | `/api/cart/clear` | Clear entire cart |
-
-</details>
-
-<details>
-<summary><b>Wishlist</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/api/wishlist` | Get wishlist |
-| `POST` | `/api/wishlist` | Toggle product (add / remove) |
-| `DELETE` | `/api/wishlist/[productId]` | Remove from wishlist |
-
-</details>
-
-<details>
-<summary><b>Addresses</b> &mdash; 4 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/api/addresses` | List saved addresses |
-| `POST` | `/api/addresses` | Create address |
-| `PUT` | `/api/addresses/[id]` | Update address |
-| `DELETE` | `/api/addresses/[id]` | Delete address |
-
-</details>
-
-<details>
-<summary><b>Orders</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/api/orders` | List user's orders (paginated) |
-| `POST` | `/api/orders` | Place order from cart |
-| `GET` | `/api/orders/[id]` | Order details with status timeline |
-
-</details>
-
-<details>
-<summary><b>Prescriptions</b> &mdash; 5 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/api/prescriptions` | List prescriptions |
-| `POST` | `/api/prescriptions` | Upload prescription |
-| `GET` | `/api/prescriptions/[id]` | Prescription details |
-| `PUT` | `/api/prescriptions/[id]` | Update prescription |
-| `DELETE` | `/api/prescriptions/[id]` | Delete prescription |
-
-</details>
-
-<details>
-<summary><b>Payments</b> &mdash; 3 routes &nbsp; <code>Auth required</code></summary>
-
-<br />
-
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `POST` | `/api/payments` | Submit payment (bKash / Nagad / Rocket / COD) |
-| `GET` | `/api/payments/[id]` | Payment details |
-| `PUT` | `/api/payments/[id]` | Update payment |
-
-</details>
-
-<details>
-<summary><b>Admin</b> &mdash; 20+ routes &nbsp; <code>Admin role required</code></summary>
-
-<br />
-
-| Area | Operations | Capabilities |
-|:-----|:-----------|:-------------|
-| **Dashboard** | `GET` | Revenue, order count, pending items, low stock alerts |
-| **Products** | `GET` `POST` `PUT` `DELETE` | Full CRUD with medicine-specific fields |
-| **Categories** | `GET` `POST` `PUT` `DELETE` | Hierarchical category management |
-| **Orders** | `GET` `PUT` `DELETE` | View, update status, manage orders |
-| **Prescriptions** | `GET` `PUT` `DELETE` | Review, approve/reject, pharmacist notes |
-| **Payments** | `GET` `PUT` | View & verify/reject payments |
-| **Customers** | `GET` `PUT` `DELETE` | Search, view, manage customers |
-| **Settings** | `GET` `PUT` | Store config, delivery charges, merchant numbers |
-
-</details>
+| Domain | Routes | Public | Auth | Admin |
+|:-------|:------:|:------:|:----:|:-----:|
+| **Auth** | 5 | &mdash; | register, login, logout, me, forgot-password | &mdash; |
+| **Products** | 7 | list, search, featured, detail | &mdash; | create, update, delete |
+| **Categories** | 5 | list, detail | &mdash; | create, update, delete |
+| **Cart** | 5 | &mdash; | get, add, update, remove, clear | &mdash; |
+| **Wishlist** | 3 | &mdash; | list, toggle, remove | &mdash; |
+| **Addresses** | 4 | &mdash; | list, create, update, delete | &mdash; |
+| **Orders** | 3 | &mdash; | list, create, detail | &mdash; |
+| **Prescriptions** | 5 | &mdash; | list, upload, detail, update, delete | &mdash; |
+| **Payments** | 3 | &mdash; | submit, detail, update | &mdash; |
+| **Admin** | 20+ | &mdash; | &mdash; | dashboard, products, categories, orders, prescriptions, payments, customers, settings |
 
 <br />
 
@@ -307,7 +172,7 @@ A **full-stack pharmacy e-commerce platform** purpose-built for the Bangladesh m
 
 | Model | Key Fields |
 |:------|:-----------|
-| **User** | email, password, name, phone, role (`customer` / `admin`), isActive |
+| **User** | email, name, phone, role (`customer` / `admin`), isActive |
 | **Category** | name, slug, image, parentId (hierarchical) |
 | **Product** | name, slug, genericName, brand, manufacturer, dosageForm, strength, packSize, price, discountPrice, stockQty, isPrescriptionRequired, isFeatured, indications, sideEffects, warnings |
 | **CartItem** | userId, productId, quantity &mdash; unique per user + product |
@@ -371,10 +236,10 @@ pharma-nest-bd/
 │   │   ├── home/                  # Hero, categories, featured, CTA
 │   │   └── common/                # Logo, theme toggle, utilities
 │   ├── lib/
-│   │   ├── auth.ts                # JWT, bcrypt, role guards
-│   │   ├── db.ts                  # Prisma client (lazy-init)
+│   │   ├── auth.ts                # Authentication & role guards
+│   │   ├── db.ts                  # Database connection
 │   │   ├── api-utils.ts           # Response helpers & pagination
-│   │   ├── validators/            # Zod schemas
+│   │   ├── validators/            # Zod validation schemas
 │   │   ├── constants/             # App-wide constants
 │   │   ├── utils/                 # Helpers (formatting, slugify...)
 │   │   └── api/                   # API client & endpoint map
@@ -383,8 +248,7 @@ pharma-nest-bd/
 ├── public/                        # Static assets
 ├── package.json
 ├── next.config.ts
-├── tsconfig.json
-└── tailwind / postcss / eslint configs
+└── tsconfig.json
 ```
 
 <br />
@@ -452,7 +316,6 @@ Create a `.env` file in the project root:
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/pharmanest"
 JWT_SECRET="your-secret-key"
-NODE_ENV="development"
 ```
 
 ### 3. Set up database
@@ -486,19 +349,11 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 <br />
 
-## Deployment
-
-### Vercel (Recommended)
+## Deployment (Vercel)
 
 1. Push code to GitHub
 2. Import repo on [vercel.com](https://vercel.com)
-3. Add environment variables:
-
-   | Variable | Description |
-   |:---------|:------------|
-   | `DATABASE_URL` | PostgreSQL connection string |
-   | `JWT_SECRET` | Strong random secret |
-
+3. Add environment variables (`DATABASE_URL`, `JWT_SECRET`)
 4. Deploy &mdash; `prisma generate` runs automatically via `postinstall`
 
 <br />
@@ -507,40 +362,35 @@ Visit [http://localhost:3000](http://localhost:3000)
 
 | Feature | Details |
 |:--------|:--------|
-| **Currency** | ৳ BDT (Bengali Taka) |
+| **Currency** | BDT (Bengali Taka) |
 | **Phone validation** | BD mobile format (`01X-XXXXXXXX`) |
 | **Address system** | Division > District > Upazila > Postcode |
 | **Payments** | bKash, Nagad, Rocket, Cash on Delivery |
 | **Delivery** | Configurable charges + free delivery threshold |
 | **Prescriptions** | Upload & pharmacist review for Rx medicines |
-| **Localization** | Date formatting in `en-BD` locale |
 
 <br />
 
-## Feature Status
+## Features
 
-| Feature | Status |
-|:--------|:------:|
-| User registration & login | Done |
-| JWT auth with HTTP-only cookies | Done |
-| Role-based access (Customer / Admin) | Done |
-| Product catalog with filters & search | Done |
-| Hierarchical categories | Done |
-| Server-side cart | Done |
-| Wishlist | Done |
-| Address management (BD format) | Done |
-| Order placement & tracking | Done |
-| Prescription upload & review | Done |
-| Mobile wallet payments | Done |
-| Cash on delivery | Done |
-| Admin dashboard & analytics | Done |
-| Admin CRUD for all resources | Done |
-| Payment verification | Done |
-| Store settings | Done |
-| Responsive UI | Done |
-| Zod form validation | Done |
-| Pagination | Done |
-| Database seeding | Done |
+- [x] User registration & login
+- [x] Role-based access (Customer / Admin)
+- [x] Product catalog with filters & search
+- [x] Hierarchical categories
+- [x] Server-side cart & wishlist
+- [x] Address management (BD format)
+- [x] Order placement & tracking
+- [x] Prescription upload & review
+- [x] Mobile wallet payments (bKash, Nagad, Rocket)
+- [x] Cash on delivery
+- [x] Admin dashboard & analytics
+- [x] Admin CRUD for all resources
+- [x] Payment verification
+- [x] Store settings
+- [x] Responsive design
+- [x] Form validation
+- [x] Pagination
+- [x] Database seeding
 
 <br />
 
