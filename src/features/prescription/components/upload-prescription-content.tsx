@@ -47,8 +47,6 @@ export function UploadPrescriptionContent() {
     }
   };
 
-  if (isLoading) return null;
-
   return (
     <div className="container-custom py-6">
       <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Upload Prescription' }]} className="mb-4" />
@@ -68,7 +66,13 @@ export function UploadPrescriptionContent() {
           Our licensed pharmacist will review your prescription within a few hours. You will be notified once it is approved.
         </Alert>
 
-        {!isAuthenticated ? (
+        {isLoading ? (
+          <Card className="text-center" padding="lg">
+            <div className="h-10 w-10 bg-muted rounded-full mx-auto mb-3 animate-pulse" />
+            <div className="h-5 w-40 bg-muted rounded mx-auto mb-2 animate-pulse" />
+            <div className="h-4 w-56 bg-muted rounded mx-auto animate-pulse" />
+          </Card>
+        ) : !isAuthenticated ? (
           <Card className="text-center" padding="lg">
             <Lock className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
             <h2 className="text-lg font-bold mb-2">Login Required</h2>
