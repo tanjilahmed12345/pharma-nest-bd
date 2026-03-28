@@ -6,6 +6,7 @@ interface UIState {
   isMobileMenuOpen: boolean;
   isCartDrawerOpen: boolean;
   isSearchOpen: boolean;
+  isDataReady: boolean;
   theme: Theme;
   toggleMobileMenu: () => void;
   setMobileMenu: (open: boolean) => void;
@@ -15,6 +16,7 @@ interface UIState {
   setSearch: (open: boolean) => void;
   setTheme: (theme: Theme) => void;
   initTheme: () => void;
+  setDataReady: () => void;
 }
 
 function applyTheme(theme: Theme) {
@@ -31,6 +33,7 @@ export const useUIStore = create<UIState>((set) => ({
   isMobileMenuOpen: false,
   isCartDrawerOpen: false,
   isSearchOpen: false,
+  isDataReady: false,
   theme: 'light',
 
   toggleMobileMenu: () => set((s) => ({ isMobileMenuOpen: !s.isMobileMenuOpen })),
@@ -55,4 +58,6 @@ export const useUIStore = create<UIState>((set) => ({
     applyTheme(theme);
     set({ theme });
   },
+
+  setDataReady: () => set({ isDataReady: true }),
 }));

@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Product, PaginatedResponse, ProductFilters as Filters } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useUIStore } from '@/store/ui.store';
 
 import { Breadcrumb, BreadcrumbItem } from '@/components/ui/breadcrumb';
 import { ProductGrid } from '@/components/product/product-grid';
@@ -26,6 +27,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
   const router = useRouter();
   const pathname = usePathname();
   const addItem = useCartStore((s) => s.addItem);
+  const isDataReady = useUIStore((s) => s.isDataReady);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,6 +38,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
   const stableFilters = useMemo(() => baseFilters, [JSON.stringify(baseFilters)]);
 
   const loadData = useCallback(async () => {
+    if (!isDataReady) return;
     setIsLoading(true);
     try {
       const products = await catalogService.getProducts({
@@ -47,7 +50,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
     } finally {
       setIsLoading(false);
     }
-  }, [sort, page, stableFilters]);
+  }, [sort, page, stableFilters, isDataReady]);
 
   useEffect(() => {
     loadData();

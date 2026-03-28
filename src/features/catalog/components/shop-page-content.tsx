@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Product, Category, PaginatedResponse } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useUIStore } from '@/store/ui.store';
 import { useProductFilters } from '@/hooks';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
@@ -20,6 +21,7 @@ import { SlidersHorizontal, X } from 'lucide-react';
 function ShopContent() {
   const { filters, setFilters, clearFilters } = useProductFilters();
   const addItem = useCartStore((s) => s.addItem);
+  const isDataReady = useUIStore((s) => s.isDataReady);
   const [categories, setCategories] = useState<Category[]>([]);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +29,7 @@ function ShopContent() {
   const [searchInput, setSearchInput] = useState(filters.search || '');
 
   const loadData = useCallback(async () => {
+    if (!isDataReady) return;
     setIsLoading(true);
     try {
       const [cats, products] = await Promise.all([
@@ -38,7 +41,7 @@ function ShopContent() {
     } finally {
       setIsLoading(false);
     }
-  }, [filters]);
+  }, [filters, isDataReady]);
 
   useEffect(() => {
     loadData();

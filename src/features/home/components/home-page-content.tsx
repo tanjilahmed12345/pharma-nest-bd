@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Product, Category } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useUIStore } from '@/store/ui.store';
 
 import { HeroSection } from '@/components/home/hero-section';
 import { TrustBadges } from '@/components/home/trust-badges';
@@ -21,8 +22,10 @@ export function HomePageContent() {
   const [rxProducts, setRxProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const addItem = useCartStore((s) => s.addItem);
+  const isDataReady = useUIStore((s) => s.isDataReady);
 
   useEffect(() => {
+    if (!isDataReady) return;
     async function load() {
       try {
         const [cats, feat, otcRes, rxRes] = await Promise.all([
@@ -40,7 +43,7 @@ export function HomePageContent() {
       }
     }
     load();
-  }, []);
+  }, [isDataReady]);
 
   const handleAddToCart = (productId: string) => {
     addItem(productId);

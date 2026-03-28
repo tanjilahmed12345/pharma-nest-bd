@@ -10,13 +10,15 @@ export function SeedInitializer() {
   const loadSession = useAuthStore((s) => s.loadSession);
   const loadCart = useCartStore((s) => s.loadCart);
   const initTheme = useUIStore((s) => s.initTheme);
+  const setDataReady = useUIStore((s) => s.setDataReady);
 
   useEffect(() => {
     initializeMockDatabase();
     loadSession();
     loadCart();
     initTheme();
-  }, [loadSession, loadCart, initTheme]);
+    setDataReady();
+  }, [loadSession, loadCart, initTheme, setDataReady]);
 
   return null;
 }
