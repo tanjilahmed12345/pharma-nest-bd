@@ -1,55 +1,71 @@
 import Link from 'next/link';
-import { Logo } from '@/components/common/logo';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Pill, Phone, Mail, MapPin, Globe, Send } from 'lucide-react';
 
-const quickLinks = [
-  { href: '/shop', label: 'Shop All' },
+const shopLinks = [
+  { href: '/shop', label: 'All Medicines' },
   { href: '/otc', label: 'OTC Medicines' },
   { href: '/rx', label: 'Prescription Medicines' },
+  { href: '/offers', label: 'Offers & Deals' },
   { href: '/upload-prescription', label: 'Upload Prescription' },
-  { href: '/offers', label: 'Offers' },
 ];
 
-const accountLinks = [
-  { href: '/login', label: 'Login' },
-  { href: '/register', label: 'Register' },
-  { href: '/account/orders', label: 'Track Order' },
+const supportLinks = [
   { href: '/account', label: 'My Account' },
+  { href: '/account/orders', label: 'My Orders' },
+  { href: '/track-order', label: 'Track Order' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/contact', label: 'Contact Us' },
 ];
 
-const policyLinks = [
+const companyLinks = [
   { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/faq', label: 'FAQ' },
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/privacy', label: 'Privacy Policy' },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="bg-footer-bg text-footer-text">
-      <div className="container-custom py-8 md:py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Logo size="lg" className="mb-4 [&_span]:text-white [&_svg]:text-primary-light" />
-            <p className="text-sm opacity-70 mb-4">
-              Your trusted online pharmacy in Bangladesh. Genuine medicines delivered to your door.
+    <footer className="bg-footer-bg text-footer-text mt-auto">
+      {/* Main footer */}
+      <div className="container-custom pt-10 pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
+
+          {/* Brand column */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-2 mb-4">
+              <div className="h-9 w-9 rounded-lg bg-primary/15 flex items-center justify-center">
+                <Pill className="h-5 w-5 text-primary-light" />
+              </div>
+              <span className="text-xl font-bold text-white">
+                Pharma<span className="text-secondary">Nest</span>
+              </span>
+            </Link>
+            <p className="text-sm leading-relaxed opacity-70 max-w-xs mb-5">
+              Your trusted online pharmacy in Bangladesh. Genuine medicines, verified by licensed pharmacists, delivered to your doorstep.
             </p>
-            <div className="space-y-2 text-sm opacity-80">
-              <p className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> 01700-000000</p>
-              <p className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> support@pharmanest.com.bd</p>
-              <p className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" /> Dhanmondi, Dhaka-1205</p>
+            <div className="space-y-2.5">
+              <a href="tel:01700000000" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
+                <Phone className="h-4 w-4 text-primary-light shrink-0" />
+                01700-000000
+              </a>
+              <a href="mailto:support@pharmanest.com.bd" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
+                <Mail className="h-4 w-4 text-primary-light shrink-0" />
+                support@pharmanest.com.bd
+              </a>
+              <p className="flex items-center gap-2.5 text-sm opacity-75">
+                <MapPin className="h-4 w-4 text-primary-light shrink-0" />
+                Dhanmondi, Dhaka-1205
+              </p>
             </div>
           </div>
 
-          {/* Quick links */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((l) => (
+          {/* Shop */}
+          <div className="lg:col-span-3">
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Shop</h4>
+            <ul className="space-y-2.5">
+              {shopLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm opacity-65 hover:opacity-100 hover:text-white transition-all">
                     {l.label}
                   </Link>
                 </li>
@@ -57,13 +73,13 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Account */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Account</h4>
-            <ul className="space-y-2">
-              {accountLinks.map((l) => (
+          {/* Support */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Support</h4>
+            <ul className="space-y-2.5">
+              {supportLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm opacity-65 hover:opacity-100 hover:text-white transition-all">
                     {l.label}
                   </Link>
                 </li>
@@ -71,30 +87,56 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Policies */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Information</h4>
-            <ul className="space-y-2">
-              {policyLinks.map((l) => (
+          {/* Company + Payment */}
+          <div className="lg:col-span-3">
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Company</h4>
+            <ul className="space-y-2.5 mb-6">
+              {companyLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <Link href={l.href} className="text-sm opacity-65 hover:opacity-100 hover:text-white transition-all">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
+
+            {/* Payment badges */}
+            <h4 className="text-white font-semibold text-sm mb-3 uppercase tracking-wider">We Accept</h4>
+            <div className="flex flex-wrap gap-2">
+              {['bKash', 'Nagad', 'Rocket', 'COD'].map((method) => (
+                <span
+                  key={method}
+                  className="px-2.5 py-1 bg-white/8 border border-white/10 rounded text-xs font-medium text-white/80"
+                >
+                  {method}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Payment methods */}
-        <div className="mt-8 pt-6 border-t border-white/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs opacity-50">We accept: bKash, Nagad, Rocket, Cash on Delivery</p>
-            <p className="text-xs opacity-50">
-              &copy; {new Date().getFullYear()} PharmaNest BD. All rights reserved.
-            </p>
+      {/* Bottom bar */}
+      <div className="border-t border-white/8">
+        <div className="container-custom py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs opacity-45">
+            &copy; {new Date().getFullYear()} PharmaNest BD. All rights reserved.
+          </p>
+          <div className="flex items-center gap-3">
+            <a href="#" aria-label="Website" className="h-8 w-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-white/15 transition-colors">
+              <Globe className="h-3.5 w-3.5 text-white/70" />
+            </a>
+            <a href="#" aria-label="Telegram" className="h-8 w-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-white/15 transition-colors">
+              <Send className="h-3.5 w-3.5 text-white/70" />
+            </a>
           </div>
-          <p className="text-[10px] opacity-40 mt-3 text-center">
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="border-t border-white/5">
+        <div className="container-custom py-3">
+          <p className="text-[10px] opacity-35 text-center leading-relaxed">
             Disclaimer: This website is for informational purposes only and does not constitute medical advice. Always consult a healthcare professional before taking any medicine.
           </p>
         </div>
