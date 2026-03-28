@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Search, X, Pill } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { useUIStore } from '@/store/ui.store';
 import { catalogService } from '@/services/catalog';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
+import { MedicineImage } from '@/components/product/medicine-image';
 
 export function SearchOverlay() {
   const isOpen = useUIStore((s) => s.isSearchOpen);
@@ -101,9 +102,14 @@ export function SearchOverlay() {
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 hover:bg-muted/50 transition-colors"
                 >
-                  <div className="h-10 w-10 bg-muted rounded-lg flex items-center justify-center shrink-0">
-                    <Pill className="h-5 w-5 text-muted-foreground" />
-                  </div>
+                  <MedicineImage
+                    name={product.name}
+                    dosageForm={product.dosageForm}
+                    strength={product.strength}
+                    manufacturer={product.manufacturer}
+                    size="xs"
+                    className="shrink-0 rounded-lg"
+                  />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-foreground truncate">{product.name}</p>
                     <p className="text-xs text-muted-foreground">{product.genericName} &middot; {product.manufacturer}</p>

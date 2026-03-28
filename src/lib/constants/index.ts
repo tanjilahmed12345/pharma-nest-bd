@@ -11,7 +11,7 @@ export const ADMIN_PAGE_SIZE = 20;
 export const DELIVERY_CHARGE = 60; // BDT
 export const FREE_DELIVERY_THRESHOLD = 500; // BDT
 
-export const SEED_VERSION = '1.0.0';
+export const SEED_VERSION = '2.0.0';
 
 export const MERCHANT_INFO = {
   bkash: {

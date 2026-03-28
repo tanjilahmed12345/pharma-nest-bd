@@ -95,26 +95,28 @@ export function LoginForm() {
         </div>
       </Card>
 
-      {/* Demo accounts */}
-      <Card padding="md" className="mt-4">
-        <div className="flex items-center gap-2 mb-3">
-          <ShieldCheck className="h-4 w-4 text-primary" />
-          <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Demo Accounts</span>
-        </div>
-        <div className="space-y-2">
-          {demoAccounts.map((acc) => (
-            <button
-              key={acc.email}
-              type="button"
-              onClick={() => fillDemo(acc.email, acc.password)}
-              className="w-full flex items-center justify-between px-3 py-2 text-xs bg-muted hover:bg-muted/80 rounded-lg transition-colors text-left"
-            >
-              <span className="font-medium">{acc.label}</span>
-              <span className="text-muted-foreground font-mono">{acc.email}</span>
-            </button>
-          ))}
-        </div>
-      </Card>
+      {/* Demo accounts — only shown in development */}
+      {process.env.NODE_ENV !== 'production' && (
+        <Card padding="md" className="mt-4">
+          <div className="flex items-center gap-2 mb-3">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Demo Accounts</span>
+          </div>
+          <div className="space-y-2">
+            {demoAccounts.map((acc) => (
+              <button
+                key={acc.email}
+                type="button"
+                onClick={() => fillDemo(acc.email, acc.password)}
+                className="w-full flex items-center justify-between px-3 py-2 text-xs bg-muted hover:bg-muted/80 rounded-lg transition-colors text-left"
+              >
+                <span className="font-medium">{acc.label}</span>
+                <span className="text-muted-foreground font-mono">{acc.email}</span>
+              </button>
+            ))}
+          </div>
+        </Card>
+      )}
     </div>
   );
 }
