@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Pill, Trash2 } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { Product } from '@/types';
 import { Price } from '@/components/ui/price';
+import { MedicineImage } from '@/components/product/medicine-image';
 import { PrescriptionBadge } from '@/components/product/prescription-badge';
 import { QuantityStepper } from '@/components/common/quantity-stepper';
 import { formatPrice } from '@/lib/utils';
@@ -23,9 +24,13 @@ export function CartItemCard({ product, quantity, onUpdateQuantity, onRemove }: 
     <div className="flex gap-3 py-3">
       {/* Image */}
       <Link href={`/product/${product.slug}`} className="shrink-0">
-        <div className="h-16 w-16 bg-muted rounded-lg flex items-center justify-center">
-          <Pill className="h-6 w-6 text-muted-foreground/40" />
-        </div>
+        <MedicineImage
+          name={product.name}
+          dosageForm={product.dosageForm}
+          strength={product.strength}
+          manufacturer={product.manufacturer}
+          size="xs"
+        />
       </Link>
 
       {/* Info */}

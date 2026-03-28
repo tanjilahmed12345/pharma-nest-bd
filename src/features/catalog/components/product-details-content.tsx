@@ -118,10 +118,7 @@ export function ProductDetailsContent({ slug }: { slug: string }) {
 
       {/* Product main section */}
       <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-        <ProductGallery
-          images={[product.image, ...product.gallery]}
-          productName={product.name}
-        />
+        <ProductGallery product={product} />
         <ProductInfo
           product={product}
           onAddToCart={handleAddToCart}

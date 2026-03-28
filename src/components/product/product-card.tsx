@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingCart, Pill } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types';
 import { Price } from '@/components/ui/price';
+import { MedicineImage } from './medicine-image';
 import { PrescriptionBadge } from './prescription-badge';
 import { StockBadge } from './stock-badge';
 import { cn } from '@/lib/utils';
@@ -20,10 +21,15 @@ export function ProductCard({ product, onAddToCart, className }: ProductCardProp
   return (
     <div className={cn('group bg-card rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow', className)}>
       {/* Image */}
-      <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-muted overflow-hidden">
-        <div className="flex items-center justify-center h-full">
-          <Pill className="h-12 w-12 text-muted-foreground/40" />
-        </div>
+      <Link href={`/product/${product.slug}`} className="block relative overflow-hidden">
+        <MedicineImage
+          name={product.name}
+          dosageForm={product.dosageForm}
+          strength={product.strength}
+          manufacturer={product.manufacturer}
+          isPrescriptionRequired={product.isPrescriptionRequired}
+          size="sm"
+        />
         {/* Badges overlay */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
           {product.isPrescriptionRequired && <PrescriptionBadge />}
