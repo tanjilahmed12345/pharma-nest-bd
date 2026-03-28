@@ -1,6 +1,6 @@
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { Card } from '@/components/ui/card';
-import { ShieldCheck, Stethoscope, Truck, Award } from 'lucide-react';
+import { ShieldCheck, Stethoscope, Truck, Award, FileCheck, BadgeCheck } from 'lucide-react';
 
 export const metadata = { title: 'About Us | PharmaNest BD' };
 
@@ -37,6 +37,34 @@ export default function AboutPage() {
               </div>
             </Card>
           ))}
+        </div>
+
+        <h2 className="text-xl font-bold mb-4">Licenses &amp; Certifications</h2>
+        <div className="grid sm:grid-cols-2 gap-4 mb-8">
+          <Card padding="md">
+            <div className="flex items-start gap-3">
+              <div className="h-10 w-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <FileCheck className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm">DGDA Licensed</h3>
+                <p className="text-xs text-muted-foreground mt-1">Registered with the Directorate General of Drug Administration, Bangladesh</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">License No: DGDA/DL/2024/03782</p>
+              </div>
+            </div>
+          </Card>
+          <Card padding="md">
+            <div className="flex items-start gap-3">
+              <div className="h-10 w-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <BadgeCheck className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm">Certified Pharmacists</h3>
+                <p className="text-xs text-muted-foreground mt-1">All prescriptions reviewed by Bangladesh Pharmacy Council registered pharmacists</p>
+                <p className="text-xs font-mono text-muted-foreground mt-1">BPC Reg: P-2024-05491</p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <h2 className="text-xl font-bold mb-3">Contact Information</h2>
