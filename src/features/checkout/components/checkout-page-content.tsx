@@ -147,7 +147,7 @@ export function CheckoutPageContent() {
         {/* Sidebar summary */}
         <div className="hidden md:block">
           <div className="sticky top-24">
-            <CheckoutSummary preview={checkout.preview} />
+            <CheckoutSummary preview={checkout.preview} showCouponInput />
           </div>
         </div>
       </div>

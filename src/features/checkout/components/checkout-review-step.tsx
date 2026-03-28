@@ -98,7 +98,7 @@ export function CheckoutReviewStep({
       />
 
       {/* Summary */}
-      <CheckoutSummary preview={preview} />
+      <CheckoutSummary preview={preview} showCouponInput />
 
       {/* Disclaimers */}
       <Alert variant="info">
