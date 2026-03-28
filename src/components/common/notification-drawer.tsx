@@ -5,6 +5,7 @@ import { Drawer } from '@/components/ui/drawer';
 import { useNotificationStore } from '@/store/notification.store';
 import { Notification } from '@/types';
 import { Package, FileText, Wallet, Tag, Info, CheckCheck, Trash2 } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { cn } from '@/lib/utils';
 
 const typeIcons: Record<string, typeof Package> = {
@@ -79,19 +80,20 @@ export function NotificationDrawer() {
   const markAllAsRead = useNotificationStore((s) => s.markAllAsRead);
   const clearAll = useNotificationStore((s) => s.clearAll);
   const unreadCount = useNotificationStore((s) => s.unreadCount);
+  const { t } = useTranslation();
 
   return (
-    <Drawer isOpen={isOpen} onClose={() => setOpen(false)} side="right" title="Notifications">
+    <Drawer isOpen={isOpen} onClose={() => setOpen(false)} side="right" title={t('notification.title')}>
       {/* Actions bar */}
       {notifications.length > 0 && (
         <div className="flex items-center justify-between px-4 py-2 border-b border-border">
           {unreadCount() > 0 && (
             <button onClick={markAllAsRead} className="flex items-center gap-1 text-[11px] text-primary hover:underline">
-              <CheckCheck className="h-3 w-3" /> Mark all read
+              <CheckCheck className="h-3 w-3" /> {t('notification.markAllRead')}
             </button>
           )}
           <button onClick={clearAll} className="flex items-center gap-1 text-[11px] text-muted-foreground hover:text-danger ml-auto">
-            <Trash2 className="h-3 w-3" /> Clear all
+            <Trash2 className="h-3 w-3" /> {t('notification.clearAll')}
           </button>
         </div>
       )}
@@ -100,8 +102,8 @@ export function NotificationDrawer() {
       {notifications.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-16 text-center px-4">
           <Info className="h-10 w-10 text-muted-foreground/30 mb-3" />
-          <p className="text-sm text-muted-foreground">No notifications yet</p>
-          <p className="text-xs text-muted-foreground mt-1">We&apos;ll notify you about orders, prescriptions, and offers</p>
+          <p className="text-sm text-muted-foreground">{t('notification.empty')}</p>
+          <p className="text-xs text-muted-foreground mt-1">{t('notification.emptyDesc')}</p>
         </div>
       ) : (
         <div className="divide-y divide-border">

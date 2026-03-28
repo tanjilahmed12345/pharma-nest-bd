@@ -3,38 +3,26 @@
 import { useState } from 'react';
 import { SectionHeader } from '@/components/ui/section-header';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
+import { type TranslationKey } from '@/lib/i18n/translations';
 import { cn } from '@/lib/utils';
 
-const faqs = [
-  {
-    q: 'How do I order medicines online?',
-    a: 'Browse our catalog, add medicines to your cart, and proceed to checkout. You can pay with bKash, Nagad, Rocket, or Cash on Delivery.',
-  },
-  {
-    q: 'Do I need a prescription for all medicines?',
-    a: 'No. Over-the-counter (OTC) medicines can be ordered without a prescription. Prescription medicines require a valid prescription from a licensed doctor.',
-  },
-  {
-    q: 'How do I upload a prescription?',
-    a: 'Click "Upload Prescription" from the homepage or during checkout. Take a clear photo of your prescription and upload it along with patient details.',
-  },
-  {
-    q: 'What are the delivery charges?',
-    a: 'We charge ৳60 for delivery. Orders above ৳500 get free delivery across Bangladesh.',
-  },
-  {
-    q: 'How can I track my order?',
-    a: 'Go to "Track Order" page and enter your order number and phone number to see real-time status updates.',
-  },
+const faqKeys: { q: TranslationKey; a: TranslationKey }[] = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
+  { q: 'faq.q5', a: 'faq.a5' },
 ];
 
 export function FaqPreview() {
   const [open, setOpen] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   return (
     <section className="py-8 md:py-10">
       <div className="container-custom">
-        <SectionHeader title="Frequently Asked Questions" viewAllHref="/faq" viewAllLabel="View All FAQ" />
+        <SectionHeader title={t('section.faq')} viewAllHref="/faq" viewAllLabel={t('section.viewAllFaq')} />
 
         <div className="grid md:grid-cols-[1fr_2fr] gap-6 md:gap-10 items-start">
           {/* Left description */}
@@ -43,13 +31,13 @@ export function FaqPreview() {
               <HelpCircle className="h-7 w-7 text-primary" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Have questions about ordering medicines, prescriptions, or delivery? Find quick answers below or contact our support team.
+              {t('faq.faqDesc')}
             </p>
           </div>
 
           {/* Accordion */}
           <div className="space-y-2.5">
-            {faqs.map((faq, idx) => {
+            {faqKeys.map((faq, idx) => {
               const isOpen = open === idx;
               return (
                 <div
@@ -70,7 +58,7 @@ export function FaqPreview() {
                       )}>
                         {idx + 1}
                       </span>
-                      {faq.q}
+                      {t(faq.q)}
                     </span>
                     <ChevronDown className={cn(
                       'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200',
@@ -79,7 +67,7 @@ export function FaqPreview() {
                   </button>
                   {isOpen && (
                     <div className="px-5 pb-4 pl-14 text-sm text-muted-foreground leading-relaxed">
-                      {faq.a}
+                      {t(faq.a)}
                     </div>
                   )}
                 </div>

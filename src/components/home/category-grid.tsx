@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { Category } from '@/types';
 import { SectionHeader } from '@/components/ui/section-header';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { Pill } from 'lucide-react';
 
 export interface CategoryGridProps {
@@ -8,10 +11,12 @@ export interface CategoryGridProps {
 }
 
 export function CategoryGrid({ categories }: CategoryGridProps) {
+  const { t } = useTranslation();
+
   return (
     <section className="pt-8 pb-4">
       <div className="container-custom">
-        <SectionHeader title="Shop by Category" subtitle="Browse our medicine categories" viewAllHref="/shop" />
+        <SectionHeader title={t('section.shopByCategory')} subtitle={t('section.browseCategories')} viewAllHref="/shop" />
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
           {categories.map((cat) => (
             <Link

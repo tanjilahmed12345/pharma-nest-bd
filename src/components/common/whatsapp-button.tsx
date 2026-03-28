@@ -1,11 +1,13 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 const WHATSAPP_NUMBER = '8809638123456';
 const DEFAULT_MESSAGE = 'Hi PharmaNest BD, I need help with my medicine order.';
 
 export function WhatsAppButton() {
+  const { t } = useTranslation();
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
 
   return (
@@ -18,7 +20,7 @@ export function WhatsAppButton() {
     >
       <MessageCircle className="h-7 w-7 fill-white stroke-white" />
       <span className="absolute right-full mr-3 bg-card text-foreground text-xs font-medium px-3 py-1.5 rounded-lg shadow-md border border-border opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-        Chat with us
+        {t('footer.chatWithUs')}
       </span>
     </a>
   );

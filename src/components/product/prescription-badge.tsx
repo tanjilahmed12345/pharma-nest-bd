@@ -1,5 +1,8 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { ShieldAlert } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 export interface PrescriptionBadgeProps {
   size?: 'sm' | 'md';
@@ -7,6 +10,8 @@ export interface PrescriptionBadgeProps {
 }
 
 export function PrescriptionBadge({ size = 'sm', className }: PrescriptionBadgeProps) {
+  const { t } = useTranslation();
+
   return (
     <span
       className={cn(
@@ -16,7 +21,7 @@ export function PrescriptionBadge({ size = 'sm', className }: PrescriptionBadgeP
       )}
     >
       <ShieldAlert className={size === 'sm' ? 'h-3 w-3' : 'h-3.5 w-3.5'} />
-      Rx Required
+      {t('product.rxRequired')}
     </span>
   );
 }

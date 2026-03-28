@@ -8,12 +8,14 @@ import { CartItemCard } from './cart-item-card';
 import { CartEmpty } from './cart-empty';
 import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/utils';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 export function CartDrawer() {
   const isOpen = useUIStore((s) => s.isCartDrawerOpen);
   const setOpen = useUIStore((s) => s.setCartDrawer);
   const { cartItems, itemCount, subtotal, removeItem, updateQuantity } = useCart();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const navigateTo = (path: string) => {
     setOpen(false);
@@ -21,7 +23,7 @@ export function CartDrawer() {
   };
 
   return (
-    <Drawer isOpen={isOpen} onClose={() => setOpen(false)} title={`Cart (${itemCount})`}>
+    <Drawer isOpen={isOpen} onClose={() => setOpen(false)} title={`${t('cart.title')} (${itemCount})`}>
       {cartItems.length === 0 ? (
         <div className="p-4">
           <CartEmpty />
@@ -44,11 +46,11 @@ export function CartDrawer() {
           {/* Footer */}
           <div className="border-t border-border p-4 space-y-2">
             <div className="flex justify-between text-sm font-bold">
-              <span>Subtotal</span>
+              <span>{t('cart.subtotal')}</span>
               <span className="text-primary">{formatPrice(subtotal)}</span>
             </div>
-            <Button fullWidth variant="outline" onClick={() => navigateTo('/cart')}>View Cart</Button>
-            <Button fullWidth onClick={() => navigateTo('/checkout')}>Checkout</Button>
+            <Button fullWidth variant="outline" onClick={() => navigateTo('/cart')}>{t('cart.viewCart')}</Button>
+            <Button fullWidth onClick={() => navigateTo('/checkout')}>{t('checkout.title')}</Button>
           </div>
         </div>
       )}

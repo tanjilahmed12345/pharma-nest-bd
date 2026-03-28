@@ -9,6 +9,7 @@ import { StarRating } from './star-rating';
 import { PrescriptionBadge } from './prescription-badge';
 import { StockBadge } from './stock-badge';
 import { reviewService } from '@/services/review';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { cn } from '@/lib/utils';
 
 export interface ProductCardProps {
@@ -20,6 +21,7 @@ export interface ProductCardProps {
 export function ProductCard({ product, onAddToCart, className }: ProductCardProps) {
   const isOutOfStock = product.stockQty <= 0;
   const reviewSummary = reviewService.getReviewSummary(product.id);
+  const { t } = useTranslation();
 
   return (
     <div className={cn('group bg-card rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow', className)}>
@@ -38,7 +40,7 @@ export function ProductCard({ product, onAddToCart, className }: ProductCardProp
           {product.isPrescriptionRequired && <PrescriptionBadge />}
           {product.discountPrice && (
             <span className="inline-flex px-1.5 py-0.5 bg-danger text-white text-[10px] font-bold rounded">
-              SALE
+              {t('product.sale')}
             </span>
           )}
         </div>
@@ -80,7 +82,7 @@ export function ProductCard({ product, onAddToCart, className }: ProductCardProp
           )}
         >
           <ShoppingCart className="h-3.5 w-3.5" />
-          {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+          {isOutOfStock ? t('product.outOfStock') : t('product.addToCart')}
         </button>
       </div>
     </div>

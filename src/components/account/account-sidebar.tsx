@@ -6,19 +6,22 @@ import { cn } from '@/lib/utils';
 import { User, Package, FileText, MapPin, Heart, Settings, LogOut } from 'lucide-react';
 import { authService } from '@/services/auth';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from '@/lib/i18n/use-translation';
+import { type TranslationKey } from '@/lib/i18n/translations';
 
-const links = [
-  { href: '/account', label: 'Dashboard', icon: User, exact: true },
-  { href: '/account/orders', label: 'My Orders', icon: Package },
-  { href: '/account/prescriptions', label: 'Prescriptions', icon: FileText },
-  { href: '/account/addresses', label: 'Addresses', icon: MapPin },
-  { href: '/account/wishlist', label: 'Wishlist', icon: Heart },
-  { href: '/account/profile', label: 'Profile Settings', icon: Settings },
+const linkDefs: { href: string; labelKey: TranslationKey; icon: typeof User; exact?: boolean }[] = [
+  { href: '/account', labelKey: 'account.dashboard', icon: User, exact: true },
+  { href: '/account/orders', labelKey: 'account.myOrders', icon: Package },
+  { href: '/account/prescriptions', labelKey: 'account.prescriptions', icon: FileText },
+  { href: '/account/addresses', labelKey: 'account.addresses', icon: MapPin },
+  { href: '/account/wishlist', labelKey: 'account.wishlist', icon: Heart },
+  { href: '/account/profile', labelKey: 'account.profile', icon: Settings },
 ];
 
 export function AccountSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     await authService.logout();
@@ -27,7 +30,7 @@ export function AccountSidebar() {
 
   return (
     <nav className="space-y-1">
-      {links.map((link) => {
+      {linkDefs.map((link) => {
         const isActive = link.exact
           ? pathname === link.href
           : pathname.startsWith(link.href);
@@ -43,7 +46,7 @@ export function AccountSidebar() {
             )}
           >
             <link.icon className="h-4 w-4" />
-            {link.label}
+            {t(link.labelKey)}
           </Link>
         );
       })}
@@ -52,7 +55,7 @@ export function AccountSidebar() {
         className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-danger hover:bg-danger/5 transition-colors w-full"
       >
         <LogOut className="h-4 w-4" />
-        Logout
+        {t('nav.logout')}
       </button>
     </nav>
   );

@@ -7,34 +7,36 @@ import { useUIStore } from '@/store/ui.store';
 import { useCurrentUser } from '@/hooks';
 import { authService } from '@/services/auth';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import {
   Home, ShoppingBag, Pill, FileText, Upload, Tag, User, LogIn, LogOut,
   LayoutDashboard, Package, MapPin, Heart, Settings, Phone, Mail,
 } from 'lucide-react';
-
-const publicLinks = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/shop', label: 'Shop All', icon: ShoppingBag },
-  { href: '/otc', label: 'OTC Medicines', icon: Pill },
-  { href: '/rx', label: 'Prescription Medicines', icon: FileText },
-  { href: '/upload-prescription', label: 'Upload Prescription', icon: Upload },
-  { href: '/offers', label: 'Offers', icon: Tag },
-];
-
-const accountLinks = [
-  { href: '/account', label: 'Dashboard', icon: User },
-  { href: '/account/orders', label: 'My Orders', icon: Package },
-  { href: '/account/prescriptions', label: 'Prescriptions', icon: FileText },
-  { href: '/account/addresses', label: 'Addresses', icon: MapPin },
-  { href: '/account/wishlist', label: 'Wishlist', icon: Heart },
-  { href: '/account/profile', label: 'Profile Settings', icon: Settings },
-];
 
 export function MobileNav() {
   const isOpen = useUIStore((s) => s.isMobileMenuOpen);
   const setOpen = useUIStore((s) => s.setMobileMenu);
   const { isAuthenticated, isAdmin } = useCurrentUser();
   const router = useRouter();
+  const { t } = useTranslation();
+
+  const publicLinks = [
+    { href: '/', label: t('nav.home'), icon: Home },
+    { href: '/shop', label: t('nav.shop'), icon: ShoppingBag },
+    { href: '/otc', label: t('nav.otc'), icon: Pill },
+    { href: '/rx', label: t('nav.prescriptionMedicines'), icon: FileText },
+    { href: '/upload-prescription', label: t('nav.uploadRx'), icon: Upload },
+    { href: '/offers', label: t('nav.offers'), icon: Tag },
+  ];
+
+  const accountLinks = [
+    { href: '/account', label: t('account.dashboard'), icon: User },
+    { href: '/account/orders', label: t('account.myOrders'), icon: Package },
+    { href: '/account/prescriptions', label: t('account.prescriptions'), icon: FileText },
+    { href: '/account/addresses', label: t('account.addresses'), icon: MapPin },
+    { href: '/account/wishlist', label: t('account.wishlist'), icon: Heart },
+    { href: '/account/profile', label: t('account.profile'), icon: Settings },
+  ];
 
   const handleLogout = async () => {
     setOpen(false);
@@ -86,7 +88,7 @@ export function MobileNav() {
                   className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-primary hover:bg-primary/5 transition-colors"
                 >
                   <LayoutDashboard className="h-4.5 w-4.5" />
-                  Admin Panel
+                  {t('nav.adminPanel')}
                 </Link>
               )}
             </nav>
@@ -98,7 +100,7 @@ export function MobileNav() {
               className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-danger hover:bg-danger/5 transition-colors w-full"
             >
               <LogOut className="h-4.5 w-4.5" />
-              Logout
+              {t('nav.logout')}
             </button>
           </>
         ) : (
@@ -109,7 +111,7 @@ export function MobileNav() {
               className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-primary hover:bg-primary/5 transition-colors"
             >
               <LogIn className="h-4.5 w-4.5" />
-              Login
+              {t('nav.login')}
             </Link>
             <Link
               href="/register"
@@ -117,7 +119,7 @@ export function MobileNav() {
               className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-muted transition-colors"
             >
               <User className="h-4.5 w-4.5 text-muted-foreground" />
-              Create Account
+              {t('nav.register')}
             </Link>
           </div>
         )}

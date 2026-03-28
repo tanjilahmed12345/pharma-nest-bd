@@ -6,7 +6,9 @@ const translations = {
   'nav.shop': { en: 'Shop All', bn: 'সব পণ্য' },
   'nav.otc': { en: 'OTC Medicines', bn: 'ওটিসি ওষুধ' },
   'nav.prescription': { en: 'Prescription', bn: 'প্রেসক্রিপশন' },
+  'nav.prescriptionMedicines': { en: 'Prescription Medicines', bn: 'প্রেসক্রিপশন ওষুধ' },
   'nav.offers': { en: 'Offers', bn: 'অফার' },
+  'nav.offersDeals': { en: 'Offers & Deals', bn: 'অফার ও ডিল' },
   'nav.uploadRx': { en: 'Upload Prescription', bn: 'প্রেসক্রিপশন আপলোড' },
   'nav.uploadRxShort': { en: 'Upload Rx', bn: 'Rx আপলোড' },
   'nav.account': { en: 'My Account', bn: 'আমার অ্যাকাউন্ট' },
@@ -14,6 +16,13 @@ const translations = {
   'nav.register': { en: 'Create Account', bn: 'অ্যাকাউন্ট তৈরি' },
   'nav.logout': { en: 'Logout', bn: 'লগআউট' },
   'nav.adminPanel': { en: 'Admin Panel', bn: 'অ্যাডমিন প্যানেল' },
+  'nav.allMedicines': { en: 'All Medicines', bn: 'সব ওষুধ' },
+  'nav.trackOrder': { en: 'Track Order', bn: 'অর্ডার ট্র্যাক' },
+  'nav.contactUs': { en: 'Contact Us', bn: 'যোগাযোগ' },
+  'nav.aboutUs': { en: 'About Us', bn: 'আমাদের সম্পর্কে' },
+  'nav.terms': { en: 'Terms & Conditions', bn: 'শর্তাবলী' },
+  'nav.privacy': { en: 'Privacy Policy', bn: 'গোপনীয়তা নীতি' },
+  'nav.faq': { en: 'FAQ', bn: 'জিজ্ঞাসা' },
 
   // Search
   'search.placeholder': { en: 'Search medicines, brands...', bn: 'ওষুধ, ব্র্যান্ড খুঁজুন...' },
@@ -21,6 +30,7 @@ const translations = {
   'search.searching': { en: 'Searching...', bn: 'খুঁজছি...' },
   'search.noResults': { en: 'No results found', bn: 'কোনো ফলাফল পাওয়া যায়নি' },
   'search.viewAll': { en: 'View all results for', bn: 'সমস্ত ফলাফল দেখুন' },
+  'search.searchMedicines': { en: 'Search medicines, brands, symptoms...', bn: 'ওষুধ, ব্র্যান্ড, উপসর্গ খুঁজুন...' },
 
   // Hero
   'hero.title': { en: 'Your Trusted Online Pharmacy in Bangladesh', bn: 'বাংলাদেশে আপনার বিশ্বস্ত অনলাইন ফার্মেসি' },
@@ -51,6 +61,11 @@ const translations = {
   'section.faq': { en: 'Frequently Asked Questions', bn: 'সচরাচর জিজ্ঞাসা' },
   'section.customerReviews': { en: 'Customer Reviews', bn: 'গ্রাহক পর্যালোচনা' },
   'section.viewAll': { en: 'View All', bn: 'সব দেখুন' },
+  'section.shopMedicines': { en: 'Shop Medicines', bn: 'ওষুধ কিনুন' },
+  'section.browseCatalog': { en: 'Browse our complete catalog of medicines and health products', bn: 'আমাদের সম্পূর্ণ ওষুধ ও স্বাস্থ্য পণ্যের ক্যাটালগ দেখুন' },
+  'section.specialOffers': { en: 'Special Offers', bn: 'বিশেষ অফার' },
+  'section.saveOnMedicines': { en: 'Save on genuine medicines and health products', bn: 'আসল ওষুধ ও স্বাস্থ্য পণ্যে সাশ্রয় করুন' },
+  'section.viewAllFaq': { en: 'View All FAQ', bn: 'সব জিজ্ঞাসা দেখুন' },
 
   // Product
   'product.addToCart': { en: 'Add to Cart', bn: 'কার্টে যোগ করুন' },
@@ -58,13 +73,50 @@ const translations = {
   'product.inStock': { en: 'In Stock', bn: 'স্টকে আছে' },
   'product.lowStock': { en: 'Low Stock', bn: 'কম স্টক' },
   'product.rxRequired': { en: 'Rx Required', bn: 'প্রেসক্রিপশন প্রয়োজন' },
+  'product.sale': { en: 'SALE', bn: 'ছাড়' },
+  'product.by': { en: 'By', bn: 'প্রস্তুতকারক' },
+  'product.strength': { en: 'Strength', bn: 'শক্তি' },
+  'product.packSize': { en: 'Pack Size', bn: 'প্যাক সাইজ' },
+  'product.rxWarning': { en: 'This medicine requires a valid prescription. You will need to upload one during checkout.', bn: 'এই ওষুধের জন্য বৈধ প্রেসক্রিপশন প্রয়োজন। চেকআউটের সময় আপনাকে একটি আপলোড করতে হবে।' },
+  'product.description': { en: 'Description', bn: 'বিবরণ' },
+  'product.dosage': { en: 'Dosage', bn: 'ডোজ' },
+  'product.sideEffects': { en: 'Side Effects', bn: 'পার্শ্বপ্রতিক্রিয়া' },
+  'product.warnings': { en: 'Warnings', bn: 'সতর্কতা' },
+  'product.storage': { en: 'Storage', bn: 'সংরক্ষণ' },
+  'product.noInfo': { en: 'No information available.', bn: 'কোনো তথ্য পাওয়া যায়নি।' },
+  'product.onlyLeft': { en: 'left', bn: 'বাকি' },
+  'product.browseMedicines': { en: 'Browse Medicines', bn: 'ওষুধ দেখুন' },
+
+  // Reviews
+  'review.reviews': { en: 'reviews', bn: 'পর্যালোচনা' },
+  'review.review': { en: 'review', bn: 'পর্যালোচনা' },
+  'review.verifiedPurchase': { en: 'Verified Purchase', bn: 'যাচাইকৃত ক্রয়' },
+  'review.writeReview': { en: 'Write a Review', bn: 'পর্যালোচনা লিখুন' },
+  'review.yourRating': { en: 'Your Rating', bn: 'আপনার রেটিং' },
+  'review.title': { en: 'Title', bn: 'শিরোনাম' },
+  'review.titlePlaceholder': { en: 'Summarize your experience', bn: 'আপনার অভিজ্ঞতা সংক্ষেপ করুন' },
+  'review.comment': { en: 'Review', bn: 'পর্যালোচনা' },
+  'review.commentPlaceholder': { en: 'Share your experience with this medicine...', bn: 'এই ওষুধ সম্পর্কে আপনার অভিজ্ঞতা শেয়ার করুন...' },
+  'review.submit': { en: 'Submit Review', bn: 'পর্যালোচনা জমা দিন' },
+  'review.noReviews': { en: 'No reviews yet', bn: 'এখনও কোনো পর্যালোচনা নেই' },
+  'review.beFirst': { en: 'Be the first to review', bn: 'প্রথম পর্যালোচনা দিন' },
+  'review.signInToReview': { en: 'Sign in to leave a review', bn: 'পর্যালোচনা দিতে সাইন ইন করুন' },
+  'review.selectRating': { en: 'Please select a rating', bn: 'একটি রেটিং নির্বাচন করুন' },
+  'review.addTitle': { en: 'Please add a title', bn: 'একটি শিরোনাম যোগ করুন' },
+  'review.addComment': { en: 'Please write a review', bn: 'একটি পর্যালোচনা লিখুন' },
 
   // Cart
   'cart.title': { en: 'Shopping Cart', bn: 'শপিং কার্ট' },
   'cart.empty': { en: 'Your cart is empty', bn: 'আপনার কার্ট খালি' },
+  'cart.emptyDesc': { en: "Looks like you haven't added any medicines to your cart yet.", bn: 'মনে হচ্ছে আপনি এখনও কার্টে কোনো ওষুধ যোগ করেননি।' },
   'cart.checkout': { en: 'Proceed to Checkout', bn: 'চেকআউটে যান' },
   'cart.continueShopping': { en: 'Continue Shopping', bn: 'শপিং চালিয়ে যান' },
   'cart.total': { en: 'Total', bn: 'মোট' },
+  'cart.subtotal': { en: 'Subtotal', bn: 'উপমোট' },
+  'cart.viewCart': { en: 'View Cart', bn: 'কার্ট দেখুন' },
+  'cart.items': { en: 'items', bn: 'পণ্য' },
+  'cart.rxAlert': { en: 'Your cart contains prescription medicines. You will need to upload a valid prescription during checkout.', bn: 'আপনার কার্টে প্রেসক্রিপশন ওষুধ আছে। চেকআউটের সময় আপনাকে একটি বৈধ প্রেসক্রিপশন আপলোড করতে হবে।' },
+  'cart.freeDeliveryMsg': { en: 'more for free delivery', bn: 'আরো যোগ করলে ফ্রি ডেলিভারি' },
 
   // Checkout
   'checkout.title': { en: 'Checkout', bn: 'চেকআউট' },
@@ -74,16 +126,29 @@ const translations = {
   'checkout.delivery': { en: 'Delivery', bn: 'ডেলিভারি' },
   'checkout.free': { en: 'Free', bn: 'ফ্রি' },
   'checkout.discount': { en: 'Discount', bn: 'ছাড়' },
+  'checkout.productSavings': { en: 'Product Savings', bn: 'পণ্যে সাশ্রয়' },
 
   // Auth
   'auth.welcomeBack': { en: 'Welcome Back', bn: 'আবার স্বাগতম' },
   'auth.signIn': { en: 'Sign In', bn: 'সাইন ইন' },
+  'auth.signInDesc': { en: 'Sign in to your PharmaNest account', bn: 'আপনার ফার্মানেস্ট অ্যাকাউন্টে সাইন ইন করুন' },
   'auth.createAccount': { en: 'Create Account', bn: 'অ্যাকাউন্ট তৈরি করুন' },
+  'auth.createAccountDesc': { en: 'Join PharmaNest BD for genuine medicines', bn: 'আসল ওষুধের জন্য ফার্মানেস্ট BD-তে যোগ দিন' },
   'auth.email': { en: 'Email', bn: 'ইমেইল' },
   'auth.password': { en: 'Password', bn: 'পাসওয়ার্ড' },
+  'auth.confirmPassword': { en: 'Confirm Password', bn: 'পাসওয়ার্ড নিশ্চিত করুন' },
+  'auth.fullName': { en: 'Full Name', bn: 'পূর্ণ নাম' },
+  'auth.phone': { en: 'Phone', bn: 'ফোন' },
   'auth.forgotPassword': { en: 'Forgot password?', bn: 'পাসওয়ার্ড ভুলে গেছেন?' },
   'auth.noAccount': { en: "Don't have an account?", bn: 'অ্যাকাউন্ট নেই?' },
   'auth.hasAccount': { en: 'Already have an account?', bn: 'ইতিমধ্যে অ্যাকাউন্ট আছে?' },
+  'auth.loginRequired': { en: 'Login Required', bn: 'লগইন প্রয়োজন' },
+  'auth.loginRequiredDesc': { en: 'Please sign in to access your account.', bn: 'আপনার অ্যাকাউন্ট অ্যাক্সেস করতে সাইন ইন করুন।' },
+  'auth.resetPassword': { en: 'Reset Password', bn: 'পাসওয়ার্ড রিসেট' },
+  'auth.sendResetLink': { en: 'Send Reset Link', bn: 'রিসেট লিঙ্ক পাঠান' },
+  'auth.backToLogin': { en: 'Back to Login', bn: 'লগইনে ফিরে যান' },
+  'auth.agreeTerms': { en: 'I agree to the', bn: 'আমি সম্মত' },
+  'auth.and': { en: 'and', bn: 'এবং' },
 
   // Account
   'account.dashboard': { en: 'Dashboard', bn: 'ড্যাশবোর্ড' },
@@ -93,12 +158,58 @@ const translations = {
   'account.wishlist': { en: 'Wishlist', bn: 'উইশলিস্ট' },
   'account.profile': { en: 'Profile Settings', bn: 'প্রোফাইল সেটিংস' },
   'account.welcome': { en: 'Welcome', bn: 'স্বাগতম' },
+  'account.orders': { en: 'Orders', bn: 'অর্ডার' },
+  'account.rx': { en: 'Rx', bn: 'Rx' },
+  'account.address': { en: 'Address', bn: 'ঠিকানা' },
+  'account.home': { en: 'Home', bn: 'হোম' },
+  'account.manageDesc': { en: 'Manage your orders, prescriptions, and account settings', bn: 'আপনার অর্ডার, প্রেসক্রিপশন এবং অ্যাকাউন্ট সেটিংস পরিচালনা করুন' },
+  'account.totalOrders': { en: 'Total Orders', bn: 'মোট অর্ডার' },
+  'account.recentOrders': { en: 'Recent Orders', bn: 'সাম্প্রতিক অর্ডার' },
+  'account.noOrders': { en: 'No orders yet', bn: 'এখনও কোনো অর্ডার নেই' },
+  'account.pendingOrders': { en: 'pending order', bn: 'অপেক্ষমাণ অর্ডার' },
+  'account.viewOrders': { en: 'View Orders', bn: 'অর্ডার দেখুন' },
 
   // Prescription
   'prescription.upload': { en: 'Upload Prescription', bn: 'প্রেসক্রিপশন আপলোড করুন' },
+  'prescription.uploadNew': { en: 'Upload New', bn: 'নতুন আপলোড' },
   'prescription.refill': { en: 'Request Refill', bn: 'রিফিল অনুরোধ' },
   'prescription.service': { en: 'Prescription Service', bn: 'প্রেসক্রিপশন সেবা' },
   'prescription.havePrescription': { en: 'Have a Prescription?', bn: 'প্রেসক্রিপশন আছে?' },
+  'prescription.uploadDesc': { en: "Upload your doctor's prescription for prescription medicines", bn: 'প্রেসক্রিপশন ওষুধের জন্য আপনার ডাক্তারের প্রেসক্রিপশন আপলোড করুন' },
+  'prescription.reviewInfo': { en: 'Our licensed pharmacist will review your prescription within a few hours. You will be notified once it is approved.', bn: 'আমাদের লাইসেন্সধারী ফার্মাসিস্ট কয়েক ঘণ্টার মধ্যে আপনার প্রেসক্রিপশন পর্যালোচনা করবেন। অনুমোদিত হলে আপনাকে জানানো হবে।' },
+  'prescription.loginRequired': { en: 'Please sign in to upload a prescription.', bn: 'প্রেসক্রিপশন আপলোড করতে সাইন ইন করুন।' },
+  'prescription.uploaded': { en: 'Prescription Uploaded!', bn: 'প্রেসক্রিপশন আপলোড হয়েছে!' },
+  'prescription.reviewSoon': { en: 'Our pharmacist will review it shortly.', bn: 'আমাদের ফার্মাসিস্ট শীঘ্রই এটি পর্যালোচনা করবেন।' },
+  'prescription.myPrescriptions': { en: 'My Prescriptions', bn: 'আমার প্রেসক্রিপশন' },
+  'prescription.noPrescriptions': { en: 'No prescriptions', bn: 'কোনো প্রেসক্রিপশন নেই' },
+  'prescription.noPrescriptionsDesc': { en: "You haven't uploaded any prescriptions yet.", bn: 'আপনি এখনও কোনো প্রেসক্রিপশন আপলোড করেননি।' },
+  'prescription.refillSuccess': { en: 'Refill request submitted! Our pharmacist will review it shortly.', bn: 'রিফিল অনুরোধ জমা হয়েছে! আমাদের ফার্মাসিস্ট শীঘ্রই পর্যালোচনা করবেন।' },
+  'prescription.pharmacistNote': { en: 'Pharmacist Note', bn: 'ফার্মাসিস্ট নোট' },
+
+  // Order statuses
+  'status.pending': { en: 'Pending', bn: 'অপেক্ষমাণ' },
+  'status.prescriptionReview': { en: 'Prescription Review', bn: 'প্রেসক্রিপশন পর্যালোচনা' },
+  'status.approved': { en: 'Approved', bn: 'অনুমোদিত' },
+  'status.processing': { en: 'Processing', bn: 'প্রক্রিয়াধীন' },
+  'status.packed': { en: 'Packed', bn: 'প্যাক করা হয়েছে' },
+  'status.shipped': { en: 'Shipped', bn: 'শিপ করা হয়েছে' },
+  'status.outForDelivery': { en: 'Out for Delivery', bn: 'ডেলিভারিতে বের হয়েছে' },
+  'status.delivered': { en: 'Delivered', bn: 'ডেলিভারি হয়েছে' },
+  'status.cancelled': { en: 'Cancelled', bn: 'বাতিল' },
+  'status.rejected': { en: 'Rejected', bn: 'প্রত্যাখ্যাত' },
+
+  // Payment statuses
+  'payment.pending': { en: 'Pending', bn: 'অপেক্ষমাণ' },
+  'payment.codPending': { en: 'COD Pending', bn: 'ক্যাশ অন ডেলিভারি অপেক্ষমাণ' },
+  'payment.submitted': { en: 'Submitted', bn: 'জমা দেওয়া হয়েছে' },
+  'payment.verified': { en: 'Verified', bn: 'যাচাইকৃত' },
+  'payment.rejected': { en: 'Rejected', bn: 'প্রত্যাখ্যাত' },
+
+  // Prescription statuses
+  'prescriptionStatus.pending': { en: 'Pending Review', bn: 'পর্যালোচনা অপেক্ষমাণ' },
+  'prescriptionStatus.approved': { en: 'Approved', bn: 'অনুমোদিত' },
+  'prescriptionStatus.rejected': { en: 'Rejected', bn: 'প্রত্যাখ্যাত' },
+  'prescriptionStatus.needsClarification': { en: 'Needs Clarification', bn: 'স্পষ্টীকরণ প্রয়োজন' },
 
   // Footer
   'footer.shop': { en: 'Shop', bn: 'শপ' },
@@ -107,9 +218,32 @@ const translations = {
   'footer.weAccept': { en: 'We Accept', bn: 'আমরা গ্রহণ করি' },
   'footer.rights': { en: 'All rights reserved.', bn: 'সর্বস্বত্ব সংরক্ষিত।' },
   'footer.builtWith': { en: 'Built with care for Bangladesh', bn: 'বাংলাদেশের জন্য যত্ন সহকারে তৈরি' },
+  'footer.tagline': { en: 'Your trusted online pharmacy in Bangladesh. Genuine medicines, verified by licensed pharmacists, delivered to your doorstep.', bn: 'বাংলাদেশে আপনার বিশ্বস্ত অনলাইন ফার্মেসি। আসল ওষুধ, লাইসেন্সধারী ফার্মাসিস্ট দ্বারা যাচাইকৃত, আপনার দোরগোড়ায় পৌঁছে দেওয়া হয়।' },
+  'footer.disclaimer': { en: 'Disclaimer: This website is for informational purposes only and does not constitute medical advice. Always consult a healthcare professional before taking any medicine.', bn: 'দাবিত্যাগ: এই ওয়েবসাইটটি শুধুমাত্র তথ্যমূলক উদ্দেশ্যে এবং এটি চিকিৎসা পরামর্শ নয়। যেকোনো ওষুধ খাওয়ার আগে সর্বদা একজন স্বাস্থ্য পেশাদারের সাথে পরামর্শ করুন।' },
+  'footer.chatWithUs': { en: 'Chat with us', bn: 'আমাদের সাথে চ্যাট করুন' },
 
   // Topbar
   'topbar.genuine': { en: 'Genuine Medicines | Licensed Pharmacy', bn: 'আসল ওষুধ | লাইসেন্সধারী ফার্মেসি' },
+
+  // FAQ
+  'faq.q1': { en: 'How do I order medicines online?', bn: 'কিভাবে অনলাইনে ওষুধ অর্ডার করব?' },
+  'faq.a1': { en: 'Browse our catalog, add medicines to your cart, and proceed to checkout. You can pay with bKash, Nagad, Rocket, or Cash on Delivery.', bn: 'আমাদের ক্যাটালগ ব্রাউজ করুন, কার্টে ওষুধ যোগ করুন এবং চেকআউটে যান। আপনি বিকাশ, নগদ, রকেট বা ক্যাশ অন ডেলিভারিতে পেমেন্ট করতে পারেন।' },
+  'faq.q2': { en: 'Do I need a prescription for all medicines?', bn: 'সব ওষুধের জন্য কি প্রেসক্রিপশন লাগবে?' },
+  'faq.a2': { en: 'No. Over-the-counter (OTC) medicines can be ordered without a prescription. Prescription medicines require a valid prescription from a licensed doctor.', bn: 'না। ওভার-দ্য-কাউন্টার (ওটিসি) ওষুধ প্রেসক্রিপশন ছাড়াই অর্ডার করা যায়। প্রেসক্রিপশন ওষুধের জন্য লাইসেন্সধারী ডাক্তারের বৈধ প্রেসক্রিপশন প্রয়োজন।' },
+  'faq.q3': { en: 'How do I upload a prescription?', bn: 'কিভাবে প্রেসক্রিপশন আপলোড করব?' },
+  'faq.a3': { en: 'Click "Upload Prescription" from the homepage or during checkout. Take a clear photo of your prescription and upload it along with patient details.', bn: 'হোমপেজ থেকে বা চেকআউটের সময় "প্রেসক্রিপশন আপলোড" ক্লিক করুন। আপনার প্রেসক্রিপশনের একটি পরিষ্কার ছবি তুলুন এবং রোগীর তথ্য সহ আপলোড করুন।' },
+  'faq.q4': { en: 'What are the delivery charges?', bn: 'ডেলিভারি চার্জ কত?' },
+  'faq.a4': { en: 'We charge ৳60 for delivery. Orders above ৳500 get free delivery across Bangladesh.', bn: 'ডেলিভারি চার্জ ৳৬০। ৳৫০০ এর উপরে অর্ডারে সারা বাংলাদেশে ফ্রি ডেলিভারি।' },
+  'faq.q5': { en: 'How can I track my order?', bn: 'কিভাবে আমার অর্ডার ট্র্যাক করব?' },
+  'faq.a5': { en: 'Go to "Track Order" page and enter your order number and phone number to see real-time status updates.', bn: '"অর্ডার ট্র্যাক" পেজে যান এবং রিয়েল-টাইম স্ট্যাটাস আপডেট দেখতে আপনার অর্ডার নম্বর ও ফোন নম্বর দিন।' },
+  'faq.faqDesc': { en: 'Have questions about ordering medicines, prescriptions, or delivery? Find quick answers below or contact our support team.', bn: 'ওষুধ অর্ডার, প্রেসক্রিপশন বা ডেলিভারি সম্পর্কে প্রশ্ন আছে? নিচে দ্রুত উত্তর পান বা আমাদের সাপোর্ট টিমের সাথে যোগাযোগ করুন।' },
+
+  // Notifications
+  'notification.title': { en: 'Notifications', bn: 'বিজ্ঞপ্তি' },
+  'notification.markAllRead': { en: 'Mark all read', bn: 'সব পড়া হিসেবে চিহ্নিত করুন' },
+  'notification.clearAll': { en: 'Clear all', bn: 'সব মুছুন' },
+  'notification.empty': { en: 'No notifications yet', bn: 'এখনও কোনো বিজ্ঞপ্তি নেই' },
+  'notification.emptyDesc': { en: "We'll notify you about orders, prescriptions, and offers", bn: 'আমরা আপনাকে অর্ডার, প্রেসক্রিপশন এবং অফার সম্পর্কে জানাব' },
 
   // Common
   'common.viewAll': { en: 'View All', bn: 'সব দেখুন' },
@@ -121,6 +255,15 @@ const translations = {
   'common.edit': { en: 'Edit', bn: 'সম্পাদনা' },
   'common.submit': { en: 'Submit', bn: 'জমা দিন' },
   'common.back': { en: 'Back', bn: 'পিছনে' },
+  'common.showing': { en: 'Showing', bn: 'দেখাচ্ছে' },
+  'common.of': { en: 'of', bn: 'এর মধ্যে' },
+  'common.products': { en: 'products', bn: 'পণ্য' },
+  'common.productsFound': { en: 'products found', bn: 'পণ্য পাওয়া গেছে' },
+  'common.noOffersAvailable': { en: 'No offers available', bn: 'কোনো অফার নেই' },
+  'common.checkBackSoon': { en: 'Check back soon for discounts and promotions on medicines and health products.', bn: 'ওষুধ ও স্বাস্থ্য পণ্যে ছাড় ও প্রমোশনের জন্য শীঘ্রই আবার দেখুন।' },
+  'common.onOffer': { en: 'on offer', bn: 'অফারে' },
+  'common.filters': { en: 'Filters', bn: 'ফিল্টার' },
+  'common.backToStore': { en: 'Back to Store', bn: 'দোকানে ফিরে যান' },
 } as const;
 
 export type TranslationKey = keyof typeof translations;

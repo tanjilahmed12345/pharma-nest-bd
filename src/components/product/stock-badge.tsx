@@ -1,4 +1,7 @@
+'use client';
+
 import { cn } from '@/lib/utils';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 export interface StockBadgeProps {
   stockQty: number;
@@ -6,10 +9,12 @@ export interface StockBadgeProps {
 }
 
 export function StockBadge({ stockQty, className }: StockBadgeProps) {
+  const { t } = useTranslation();
+
   if (stockQty <= 0) {
     return (
       <span className={cn('text-xs font-medium text-danger', className)}>
-        Out of Stock
+        {t('product.outOfStock')}
       </span>
     );
   }
@@ -17,14 +22,14 @@ export function StockBadge({ stockQty, className }: StockBadgeProps) {
   if (stockQty <= 10) {
     return (
       <span className={cn('text-xs font-medium text-warning', className)}>
-        Only {stockQty} left
+        {t('product.lowStock')} {stockQty}
       </span>
     );
   }
 
   return (
     <span className={cn('text-xs font-medium text-secondary', className)}>
-      In Stock
+      {t('product.inStock')}
     </span>
   );
 }
