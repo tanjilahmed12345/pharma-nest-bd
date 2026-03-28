@@ -18,7 +18,7 @@ export function SiteHeader() {
   const setCartDrawer = useUIStore((s) => s.setCartDrawer);
   const unreadCount = useNotificationStore((s) => s.unreadCount)();
   const setNotificationDrawer = useNotificationStore((s) => s.setDrawerOpen);
-  const { isAuthenticated, isAdmin } = useCurrentUser();
+  const { isAuthenticated, isAdmin, userName } = useCurrentUser();
   const { t } = useTranslation();
 
   return (
@@ -87,13 +87,30 @@ export function SiteHeader() {
             <ThemeToggle />
 
             {/* Account */}
-            <Link
-              href={isAuthenticated ? (isAdmin ? '/admin/dashboard' : '/account') : '/login'}
-              className="p-2 hover:bg-muted rounded-lg transition-colors"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </Link>
+            {isAuthenticated ? (
+              <Link
+                href={isAdmin ? '/admin/dashboard' : '/account'}
+                className="flex items-center gap-1.5 h-8 pl-1 pr-2.5 bg-primary/10 hover:bg-primary/15 rounded-full transition-colors"
+                aria-label="Account"
+              >
+                <div className="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
+                  <span className="text-[11px] font-bold text-white">
+                    {(userName || 'U').charAt(0).toUpperCase()}
+                  </span>
+                </div>
+                <span className="hidden sm:block text-xs font-medium text-primary max-w-[80px] truncate">
+                  {userName?.split(' ')[0] || 'Account'}
+                </span>
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="flex items-center gap-1.5 h-8 px-3 text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 rounded-full transition-colors"
+              >
+                <User className="h-4 w-4" />
+                <span className="hidden sm:block">{t('nav.login')}</span>
+              </Link>
+            )}
 
             {/* Cart */}
             <button
