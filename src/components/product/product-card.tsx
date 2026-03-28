@@ -5,8 +5,10 @@ import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types';
 import { Price } from '@/components/ui/price';
 import { MedicineImage } from './medicine-image';
+import { StarRating } from './star-rating';
 import { PrescriptionBadge } from './prescription-badge';
 import { StockBadge } from './stock-badge';
+import { reviewService } from '@/services/review';
 import { cn } from '@/lib/utils';
 
 export interface ProductCardProps {
@@ -17,6 +19,7 @@ export interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart, className }: ProductCardProps) {
   const isOutOfStock = product.stockQty <= 0;
+  const reviewSummary = reviewService.getReviewSummary(product.id);
 
   return (
     <div className={cn('group bg-card rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow', className)}>
@@ -53,6 +56,12 @@ export function ProductCard({ product, onAddToCart, className }: ProductCardProp
           <p className="text-[11px] text-muted-foreground mt-0.5">
             {product.manufacturer}
           </p>
+          {reviewSummary.totalReviews > 0 && (
+            <div className="flex items-center gap-1 mt-1">
+              <StarRating rating={reviewSummary.averageRating} size="sm" />
+              <span className="text-[10px] text-muted-foreground">({reviewSummary.totalReviews})</span>
+            </div>
+          )}
         </Link>
 
         <div className="mt-2 flex items-center justify-between">

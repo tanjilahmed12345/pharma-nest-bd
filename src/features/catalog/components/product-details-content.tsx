@@ -12,6 +12,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { ProductGallery } from '@/components/product/product-gallery';
 import { ProductInfo } from '@/components/product/product-info';
 import { ProductSpecs } from '@/components/product/product-specs';
+import { ProductReviews } from '@/components/product/product-reviews';
 import { RelatedProducts } from '@/components/product/related-products';
 import { Alert } from '@/components/ui/alert';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -130,6 +131,11 @@ export function ProductDetailsContent({ slug }: { slug: string }) {
       {/* Product details tabs */}
       <div className="mt-10">
         <ProductSpecs product={product} />
+      </div>
+
+      {/* Reviews */}
+      <div className="mt-10">
+        <ProductReviews productId={product.id} productName={product.name} />
       </div>
 
       {/* Disclaimer */}

@@ -11,3 +11,4 @@ export * from './wishlist';
 export * from './settings';
 export * from './checkout';
 export * from './dashboard';
+export * from './review';

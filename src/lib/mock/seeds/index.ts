@@ -7,4 +7,5 @@ export { seedPrescriptions } from './prescriptions';
 export { seedPayments } from './payments';
 export { seedWishlists } from './wishlist';
 export { seedSettings } from './settings';
+export { seedReviews } from './reviews';
 export { divisions, districts, upazilas } from './bangladesh-geo';

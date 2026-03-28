@@ -11,6 +11,7 @@ import {
   seedPayments,
   seedWishlists,
   seedSettings,
+  seedReviews,
 } from './seeds';
 import { Cart } from '@/types';
 
@@ -63,6 +64,9 @@ function seedAllData(): void {
     wishlistMap[w.userId] = w.productIds;
   });
   storage.set(STORAGE_KEYS.WISHLIST, wishlistMap);
+
+  // Reviews
+  storage.set(STORAGE_KEYS.REVIEWS, seedReviews);
 
   // Empty cart by default
   const emptyCart: Cart = { items: [], updatedAt: new Date().toISOString() };
