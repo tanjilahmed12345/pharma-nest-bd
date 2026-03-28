@@ -34,4 +34,27 @@ export const prescriptionService = {
     const all = await prescriptionRepository.getAll();
     return all.filter((p) => p.status === PrescriptionStatus.PENDING);
   },
+
+  /**
+   * Request a refill from a previously approved prescription.
+   * Creates a new pending prescription with the same details.
+   */
+  async requestRefill(prescriptionId: string): Promise<Prescription> {
+    const original = await prescriptionRepository.getById(prescriptionId);
+    if (!original) throw AppError.notFound('Prescription');
+    if (original.status !== PrescriptionStatus.APPROVED) {
+      throw AppError.badRequest('Only approved prescriptions can be refilled');
+    }
+
+    return prescriptionRepository.create({
+      userId: original.userId,
+      imageUrl: original.imageUrl,
+      fileName: `Refill - ${original.fileName}`,
+      patientName: original.patientName,
+      doctorName: original.doctorName,
+      issueDate: original.issueDate,
+      notes: `Refill request from prescription ${original.id}`,
+      status: PrescriptionStatus.PENDING,
+    });
+  },
 };

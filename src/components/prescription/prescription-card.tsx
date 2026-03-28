@@ -1,15 +1,19 @@
-import { Prescription } from '@/types';
+import { Prescription, PrescriptionStatus } from '@/types';
 import { Card } from '@/components/ui/card';
 import { PrescriptionStatusBadge } from './prescription-status-badge';
 import { formatDate } from '@/lib/utils';
-import { FileText, User, Stethoscope, Calendar } from 'lucide-react';
+import { FileText, User, Stethoscope, Calendar, RefreshCw } from 'lucide-react';
 
 export interface PrescriptionCardProps {
   prescription: Prescription;
   onReview?: () => void;
+  onRefill?: (prescriptionId: string) => void;
+  isRefilling?: boolean;
 }
 
-export function PrescriptionCard({ prescription, onReview }: PrescriptionCardProps) {
+export function PrescriptionCard({ prescription, onReview, onRefill, isRefilling }: PrescriptionCardProps) {
+  const canRefill = prescription.status === PrescriptionStatus.APPROVED && onRefill;
+
   return (
     <Card hover className="cursor-pointer" padding="md">
       <div className="flex items-start justify-between gap-3">
@@ -38,11 +42,23 @@ export function PrescriptionCard({ prescription, onReview }: PrescriptionCardPro
         </div>
       )}
 
-      {onReview && (
-        <button onClick={onReview} className="mt-3 text-xs text-primary font-medium hover:underline">
-          Review Details
-        </button>
-      )}
+      <div className="mt-3 flex items-center gap-3">
+        {onReview && (
+          <button onClick={onReview} className="text-xs text-primary font-medium hover:underline">
+            Review Details
+          </button>
+        )}
+        {canRefill && (
+          <button
+            onClick={() => onRefill(prescription.id)}
+            disabled={isRefilling}
+            className="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/5 hover:bg-primary/10 px-2.5 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+          >
+            <RefreshCw className={`h-3 w-3 ${isRefilling ? 'animate-spin' : ''}`} />
+            Request Refill
+          </button>
+        )}
+      </div>
     </Card>
   );
 }

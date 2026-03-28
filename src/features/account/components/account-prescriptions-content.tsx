@@ -8,6 +8,7 @@ import { Prescription } from '@/types';
 import { PrescriptionCard } from '@/components/prescription/prescription-card';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Button } from '@/components/ui/button';
+import { Alert } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/loading-skeleton';
 import { FileText, Upload } from 'lucide-react';
 
@@ -15,11 +16,30 @@ export function AccountPrescriptionsContent() {
   const { userId } = useCurrentUser();
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [refillingId, setRefillingId] = useState<string | null>(null);
+  const [refillSuccess, setRefillSuccess] = useState(false);
 
-  useEffect(() => {
+  const loadPrescriptions = () => {
     if (!userId) return;
     prescriptionService.getPrescriptions(userId).then(setPrescriptions).finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    loadPrescriptions();
   }, [userId]);
+
+  const handleRefill = async (prescriptionId: string) => {
+    setRefillingId(prescriptionId);
+    setRefillSuccess(false);
+    try {
+      await prescriptionService.requestRefill(prescriptionId);
+      setRefillSuccess(true);
+      loadPrescriptions();
+      setTimeout(() => setRefillSuccess(false), 4000);
+    } finally {
+      setRefillingId(null);
+    }
+  };
 
   if (isLoading) {
     return <div className="space-y-3">{Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-28 rounded-xl" />)}</div>;
@@ -34,6 +54,12 @@ export function AccountPrescriptionsContent() {
         </Link>
       </div>
 
+      {refillSuccess && (
+        <Alert variant="success">
+          Refill request submitted! Our pharmacist will review it shortly.
+        </Alert>
+      )}
+
       {prescriptions.length === 0 ? (
         <EmptyState
           icon={<FileText className="h-12 w-12" />}
@@ -44,7 +70,12 @@ export function AccountPrescriptionsContent() {
       ) : (
         <div className="space-y-3">
           {prescriptions.map((p) => (
-            <PrescriptionCard key={p.id} prescription={p} />
+            <PrescriptionCard
+              key={p.id}
+              prescription={p}
+              onRefill={handleRefill}
+              isRefilling={refillingId === p.id}
+            />
           ))}
         </div>
       )}
