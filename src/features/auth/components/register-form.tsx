@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterFormData } from '@/lib/validators';
 import { authService } from '@/services/auth';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
 import { Card } from '@/components/ui/card';
@@ -58,11 +57,20 @@ export function RegisterForm() {
           <Input label="Password" type="password" placeholder="Min 6 characters" error={errors.password?.message} {...register('password')} />
           <Input label="Confirm Password" type="password" placeholder="Re-enter password" error={errors.confirmPassword?.message} {...register('confirmPassword')} />
 
-          <Checkbox
-            label="I agree to the Terms & Conditions and Privacy Policy"
-            checked={agreed}
-            onChange={(e) => setAgreed((e.target as HTMLInputElement).checked)}
-          />
+          <label className="inline-flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="h-4 w-4 rounded border-border text-primary focus:ring-primary/20 cursor-pointer"
+            />
+            <span className="text-sm text-foreground">
+              I agree to the{' '}
+              <Link href="/terms" target="_blank" className="text-primary hover:underline">Terms &amp; Conditions</Link>
+              {' '}and{' '}
+              <Link href="/privacy" target="_blank" className="text-primary hover:underline">Privacy Policy</Link>
+            </span>
+          </label>
 
           <Button type="submit" fullWidth isLoading={isSubmitting} size="lg">
             Create Account
