@@ -36,7 +36,7 @@ export function CheckoutSteps({ steps, currentStep, className }: CheckoutStepsPr
               </div>
               <span
                 className={cn(
-                  'text-[11px] mt-1 font-medium whitespace-nowrap',
+                  'text-[10px] sm:text-[11px] mt-1 font-medium text-center max-w-[60px] sm:max-w-none leading-tight',
                   isCurrent ? 'text-primary' : 'text-muted-foreground'
                 )}
               >

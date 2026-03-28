@@ -49,7 +49,7 @@ export function AccountSidebar() {
       })}
       <button
         onClick={handleLogout}
-        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-danger hover:bg-red-50 transition-colors w-full"
+        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-danger hover:bg-danger/5 transition-colors w-full"
       >
         <LogOut className="h-4 w-4" />
         Logout

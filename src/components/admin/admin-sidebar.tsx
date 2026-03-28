@@ -22,21 +22,18 @@ const links = [
   { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
 
-export function AdminSidebar() {
+export function AdminSidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
 
   const handleLogout = async () => {
+    onNavigate?.();
     await authService.logout();
     router.push('/login');
   };
 
   return (
-    <aside className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0 bg-footer-bg text-white">
-      <div className="flex items-center h-16 px-5 border-b border-white/10">
-        <Logo size="sm" className="[&_span]:text-white [&_svg]:text-primary-light" />
-      </div>
-
+    <>
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {links.map((link) => {
           const isActive = pathname.startsWith(link.href);
@@ -44,6 +41,7 @@ export function AdminSidebar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={onNavigate}
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                 isActive
@@ -61,6 +59,7 @@ export function AdminSidebar() {
       <div className="px-3 py-4 border-t border-white/10 space-y-1">
         <Link
           href="/"
+          onClick={onNavigate}
           className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-footer-text hover:text-white hover:bg-white/10 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -74,6 +73,17 @@ export function AdminSidebar() {
           Logout
         </button>
       </div>
+    </>
+  );
+}
+
+export function AdminSidebar() {
+  return (
+    <aside className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0 bg-footer-bg text-white">
+      <div className="flex items-center h-16 px-5 border-b border-white/10">
+        <Logo size="sm" className="[&_span]:text-white [&_svg]:text-primary-light" />
+      </div>
+      <AdminSidebarContent />
     </aside>
   );
 }

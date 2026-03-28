@@ -1,15 +1,29 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCurrentUser } from '@/hooks';
 import { AccountSidebar } from '@/components/account/account-sidebar';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/loading-skeleton';
-import { Lock } from 'lucide-react';
-import Link from 'next/link';
+import { Lock, User, Package, FileText, MapPin, Heart, Settings, LogOut } from 'lucide-react';
+import { authService } from '@/services/auth';
+import { cn } from '@/lib/utils';
+
+const mobileAccountTabs = [
+  { href: '/account', label: 'Home', icon: User, exact: true },
+  { href: '/account/orders', label: 'Orders', icon: Package },
+  { href: '/account/prescriptions', label: 'Rx', icon: FileText },
+  { href: '/account/addresses', label: 'Address', icon: MapPin },
+  { href: '/account/wishlist', label: 'Wishlist', icon: Heart },
+  { href: '/account/profile', label: 'Profile', icon: Settings },
+];
 
 export default function AccountLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useCurrentUser();
+  const pathname = usePathname();
+  const router = useRouter();
 
   if (isLoading) {
     return (
@@ -38,7 +52,40 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   }
 
   return (
-    <div className="container-custom py-6">
+    <div className="container-custom py-4 md:py-6">
+      {/* Mobile account tabs */}
+      <div className="md:hidden mb-4 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-1.5 min-w-max pb-2">
+          {mobileAccountTabs.map((tab) => {
+            const isActive = tab.exact
+              ? pathname === tab.href
+              : pathname.startsWith(tab.href);
+            return (
+              <Link
+                key={tab.href}
+                href={tab.href}
+                className={cn(
+                  'flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
+                  isActive
+                    ? 'bg-primary text-white'
+                    : 'bg-muted text-muted-foreground hover:text-foreground'
+                )}
+              >
+                <tab.icon className="h-3.5 w-3.5" />
+                {tab.label}
+              </Link>
+            );
+          })}
+          <button
+            onClick={async () => { await authService.logout(); router.push('/'); }}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap text-danger bg-danger/5 hover:bg-danger/10 transition-colors"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            Logout
+          </button>
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-[220px_1fr] gap-6">
         <aside className="hidden md:block">
           <div className="sticky top-24">

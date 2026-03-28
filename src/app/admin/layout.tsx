@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useCurrentUser } from '@/hooks';
-import { AdminSidebar } from '@/components/admin/admin-sidebar';
+import { AdminSidebar, AdminSidebarContent } from '@/components/admin/admin-sidebar';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/loading-skeleton';
@@ -48,9 +48,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-background">
       <AdminSidebar />
 
-      {/* Mobile nav toggle */}
+      {/* Mobile nav drawer */}
       <Drawer isOpen={mobileNav} onClose={() => setMobileNav(false)} side="left" title="Admin Menu">
-        <div className="p-2"><AdminSidebar /></div>
+        <div className="bg-footer-bg text-white min-h-full -m-4 p-2 flex flex-col">
+          <AdminSidebarContent onNavigate={() => setMobileNav(false)} />
+        </div>
       </Drawer>
 
       <div className="lg:pl-60">

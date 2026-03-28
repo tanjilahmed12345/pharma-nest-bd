@@ -98,6 +98,15 @@ body {
   border-radius: 3px;
 }
 
+/* Hide scrollbar for horizontal scroll tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Container */
 .container-custom {
   width: 100%;
