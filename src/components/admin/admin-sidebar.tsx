@@ -6,8 +6,10 @@ import { cn } from '@/lib/utils';
 import { Logo } from '@/components/common/logo';
 import {
   LayoutDashboard, Package, FolderTree, FileText, ShoppingCart,
-  Wallet, Users, Settings, ArrowLeft,
+  Wallet, Users, Settings, ArrowLeft, LogOut,
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { authService } from '@/services/auth';
 
 const links = [
   { href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -22,6 +24,12 @@ const links = [
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await authService.logout();
+    router.push('/login');
+  };
 
   return (
     <aside className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0 bg-footer-bg text-white">
@@ -50,7 +58,7 @@ export function AdminSidebar() {
         })}
       </nav>
 
-      <div className="px-3 py-4 border-t border-white/10">
+      <div className="px-3 py-4 border-t border-white/10 space-y-1">
         <Link
           href="/"
           className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-footer-text hover:text-white hover:bg-white/10 transition-colors"
@@ -58,6 +66,13 @@ export function AdminSidebar() {
           <ArrowLeft className="h-4 w-4" />
           Back to Store
         </Link>
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-400 hover:text-red-300 hover:bg-white/10 transition-colors"
+        >
+          <LogOut className="h-4 w-4" />
+          Logout
+        </button>
       </div>
     </aside>
   );
