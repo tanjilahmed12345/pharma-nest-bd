@@ -5,9 +5,9 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 export const metadata = { title: 'Contact Us | PharmaNest BD' };
 
 const contacts = [
-  { icon: Phone, title: 'Phone', value: '01700-000000', desc: 'Sat - Thu, 9AM - 10PM' },
-  { icon: Mail, title: 'Email', value: 'support@pharmanest.com.bd', desc: 'We reply within 24 hours' },
-  { icon: MapPin, title: 'Address', value: 'House 12, Road 5, Dhanmondi', desc: 'Dhaka-1205, Bangladesh' },
+  { icon: Phone, title: 'Phone', value: '09638-123456', desc: 'Sat - Thu, 9AM - 10PM' },
+  { icon: Mail, title: 'Email', value: 'care@pharmanestbd.com', desc: 'We reply within 24 hours' },
+  { icon: MapPin, title: 'Address', value: 'House 42, Road 27, Dhanmondi', desc: 'Dhaka-1209, Bangladesh' },
   { icon: Clock, title: 'Hours', value: 'Sat - Thu: 9AM - 10PM', desc: 'Friday: 2PM - 10PM' },
 ];
 

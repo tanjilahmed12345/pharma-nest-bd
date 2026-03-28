@@ -14,9 +14,9 @@ import { Card } from '@/components/ui/card';
 import { ShieldCheck, LogIn } from 'lucide-react';
 
 const demoAccounts = [
-  { label: 'Admin', email: 'admin@pharmacy.com', password: 'admin123' },
-  { label: 'Customer (Rahim)', email: 'rahim@gmail.com', password: '123456' },
-  { label: 'Customer (Fatema)', email: 'fatema@gmail.com', password: '123456' },
+  { label: 'Admin', email: 'admin@pharmanestbd.com', password: 'Admin@2026' },
+  { label: 'Customer (Rahim)', email: 'rahim@gmail.com', password: 'Rahim@2026' },
+  { label: 'Customer (Fatema)', email: 'fatema@gmail.com', password: 'Fatema@2026' },
 ];
 
 export function LoginForm() {

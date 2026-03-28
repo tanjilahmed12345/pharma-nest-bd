@@ -10,50 +10,51 @@ async function main() {
   console.log('Seeding database...');
 
   // Create admin user
-  const adminPassword = await bcryptjs.hash('admin123', 12);
+  const adminPassword = await bcryptjs.hash('Admin@2026', 12);
   await prisma.user.upsert({
-    where: { email: 'admin@pharmacy.com' },
+    where: { email: 'admin@pharmanestbd.com' },
     update: {},
     create: {
-      email: 'admin@pharmacy.com',
+      email: 'admin@pharmanestbd.com',
       password: adminPassword,
-      name: 'Admin',
-      phone: '01700000000',
+      name: 'Pharmacy Admin',
+      phone: '01963812345',
       role: 'admin',
       isActive: true,
     },
   });
-  console.log('  Admin: admin@pharmacy.com / admin123');
+  console.log('  Admin: admin@pharmanestbd.com / Admin@2026');
 
   // Create test customers
-  const customerPassword = await bcryptjs.hash('123456', 12);
+  const rahimPassword = await bcryptjs.hash('Rahim@2026', 12);
   await prisma.user.upsert({
     where: { email: 'rahim@gmail.com' },
     update: {},
     create: {
       email: 'rahim@gmail.com',
-      password: customerPassword,
+      password: rahimPassword,
       name: 'Rahim Uddin',
       phone: '01812345678',
       role: 'customer',
       isActive: true,
     },
   });
-  console.log('  Customer: rahim@gmail.com / 123456');
+  console.log('  Customer: rahim@gmail.com / Rahim@2026');
 
+  const fatemaPassword = await bcryptjs.hash('Fatema@2026', 12);
   await prisma.user.upsert({
     where: { email: 'fatema@gmail.com' },
     update: {},
     create: {
       email: 'fatema@gmail.com',
-      password: customerPassword,
+      password: fatemaPassword,
       name: 'Fatema Akter',
       phone: '01987654321',
       role: 'customer',
       isActive: true,
     },
   });
-  console.log('  Customer: fatema@gmail.com / 123456');
+  console.log('  Customer: fatema@gmail.com / Fatema@2026');
 
   // Create default store settings
   const existingSettings = await prisma.storeSetting.findFirst();
@@ -61,9 +62,9 @@ async function main() {
     await prisma.storeSetting.create({
       data: {
         storeName: 'PharmaNest BD',
-        storeEmail: 'info@pharmanest.com.bd',
-        storePhone: '01700000000',
-        storeAddress: 'Dhaka, Bangladesh',
+        storeEmail: 'care@pharmanestbd.com',
+        storePhone: '09638123456',
+        storeAddress: 'House 42, Road 27, Dhanmondi, Dhaka-1209',
         deliveryCharge: 60,
         freeDeliveryThreshold: 500,
         currency: 'BDT',

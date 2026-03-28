@@ -6,10 +6,10 @@ export function Topbar() {
       <div className="container-custom flex items-center justify-between py-1.5">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
-            <Phone className="h-3 w-3" /> 01700-000000
+            <Phone className="h-3 w-3" /> 09638-123456
           </span>
           <span className="flex items-center gap-1">
-            <Mail className="h-3 w-3" /> support@pharmanest.com.bd
+            <Mail className="h-3 w-3" /> care@pharmanestbd.com
           </span>
         </div>
         <div className="flex items-center gap-3">

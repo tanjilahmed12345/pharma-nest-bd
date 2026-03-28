@@ -124,11 +124,11 @@ export function MobileNav() {
 
         {/* Contact info at bottom */}
         <div className="mt-auto pt-4 border-t border-border space-y-2">
-          <a href="tel:01700000000" className="flex items-center gap-2.5 px-3 py-1.5 text-xs text-muted-foreground">
-            <Phone className="h-3.5 w-3.5" /> 01700-000000
+          <a href="tel:09638123456" className="flex items-center gap-2.5 px-3 py-1.5 text-xs text-muted-foreground">
+            <Phone className="h-3.5 w-3.5" /> 09638-123456
           </a>
-          <a href="mailto:support@pharmanest.com.bd" className="flex items-center gap-2.5 px-3 py-1.5 text-xs text-muted-foreground">
-            <Mail className="h-3.5 w-3.5" /> support@pharmanest.com.bd
+          <a href="mailto:care@pharmanestbd.com" className="flex items-center gap-2.5 px-3 py-1.5 text-xs text-muted-foreground">
+            <Mail className="h-3.5 w-3.5" /> care@pharmanestbd.com
           </a>
         </div>
       </div>

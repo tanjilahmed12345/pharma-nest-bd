@@ -16,8 +16,8 @@ export default function PrivacyPage() {
           <section><h2 className="text-lg font-bold mb-2">3. Prescription Data</h2><p>Prescription information is handled with strict confidentiality and only shared with our licensed pharmacists for verification purposes as required by Bangladesh pharmaceutical regulations.</p></section>
           <section><h2 className="text-lg font-bold mb-2">4. Payment Security</h2><p>Payment details for mobile wallet transactions (bKash, Nagad, Rocket) are processed securely. We store only transaction IDs and sender numbers for verification, not your wallet PINs.</p></section>
           <section><h2 className="text-lg font-bold mb-2">5. Data Storage</h2><p>Your data is stored securely and retained only as long as necessary to provide our services and comply with legal obligations.</p></section>
-          <section><h2 className="text-lg font-bold mb-2">6. Your Rights</h2><p>You may request access to, correction of, or deletion of your personal data by contacting us at support@pharmanest.com.bd.</p></section>
-          <section><h2 className="text-lg font-bold mb-2">7. Contact</h2><p>For privacy concerns, contact us at: support@pharmanest.com.bd or call 01700-000000.</p></section>
+          <section><h2 className="text-lg font-bold mb-2">6. Your Rights</h2><p>You may request access to, correction of, or deletion of your personal data by contacting us at care@pharmanestbd.com.</p></section>
+          <section><h2 className="text-lg font-bold mb-2">7. Contact</h2><p>For privacy concerns, contact us at: care@pharmanestbd.com or call 09638-123456.</p></section>
         </div>
       </div>
     </div>

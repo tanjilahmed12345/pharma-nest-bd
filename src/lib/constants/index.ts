@@ -15,12 +15,12 @@ export const SEED_VERSION = '1.0.0';
 
 export const MERCHANT_INFO = {
   bkash: {
-    merchantNumber: '01XXXXXXXXX',
+    merchantNumber: '01963812345',
     merchantName: 'PharmaNest BD',
     instructions: [
       'Open bKash app or dial *247#',
       'Select "Payment"',
-      'Enter Merchant Number: 01XXXXXXXXX',
+      'Enter Merchant Number: 01963812345',
       'Enter the total amount',
       'Enter your bKash PIN',
       'Note the Transaction ID',
@@ -28,12 +28,12 @@ export const MERCHANT_INFO = {
     ],
   },
   nagad: {
-    merchantNumber: '01XXXXXXXXX',
+    merchantNumber: '01863812345',
     merchantName: 'PharmaNest BD',
     instructions: [
       'Open Nagad app or dial *167#',
       'Select "Payment"',
-      'Enter Merchant Number: 01XXXXXXXXX',
+      'Enter Merchant Number: 01863812345',
       'Enter the total amount',
       'Confirm with your PIN',
       'Note the Transaction ID',
@@ -41,12 +41,12 @@ export const MERCHANT_INFO = {
     ],
   },
   rocket: {
-    merchantNumber: '01XXXXXXXXXXX',
+    merchantNumber: '019638123451',
     merchantName: 'PharmaNest BD',
     instructions: [
       'Dial *322#',
       'Select "Payment"',
-      'Enter Merchant Number: 01XXXXXXXXXXX',
+      'Enter Merchant Number: 019638123451',
       'Enter the total amount',
       'Enter your Rocket PIN',
       'Note the Transaction ID',

@@ -42,9 +42,9 @@ export default function AboutPage() {
         <h2 className="text-xl font-bold mb-3">Contact Information</h2>
         <Card padding="md">
           <div className="space-y-2 text-sm">
-            <p><strong>Address:</strong> House 12, Road 5, Dhanmondi, Dhaka-1205</p>
-            <p><strong>Phone:</strong> 01700-000000</p>
-            <p><strong>Email:</strong> support@pharmanest.com.bd</p>
+            <p><strong>Address:</strong> House 42, Road 27, Dhanmondi, Dhaka-1209</p>
+            <p><strong>Phone:</strong> 09638-123456</p>
+            <p><strong>Email:</strong> care@pharmanestbd.com</p>
             <p><strong>Hours:</strong> Saturday - Thursday, 9:00 AM - 10:00 PM</p>
           </div>
         </Card>

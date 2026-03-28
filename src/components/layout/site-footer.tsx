@@ -44,17 +44,17 @@ export function SiteFooter() {
               Your trusted online pharmacy in Bangladesh. Genuine medicines, verified by licensed pharmacists, delivered to your doorstep.
             </p>
             <div className="space-y-2.5">
-              <a href="tel:01700000000" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
+              <a href="tel:09638123456" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
                 <Phone className="h-4 w-4 text-primary-light shrink-0" />
-                01700-000000
+                09638-123456
               </a>
-              <a href="mailto:support@pharmanest.com.bd" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
+              <a href="mailto:care@pharmanestbd.com" className="flex items-center gap-2.5 text-sm opacity-75 hover:opacity-100 transition-opacity">
                 <Mail className="h-4 w-4 text-primary-light shrink-0" />
-                support@pharmanest.com.bd
+                care@pharmanestbd.com
               </a>
               <p className="flex items-center gap-2.5 text-sm opacity-75">
                 <MapPin className="h-4 w-4 text-primary-light shrink-0" />
-                Dhanmondi, Dhaka-1205
+                House 42, Road 27, Dhanmondi, Dhaka-1209
               </p>
             </div>
           </div>
