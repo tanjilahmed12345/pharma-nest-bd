@@ -9,7 +9,7 @@
  *   export const authRepository = apiAuthRepository;
  */
 
-import { localAuthRepository } from './local/auth.repository';
+import { apiAuthRepository } from './api/auth.repository';
 import { localUserRepository } from './local/user.repository';
 import { localProductRepository } from './local/product.repository';
 import { localCategoryRepository } from './local/category.repository';
@@ -21,7 +21,7 @@ import { localPrescriptionRepository } from './local/prescription.repository';
 import { localPaymentRepository } from './local/payment.repository';
 import { localSettingsRepository } from './local/settings.repository';
 
-export const authRepository = localAuthRepository;
+export const authRepository = apiAuthRepository;
 export const userRepository = localUserRepository;
 export const productRepository = localProductRepository;
 export const categoryRepository = localCategoryRepository;

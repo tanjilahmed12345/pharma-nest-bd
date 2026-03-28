@@ -11,10 +11,25 @@ import { KeyRound, ArrowLeft } from 'lucide-react';
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    if (!email.trim()) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      setSubmitted(true);
+    } catch {
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -30,7 +45,7 @@ export default function ForgotPasswordPage() {
       <Card padding="lg">
         {submitted ? (
           <Alert variant="success" title="Check Your Email">
-            If an account exists for <strong>{email}</strong>, a password reset link would be sent. (This is a demo — no email is actually sent.)
+            If an account exists for <strong>{email}</strong>, a password reset link has been sent.
           </Alert>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -42,7 +57,7 @@ export default function ForgotPasswordPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <Button type="submit" fullWidth size="lg">Send Reset Link</Button>
+            <Button type="submit" fullWidth size="lg" isLoading={isSubmitting}>Send Reset Link</Button>
           </form>
         )}
 

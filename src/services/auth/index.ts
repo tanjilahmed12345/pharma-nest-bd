@@ -17,7 +17,7 @@ export const authService = {
   },
 
   async logout(): Promise<void> {
-    await authRepository.logout();
+    // Store.logout() handles both clearing local state and calling /api/auth/logout
     useAuthStore.getState().logout();
   },
 
