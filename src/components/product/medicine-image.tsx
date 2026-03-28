@@ -48,52 +48,52 @@ interface Palette {
 
 const PALETTES: Palette[] = [
   {
-    gradient: 'from-teal-50 to-cyan-50 dark:from-teal-950/60 dark:to-cyan-950/60',
+    gradient: 'from-white to-teal-50/80 dark:from-teal-950/60 dark:to-cyan-950/60',
     accent: 'text-teal-600 dark:text-teal-400',
-    accentBg: 'bg-teal-500/10',
-    border: 'border-teal-200/60 dark:border-teal-800/40',
+    accentBg: 'bg-teal-100 dark:bg-teal-500/10',
+    border: 'border-teal-200 dark:border-teal-800/40',
   },
   {
-    gradient: 'from-blue-50 to-indigo-50 dark:from-blue-950/60 dark:to-indigo-950/60',
+    gradient: 'from-white to-blue-50/80 dark:from-blue-950/60 dark:to-indigo-950/60',
     accent: 'text-blue-600 dark:text-blue-400',
-    accentBg: 'bg-blue-500/10',
-    border: 'border-blue-200/60 dark:border-blue-800/40',
+    accentBg: 'bg-blue-100 dark:bg-blue-500/10',
+    border: 'border-blue-200 dark:border-blue-800/40',
   },
   {
-    gradient: 'from-emerald-50 to-green-50 dark:from-emerald-950/60 dark:to-green-950/60',
+    gradient: 'from-white to-emerald-50/80 dark:from-emerald-950/60 dark:to-green-950/60',
     accent: 'text-emerald-600 dark:text-emerald-400',
-    accentBg: 'bg-emerald-500/10',
-    border: 'border-emerald-200/60 dark:border-emerald-800/40',
+    accentBg: 'bg-emerald-100 dark:bg-emerald-500/10',
+    border: 'border-emerald-200 dark:border-emerald-800/40',
   },
   {
-    gradient: 'from-violet-50 to-purple-50 dark:from-violet-950/60 dark:to-purple-950/60',
+    gradient: 'from-white to-violet-50/80 dark:from-violet-950/60 dark:to-purple-950/60',
     accent: 'text-violet-600 dark:text-violet-400',
-    accentBg: 'bg-violet-500/10',
-    border: 'border-violet-200/60 dark:border-violet-800/40',
+    accentBg: 'bg-violet-100 dark:bg-violet-500/10',
+    border: 'border-violet-200 dark:border-violet-800/40',
   },
   {
-    gradient: 'from-amber-50 to-orange-50 dark:from-amber-950/60 dark:to-orange-950/60',
+    gradient: 'from-white to-amber-50/80 dark:from-amber-950/60 dark:to-orange-950/60',
     accent: 'text-amber-600 dark:text-amber-400',
-    accentBg: 'bg-amber-500/10',
-    border: 'border-amber-200/60 dark:border-amber-800/40',
+    accentBg: 'bg-amber-100 dark:bg-amber-500/10',
+    border: 'border-amber-200 dark:border-amber-800/40',
   },
   {
-    gradient: 'from-rose-50 to-pink-50 dark:from-rose-950/60 dark:to-pink-950/60',
+    gradient: 'from-white to-rose-50/80 dark:from-rose-950/60 dark:to-pink-950/60',
     accent: 'text-rose-600 dark:text-rose-400',
-    accentBg: 'bg-rose-500/10',
-    border: 'border-rose-200/60 dark:border-rose-800/40',
+    accentBg: 'bg-rose-100 dark:bg-rose-500/10',
+    border: 'border-rose-200 dark:border-rose-800/40',
   },
   {
-    gradient: 'from-sky-50 to-cyan-50 dark:from-sky-950/60 dark:to-cyan-950/60',
+    gradient: 'from-white to-sky-50/80 dark:from-sky-950/60 dark:to-cyan-950/60',
     accent: 'text-sky-600 dark:text-sky-400',
-    accentBg: 'bg-sky-500/10',
-    border: 'border-sky-200/60 dark:border-sky-800/40',
+    accentBg: 'bg-sky-100 dark:bg-sky-500/10',
+    border: 'border-sky-200 dark:border-sky-800/40',
   },
   {
-    gradient: 'from-lime-50 to-emerald-50 dark:from-lime-950/60 dark:to-emerald-950/60',
+    gradient: 'from-white to-lime-50/80 dark:from-lime-950/60 dark:to-emerald-950/60',
     accent: 'text-lime-600 dark:text-lime-400',
-    accentBg: 'bg-lime-500/10',
-    border: 'border-lime-200/60 dark:border-lime-800/40',
+    accentBg: 'bg-lime-100 dark:bg-lime-500/10',
+    border: 'border-lime-200 dark:border-lime-800/40',
   },
 ];
 
@@ -139,7 +139,7 @@ export function MedicineImage({
         )}
       >
         <Icon className={cn('h-5 w-5', palette.accent)} />
-        <span className="text-[9px] font-semibold text-foreground/60 mt-0.5 line-clamp-1 px-1 text-center leading-tight">
+        <span className="text-[9px] font-semibold text-gray-600 dark:text-gray-400 mt-0.5 line-clamp-1 px-1 text-center leading-tight">
           {name.split(' ')[0]}
         </span>
       </div>
@@ -179,13 +179,13 @@ export function MedicineImage({
         <div className={cn('rounded-2xl flex items-center justify-center', palette.accentBg, isLarge ? 'h-16 w-16 mb-3' : 'h-10 w-10 mb-2')}>
           <Icon className={cn(palette.accent, isLarge ? 'h-8 w-8' : 'h-5 w-5')} />
         </div>
-        <p className={cn('font-bold text-foreground leading-tight line-clamp-2', isLarge ? 'text-lg' : 'text-xs')}>
+        <p className={cn('font-bold text-gray-800 dark:text-gray-100 leading-tight line-clamp-2', isLarge ? 'text-lg' : 'text-xs')}>
           {name}
         </p>
         <p className={cn('font-semibold mt-0.5', palette.accent, isLarge ? 'text-sm' : 'text-[10px]')}>
           {strength}
         </p>
-        <p className={cn('text-muted-foreground mt-1 line-clamp-1', isLarge ? 'text-xs' : 'text-[9px]')}>
+        <p className={cn('text-gray-500 dark:text-gray-400 mt-1 line-clamp-1', isLarge ? 'text-xs' : 'text-[9px]')}>
           {manufacturer}
         </p>
       </div>
