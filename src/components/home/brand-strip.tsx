@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SectionHeader } from '@/components/ui/section-header';
 
 const brands = [
@@ -18,12 +19,13 @@ export function BrandStrip() {
         <SectionHeader title="Popular Brands" subtitle="Trusted pharmaceutical companies" />
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {brands.map((brand) => (
-            <div
+            <Link
               key={brand}
-              className="flex items-center justify-center h-16 bg-card rounded-xl border border-border text-sm font-medium text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors cursor-pointer"
+              href={`/shop?manufacturer=${encodeURIComponent(brand)}`}
+              className="flex items-center justify-center h-16 bg-card rounded-xl border border-border text-sm font-medium text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors"
             >
               {brand}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
