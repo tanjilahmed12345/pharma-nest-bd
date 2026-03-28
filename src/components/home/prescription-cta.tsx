@@ -6,7 +6,7 @@ export function PrescriptionCta() {
   return (
     <section className="py-6 md:py-8">
       <div className="container-custom">
-        <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-6 border border-primary/15">
+        <div className="bg-gradient-to-r from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-6 border border-primary/15 dark:border-primary/10">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <ShieldCheck className="h-5 w-5 text-primary" />

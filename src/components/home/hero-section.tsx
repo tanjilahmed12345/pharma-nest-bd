@@ -4,7 +4,7 @@ import { ShoppingBag, Upload } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-primary via-primary-dark to-accent text-white">
+    <section className="bg-gradient-to-br from-primary via-primary-dark to-accent dark:from-[#0d2e2b] dark:via-[#0a2424] dark:to-[#0e2530] text-white">
       <div className="container-custom py-10 md:py-16">
         <div className="max-w-2xl">
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">

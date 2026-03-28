@@ -31,26 +31,26 @@
    DARK MODE — dark-teal palette
    ======================================== */
 .dark {
-  --background: #061212;
-  --foreground: #dce8e8;
-  --primary: #2ec4b6;
-  --primary-light: #5ee8d9;
-  --primary-dark: #1a9e92;
-  --secondary: #f4a261;
-  --secondary-light: #f7c59f;
-  --accent: #5aa8b5;
-  --accent-light: #8ccbd5;
-  --warning: #e9c46a;
-  --danger: #ff6b6b;
-  --muted: #0f2424;
+  --background: #0b1616;
+  --foreground: #d4e4e4;
+  --primary: #1a8a7e;
+  --primary-light: #2aab9e;
+  --primary-dark: #13665d;
+  --secondary: #c45e3a;
+  --secondary-light: #d4845e;
+  --accent: #1e4f5a;
+  --accent-light: #3a7a88;
+  --warning: #b89a4a;
+  --danger: #d94452;
+  --muted: #111f1f;
   --muted-foreground: #7fa3a3;
-  --border: #1c3838;
-  --card: #0f2424;
-  --card-foreground: #dce8e8;
-  --header-bg: #091919;
-  --footer-bg: #030e0e;
+  --border: #1c3232;
+  --card: #111f1f;
+  --card-foreground: #d4e4e4;
+  --header-bg: #0d1a1a;
+  --footer-bg: #060e0e;
   --footer-text: #5e8585;
-  --input-bg: #0f2424;
+  --input-bg: #111f1f;
 }
 
 @theme inline {
