@@ -16,7 +16,8 @@ import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Skeleton } from '@/components/ui/loading-skeleton';
 import { StatusPill } from '@/components/common/status-pill';
-import { ArrowLeft, RotateCcw, MapPin, Wallet, Search } from 'lucide-react';
+import { ArrowLeft, RotateCcw, MapPin, Wallet, Search, FileDown } from 'lucide-react';
+import { downloadInvoice } from '@/lib/utils/generate-invoice';
 import { useRouter } from 'next/navigation';
 
 export function AccountOrderDetailsContent({ orderId }: { orderId: string }) {
@@ -68,6 +69,9 @@ export function AccountOrderDetailsContent({ orderId }: { orderId: string }) {
         </div>
         <div className="flex items-center gap-2">
           <OrderStatusBadge status={order.orderStatus} />
+          <Button variant="outline" size="sm" onClick={() => downloadInvoice(order)}>
+            <FileDown className="h-3.5 w-3.5" /> Invoice
+          </Button>
           <Button variant="outline" size="sm" onClick={handleReorder}>
             <RotateCcw className="h-3.5 w-3.5" /> Reorder
           </Button>
