@@ -26,6 +26,15 @@ export const STORAGE_KEYS = {
   // Settings
   SETTINGS: 'pharma_settings',
 
+  // Coupons
+  COUPONS: 'pharma_coupons',
+
+  // Reviews
+  REVIEWS: 'pharma_reviews',
+
+  // Notifications
+  NOTIFICATIONS: 'pharma_notifications',
+
   // Seed version
   SEED_VERSION: 'pharma_seed_version',
 
