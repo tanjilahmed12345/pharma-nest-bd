@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { SectionHeader } from '@/components/ui/section-header';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 const brands = [
   'Square Pharmaceuticals',
@@ -13,10 +16,12 @@ const brands = [
 ];
 
 export function BrandStrip() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-6 md:py-8">
       <div className="container-custom">
-        <SectionHeader title="Popular Brands" subtitle="Trusted pharmaceutical companies" />
+        <SectionHeader title={t('section.popularBrands')} subtitle={t('section.trustedCompanies')} />
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {brands.map((brand) => (
             <Link

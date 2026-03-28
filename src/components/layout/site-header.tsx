@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Search, ShoppingCart, User, Menu, Upload, Bell } from 'lucide-react';
 import { Logo } from '@/components/common/logo';
 import { ThemeToggle } from '@/components/common/theme-toggle';
+import { LanguageToggle } from '@/lib/i18n/language-toggle';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { useCartStore } from '@/store/cart.store';
 import { useUIStore } from '@/store/ui.store';
 import { useNotificationStore } from '@/store/notification.store';
@@ -17,6 +19,7 @@ export function SiteHeader() {
   const unreadCount = useNotificationStore((s) => s.unreadCount)();
   const setNotificationDrawer = useNotificationStore((s) => s.setDrawerOpen);
   const { isAuthenticated, isAdmin } = useCurrentUser();
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-40 bg-header-bg border-b border-border shadow-sm">
@@ -41,7 +44,7 @@ export function SiteHeader() {
               className="w-full flex items-center gap-2 h-10 px-4 bg-muted rounded-lg text-sm text-muted-foreground hover:bg-muted/80 transition-colors"
             >
               <Search className="h-4 w-4" />
-              Search medicines, brands...
+              {t('search.placeholder')}
             </button>
           </div>
 
@@ -62,8 +65,10 @@ export function SiteHeader() {
               className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-primary bg-primary/10 hover:bg-primary/15 rounded-lg transition-colors"
             >
               <Upload className="h-3.5 w-3.5" />
-              Upload Rx
+              {t('nav.uploadRxShort')}
             </Link>
+
+            <LanguageToggle />
 
             {/* Notifications */}
             <button
@@ -109,11 +114,11 @@ export function SiteHeader() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6 h-10 text-sm font-medium border-t border-border -mb-px">
           {[
-            { href: '/shop', label: 'Shop All' },
-            { href: '/otc', label: 'OTC Medicines' },
-            { href: '/rx', label: 'Prescription' },
-            { href: '/offers', label: 'Offers' },
-            { href: '/upload-prescription', label: 'Upload Prescription' },
+            { href: '/shop', label: t('nav.shop') },
+            { href: '/otc', label: t('nav.otc') },
+            { href: '/rx', label: t('nav.prescription') },
+            { href: '/offers', label: t('nav.offers') },
+            { href: '/upload-prescription', label: t('nav.uploadRx') },
           ].map((link) => (
             <Link
               key={link.href}

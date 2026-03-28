@@ -1,6 +1,11 @@
+'use client';
+
 import { Phone, Mail } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 export function Topbar() {
+  const { t } = useTranslation();
+
   return (
     <div className="hidden md:block bg-primary-dark text-white/90 text-xs">
       <div className="container-custom flex items-center justify-between py-1.5">
@@ -13,7 +18,7 @@ export function Topbar() {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <span>Genuine Medicines | Licensed Pharmacy</span>
+          <span>{t('topbar.genuine')}</span>
         </div>
       </div>
     </div>

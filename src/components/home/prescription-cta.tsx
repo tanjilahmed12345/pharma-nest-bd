@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Upload, ShieldCheck } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 export function PrescriptionCta() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-6 md:py-8">
       <div className="container-custom">
@@ -10,18 +15,18 @@ export function PrescriptionCta() {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <ShieldCheck className="h-5 w-5 text-primary" />
-              <span className="text-sm font-semibold text-primary">Prescription Service</span>
+              <span className="text-sm font-semibold text-primary">{t('prescription.service')}</span>
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-              Have a Prescription?
+              {t('prescription.havePrescription')}
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
-              Upload your prescription and our licensed pharmacist will review it. We&apos;ll prepare your medicines and deliver them to your doorstep.
+              {t('hero.subtitle')}
             </p>
             <Link href="/upload-prescription">
               <Button size="lg">
                 <Upload className="h-4 w-4" />
-                Upload Prescription
+                {t('prescription.upload')}
               </Button>
             </Link>
           </div>
