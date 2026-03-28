@@ -1,9 +1,0 @@
-export declare const DEFAULT_PAGE_SIZE = 12;
-export declare const ADMIN_PAGE_SIZE = 20;
-export declare const MAX_PAGE_SIZE = 100;
-export declare const DELIVERY_CHARGE = 60;
-export declare const FREE_DELIVERY_THRESHOLD = 500;
-export declare const CURRENCY = "BDT";
-export declare const CURRENCY_SYMBOL = "\u09F3";
-export declare const ORDER_NUMBER_PREFIX = "PN";
-export declare const BCRYPT_SALT_ROUNDS = 10;
