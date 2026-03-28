@@ -12,3 +12,4 @@ export * from './settings';
 export * from './checkout';
 export * from './dashboard';
 export * from './review';
+export * from './notification';

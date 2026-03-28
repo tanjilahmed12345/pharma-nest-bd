@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { SearchOverlay } from '@/components/layout/search-overlay';
 import { CartDrawer } from '@/components/cart/cart-drawer';
+import { NotificationDrawer } from '@/components/common/notification-drawer';
 import { WhatsAppButton } from '@/components/common/whatsapp-button';
 
 export function StoreLayoutShell({ children }: { children: React.ReactNode }) {
@@ -14,6 +15,7 @@ export function StoreLayoutShell({ children }: { children: React.ReactNode }) {
       <MobileNav />
       <SearchOverlay />
       <CartDrawer />
+      <NotificationDrawer />
       <main className="flex-1">{children}</main>
       <WhatsAppButton />
       <SiteFooter />

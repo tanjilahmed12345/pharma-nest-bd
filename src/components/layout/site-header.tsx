@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { Search, ShoppingCart, User, Menu, Upload } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, Upload, Bell } from 'lucide-react';
 import { Logo } from '@/components/common/logo';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { useCartStore } from '@/store/cart.store';
 import { useUIStore } from '@/store/ui.store';
+import { useNotificationStore } from '@/store/notification.store';
 import { useCurrentUser } from '@/hooks';
 
 export function SiteHeader() {
@@ -13,6 +14,8 @@ export function SiteHeader() {
   const toggleMobileMenu = useUIStore((s) => s.setMobileMenu);
   const setSearch = useUIStore((s) => s.setSearch);
   const setCartDrawer = useUIStore((s) => s.setCartDrawer);
+  const unreadCount = useNotificationStore((s) => s.unreadCount)();
+  const setNotificationDrawer = useNotificationStore((s) => s.setDrawerOpen);
   const { isAuthenticated, isAdmin } = useCurrentUser();
 
   return (
@@ -61,6 +64,20 @@ export function SiteHeader() {
               <Upload className="h-3.5 w-3.5" />
               Upload Rx
             </Link>
+
+            {/* Notifications */}
+            <button
+              className="relative p-2 hover:bg-muted rounded-lg transition-colors"
+              onClick={() => setNotificationDrawer(true)}
+              aria-label="Notifications"
+            >
+              <Bell className="h-5 w-5" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 h-4.5 min-w-4.5 px-1 flex items-center justify-center text-[10px] font-bold bg-secondary text-white rounded-full">
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
+            </button>
 
             <ThemeToggle />
 

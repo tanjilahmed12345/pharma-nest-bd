@@ -8,4 +8,5 @@ export { seedPayments } from './payments';
 export { seedWishlists } from './wishlist';
 export { seedSettings } from './settings';
 export { seedReviews } from './reviews';
+export { seedNotifications } from './notifications';
 export { divisions, districts, upazilas } from './bangladesh-geo';

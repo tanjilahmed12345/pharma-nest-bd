@@ -12,6 +12,7 @@ import {
   seedWishlists,
   seedSettings,
   seedReviews,
+  seedNotifications,
 } from './seeds';
 import { Cart } from '@/types';
 
@@ -67,6 +68,9 @@ function seedAllData(): void {
 
   // Reviews
   storage.set(STORAGE_KEYS.REVIEWS, seedReviews);
+
+  // Notifications
+  storage.set(STORAGE_KEYS.NOTIFICATIONS, seedNotifications);
 
   // Empty cart by default
   const emptyCart: Cart = { items: [], updatedAt: new Date().toISOString() };
