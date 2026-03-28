@@ -1,0 +1,327 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// Auth & Users
+// ============================================================
+
+enum UserRole {
+  customer
+  admin
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String
+  role      UserRole @default(customer)
+  avatar    String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  addresses     Address[]
+  orders        Order[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  prescriptions Prescription[]
+  payments      PaymentSubmission[]
+
+  @@map("users")
+}
+
+// ============================================================
+// Catalog
+// ============================================================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @default("")
+  image       String   @default("")
+  parentId    String?
+  parent      Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryTree")
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id                     String     @id @default(cuid())
+  name                   String
+  slug                   String     @unique
+  genericName            String     @default("")
+  brand                  String     @default("")
+  manufacturer           String     @default("")
+  categoryId             String
+  category               Category   @relation(fields: [categoryId], references: [id])
+  dosageForm             String     @default("tablet")
+  strength               String     @default("")
+  packSize               String     @default("")
+  price                  Float
+  discountPrice          Float?
+  image                  String     @default("")
+  gallery                String[]   @default([])
+  shortDescription       String     @default("")
+  description            String     @default("")
+  indications            String     @default("")
+  dosageInstructions     String     @default("")
+  sideEffects            String     @default("")
+  warnings               String     @default("")
+  storageInfo            String     @default("")
+  stockQty               Int        @default(0)
+  isPrescriptionRequired Boolean    @default(false)
+  isFeatured             Boolean    @default(false)
+  isActive               Boolean    @default(true)
+  tags                   String[]   @default([])
+  createdAt              DateTime   @default(now())
+  updatedAt              DateTime   @updatedAt
+
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  orderItems    OrderItem[]
+
+  @@map("products")
+}
+
+// ============================================================
+// Cart & Wishlist
+// ============================================================
+
+model CartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int      @default(1)
+  addedAt   DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  addedAt   DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@map("wishlist_items")
+}
+
+// ============================================================
+// Addresses
+// ============================================================
+
+model Address {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName       String
+  phone          String
+  alternatePhone String?
+  division       String
+  district       String
+  upazila        String
+  postcode       String
+  area           String
+  addressLine    String
+  houseFlat      String
+  landmark       String?
+  deliveryNote   String?
+  isDefault      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  orders Order[]
+
+  @@map("addresses")
+}
+
+// ============================================================
+// Orders
+// ============================================================
+
+enum OrderStatus {
+  pending
+  prescription_review_pending
+  approved
+  processing
+  packed
+  shipped
+  out_for_delivery
+  delivered
+  cancelled
+  rejected
+}
+
+enum PaymentMethod {
+  bkash
+  nagad
+  rocket
+  cod
+}
+
+enum PaymentStatus {
+  pending
+  cod_pending
+  submitted
+  verified
+  rejected
+}
+
+model Order {
+  id                String        @id @default(cuid())
+  orderNumber       String        @unique
+  userId            String
+  user              User          @relation(fields: [userId], references: [id])
+  shippingAddressId String
+  shippingAddress   Address       @relation(fields: [shippingAddressId], references: [id])
+  paymentMethod     PaymentMethod
+  paymentStatus     PaymentStatus @default(pending)
+  orderStatus       OrderStatus   @default(pending)
+  prescriptionId    String?
+  prescription      Prescription? @relation(fields: [prescriptionId], references: [id])
+  subtotal          Float
+  deliveryCharge    Float
+  discount          Float         @default(0)
+  total             Float
+  couponCode        String?
+  note              String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  items          OrderItem[]
+  statusTimeline OrderStatusLog[]
+  payments       PaymentSubmission[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id                     String  @id @default(cuid())
+  orderId                String
+  order                  Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId              String
+  product                Product @relation(fields: [productId], references: [id])
+  productName            String
+  genericName            String  @default("")
+  manufacturer           String  @default("")
+  strength               String  @default("")
+  packSize               String  @default("")
+  price                  Float
+  discountPrice          Float?
+  quantity               Int
+  isPrescriptionRequired Boolean @default(false)
+  image                  String  @default("")
+
+  @@map("order_items")
+}
+
+model OrderStatusLog {
+  id        String      @id @default(cuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  note      String?
+  timestamp DateTime    @default(now())
+
+  @@map("order_status_logs")
+}
+
+// ============================================================
+// Prescriptions
+// ============================================================
+
+enum PrescriptionStatus {
+  pending
+  approved
+  rejected
+  needs_clarification
+}
+
+model Prescription {
+  id             String             @id @default(cuid())
+  userId         String
+  user           User               @relation(fields: [userId], references: [id])
+  imageUrl       String
+  fileName       String
+  patientName    String
+  doctorName     String
+  issueDate      String
+  notes          String?
+  status         PrescriptionStatus @default(pending)
+  pharmacistNote String?
+  reviewedBy     String?
+  reviewedAt     DateTime?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  orders Order[]
+
+  @@map("prescriptions")
+}
+
+// ============================================================
+// Payments
+// ============================================================
+
+model PaymentSubmission {
+  id            String        @id @default(cuid())
+  orderId       String
+  order         Order         @relation(fields: [orderId], references: [id])
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  method        PaymentMethod
+  senderNumber  String?
+  transactionId String?
+  amount        Float
+  status        PaymentStatus @default(pending)
+  screenshotUrl String?
+  verifiedBy    String?
+  verifiedAt    DateTime?
+  note          String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("payment_submissions")
+}
+
+// ============================================================
+// Settings
+// ============================================================
+
+model StoreSetting {
+  id                    String @id @default(cuid())
+  storeName             String @default("PharmaNest BD")
+  storeEmail            String @default("")
+  storePhone            String @default("")
+  storeAddress          String @default("")
+  deliveryCharge        Float  @default(60)
+  freeDeliveryThreshold Float  @default(500)
+  bkashMerchant         String @default("")
+  nagadMerchant         String @default("")
+  rocketMerchant        String @default("")
+  currency              String @default("BDT")
+  currencySymbol        String @default("৳")
+
+  @@map("store_settings")
+}

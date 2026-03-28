@@ -1,6 +1,6 @@
 /**
  * API Endpoint definitions.
- * Ready for when backend is connected.
+ * All routes are relative to the API base URL (/api).
  */
 
 export const ENDPOINTS = {
@@ -31,10 +31,16 @@ export const ENDPOINTS = {
   CART: {
     GET: '/cart',
     ADD: '/cart/items',
-    UPDATE: (itemId: string) => `/cart/items/${itemId}`,
-    REMOVE: (itemId: string) => `/cart/items/${itemId}`,
+    UPDATE: (productId: string) => `/cart/items/${productId}`,
+    REMOVE: (productId: string) => `/cart/items/${productId}`,
     CLEAR: '/cart/clear',
-    APPLY_COUPON: '/cart/coupon',
+  },
+
+  // Wishlist
+  WISHLIST: {
+    LIST: '/wishlist',
+    TOGGLE: '/wishlist',
+    REMOVE: (productId: string) => `/wishlist/${productId}`,
   },
 
   // Orders
@@ -70,11 +76,17 @@ export const ENDPOINTS = {
   ADMIN: {
     DASHBOARD: '/admin/dashboard',
     PRODUCTS: '/admin/products',
+    PRODUCT_DETAIL: (id: string) => `/admin/products/${id}`,
     CATEGORIES: '/admin/categories',
+    CATEGORY_DETAIL: (id: string) => `/admin/categories/${id}`,
     ORDERS: '/admin/orders',
+    ORDER_DETAIL: (id: string) => `/admin/orders/${id}`,
     PRESCRIPTIONS: '/admin/prescriptions',
+    PRESCRIPTION_DETAIL: (id: string) => `/admin/prescriptions/${id}`,
     PAYMENTS: '/admin/payments',
+    PAYMENT_DETAIL: (id: string) => `/admin/payments/${id}`,
     CUSTOMERS: '/admin/customers',
+    CUSTOMER_DETAIL: (id: string) => `/admin/customers/${id}`,
     SETTINGS: '/admin/settings',
   },
 } as const;

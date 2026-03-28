@@ -4,7 +4,7 @@
  * interceptors, and error handling here.
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 interface RequestConfig {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -21,13 +21,12 @@ class ApiClient {
   }
 
   private buildUrl(endpoint: string, params?: Record<string, string>): string {
-    const url = new URL(`${this.baseUrl}${endpoint}`);
+    let path = `${this.baseUrl}${endpoint}`;
     if (params) {
-      Object.entries(params).forEach(([key, value]) => {
-        url.searchParams.set(key, value);
-      });
+      const searchParams = new URLSearchParams(params);
+      path += `?${searchParams.toString()}`;
     }
-    return url.toString();
+    return path;
   }
 
   private getAuthHeader(): Record<string, string> {
