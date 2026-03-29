@@ -239,7 +239,7 @@ const translations = {
   'faq.faqDesc': { en: 'Have questions about ordering medicines, prescriptions, or delivery? Find quick answers below or contact our support team.', bn: 'ওষুধ অর্ডার, প্রেসক্রিপশন বা ডেলিভারি সম্পর্কে প্রশ্ন আছে? নিচে দ্রুত উত্তর পান বা আমাদের সাপোর্ট টিমের সাথে যোগাযোগ করুন।' },
 
   // Notifications
-  'notification.title': { en: 'Notifications', bn: 'বিজ্ঞপ্তি' },
+  'notification.title': { en: 'Notifications', bn: 'নোটিফিকেশন' },
   'notification.markAllRead': { en: 'Mark all read', bn: 'সব পড়া হিসেবে চিহ্নিত করুন' },
   'notification.clearAll': { en: 'Clear all', bn: 'সব মুছুন' },
   'notification.empty': { en: 'No notifications yet', bn: 'এখনও কোনো বিজ্ঞপ্তি নেই' },
