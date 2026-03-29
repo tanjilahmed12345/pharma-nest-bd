@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { Product, Category } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
 import { useUIStore } from '@/store/ui.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { HeroSection } from '@/components/home/hero-section';
 import { TrustBadges } from '@/components/home/trust-badges';
@@ -22,6 +24,8 @@ export function HomePageContent() {
   const [rxProducts, setRxProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const isDataReady = useUIStore((s) => s.isDataReady);
 
   useEffect(() => {
@@ -47,6 +51,7 @@ export function HomePageContent() {
 
   const handleAddToCart = (productId: string) => {
     addItem(productId);
+    addToast(t('toast.addedToCart'));
   };
 
   return (

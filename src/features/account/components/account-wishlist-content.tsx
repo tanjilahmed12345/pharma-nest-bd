@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useCurrentUser } from '@/hooks';
 import { wishlistService } from '@/services/wishlist';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { Product } from '@/types';
 import { ProductGrid } from '@/components/product/product-grid';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -15,6 +17,8 @@ import { Button } from '@/components/ui/button';
 export function AccountWishlistContent() {
   const { userId } = useCurrentUser();
   const addToCart = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,6 +29,7 @@ export function AccountWishlistContent() {
 
   const handleAddToCart = (productId: string) => {
     addToCart(productId);
+    addToast(t('toast.addedToCart'));
   };
 
   if (isLoading) {

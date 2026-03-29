@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
 import { useUIStore } from '@/store/ui.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { ProductGrid } from '@/components/product/product-grid';
@@ -14,6 +16,8 @@ import { Tag, Percent } from 'lucide-react';
 
 export function OffersPageContent() {
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const isDataReady = useUIStore((s) => s.isDataReady);
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +71,7 @@ export function OffersPageContent() {
           </p>
           <ProductGrid
             products={products}
-            onAddToCart={(id) => addItem(id)}
+            onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }}
           />
         </>
       )}

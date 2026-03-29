@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Order } from '@/types';
 import { orderService } from '@/services/orders';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { formatPrice, formatDate } from '@/lib/utils';
 import { ORDER_STATUS_LABELS, PAYMENT_STATUS_LABELS } from '@/lib/constants';
 import { OrderStatusBadge } from '@/components/order/order-status-badge';
@@ -25,6 +27,8 @@ export function AccountOrderDetailsContent({ orderId }: { orderId: string }) {
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const router = useRouter();
 
   useEffect(() => {
@@ -38,6 +42,7 @@ export function AccountOrderDetailsContent({ orderId }: { orderId: string }) {
     if (!order) return;
     const items = await orderService.getReorderItems(order.id);
     items.forEach((item) => addItem(item.productId, item.quantity));
+    addToast(t('toast.addedToCart'));
     router.push('/cart');
   };
 

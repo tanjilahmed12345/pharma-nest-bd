@@ -5,6 +5,8 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Product, Category, PaginatedResponse } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { ProductGrid } from '@/components/product/product-grid';
@@ -21,6 +23,8 @@ function CategoryContent({ slug }: { slug: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const [category, setCategory] = useState<Category | null>(null);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -104,7 +108,7 @@ function CategoryContent({ slug }: { slug: string }) {
           )}
           <ProductGrid
             products={result?.data || []}
-            onAddToCart={(id) => addItem(id)}
+            onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }}
           />
           {result && result.totalPages > 1 && (
             <Pagination

@@ -264,6 +264,9 @@ const translations = {
   'common.onOffer': { en: 'on offer', bn: 'অফারে' },
   'common.filters': { en: 'Filters', bn: 'ফিল্টার' },
   'common.backToStore': { en: 'Back to Store', bn: 'দোকানে ফিরে যান' },
+
+  // Toast
+  'toast.addedToCart': { en: 'Added to cart!', bn: 'কার্টে যোগ হয়েছে!' },
 } as const;
 
 export type TranslationKey = keyof typeof translations;

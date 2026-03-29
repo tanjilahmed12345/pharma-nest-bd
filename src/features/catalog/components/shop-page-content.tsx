@@ -5,7 +5,9 @@ import { useSearchParams } from 'next/navigation';
 import { Product, Category, PaginatedResponse } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
 import { useUIStore } from '@/store/ui.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 import { useProductFilters } from '@/hooks';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
@@ -21,6 +23,8 @@ import { SlidersHorizontal, X } from 'lucide-react';
 function ShopContent() {
   const { filters, setFilters, clearFilters } = useProductFilters();
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const isDataReady = useUIStore((s) => s.isDataReady);
   const [categories, setCategories] = useState<Category[]>([]);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
@@ -133,7 +137,7 @@ function ShopContent() {
             <>
               <ProductGrid
                 products={result?.data || []}
-                onAddToCart={(id) => addItem(id)}
+                onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }}
               />
               {result && result.totalPages > 1 && (
                 <Pagination

@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { Product, Category } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
 import { wishlistService } from '@/services/wishlist';
 import { useCurrentUser } from '@/hooks';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { ProductGallery } from '@/components/product/product-gallery';
@@ -22,6 +24,8 @@ import { PackageX } from 'lucide-react';
 
 export function ProductDetailsContent({ slug }: { slug: string }) {
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const { userId } = useCurrentUser();
   const [product, setProduct] = useState<Product | null>(null);
   const [category, setCategory] = useState<Category | null>(null);
@@ -64,6 +68,7 @@ export function ProductDetailsContent({ slug }: { slug: string }) {
 
   const handleAddToCart = (productId: string, quantity: number) => {
     addItem(productId, quantity);
+    addToast(t('toast.addedToCart'));
   };
 
   const handleToggleWishlist = async (productId: string) => {
@@ -149,7 +154,7 @@ export function ProductDetailsContent({ slug }: { slug: string }) {
 
       {/* Related */}
       <div className="mt-10">
-        <RelatedProducts products={related} onAddToCart={(id) => addItem(id)} />
+        <RelatedProducts products={related} onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }} />
       </div>
     </div>
   );

@@ -5,7 +5,9 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Product, PaginatedResponse, ProductFilters as Filters } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
 import { useUIStore } from '@/store/ui.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { Breadcrumb, BreadcrumbItem } from '@/components/ui/breadcrumb';
 import { ProductGrid } from '@/components/product/product-grid';
@@ -27,6 +29,8 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
   const router = useRouter();
   const pathname = usePathname();
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const isDataReady = useUIStore((s) => s.isDataReady);
   const [result, setResult] = useState<PaginatedResponse<Product> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -96,7 +100,7 @@ function FilteredContent({ title, subtitle, breadcrumbs, baseFilters, alert }: F
         <>
           <ProductGrid
             products={result?.data || []}
-            onAddToCart={(id) => addItem(id)}
+            onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }}
           />
           {result && result.totalPages > 1 && (
             <Pagination

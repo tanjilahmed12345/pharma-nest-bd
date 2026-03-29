@@ -5,6 +5,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Product } from '@/types';
 import { catalogService } from '@/services/catalog';
 import { useCartStore } from '@/store/cart.store';
+import { useToastStore } from '@/store/toast.store';
+import { useTranslation } from '@/lib/i18n/use-translation';
 
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { ProductGrid } from '@/components/product/product-grid';
@@ -17,6 +19,8 @@ function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const addItem = useCartStore((s) => s.addItem);
+  const addToast = useToastStore((s) => s.addToast);
+  const { t } = useTranslation();
   const query = searchParams.get('q') || '';
   const [searchInput, setSearchInput] = useState(query);
   const [results, setResults] = useState<Product[]>([]);
@@ -80,7 +84,7 @@ function SearchContent() {
       )}
 
       {!isLoading && results.length > 0 && (
-        <ProductGrid products={results} onAddToCart={(id) => addItem(id)} />
+        <ProductGrid products={results} onAddToCart={(id) => { addItem(id); addToast(t('toast.addedToCart')); }} />
       )}
     </div>
   );
