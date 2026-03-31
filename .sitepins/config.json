@@ -1,0 +1,10 @@
+{
+  "content": "src/app/(public)/about",
+  "media": "src/app/(public)/about",
+  "public": "public",
+  "configs": [
+    "package.json"
+  ],
+  "custom-commit": false,
+  "arrangement": []
+}
