@@ -1,5 +1,5 @@
 {
-  "content": "src/app/(public)/about",
+  "content": "src/features",
   "media": "src/app/(public)/about",
   "public": "public",
   "configs": [
