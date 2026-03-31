@@ -1,10 +1,8 @@
 {
   "content": "src/features",
-  "media": "src/app/(public)/about",
-  "public": "public",
-  "configs": [
-    "package.json"
-  ],
+  "media": "public",
+  "public": "src/components",
+  "configs": [],
   "custom-commit": false,
   "arrangement": []
 }
