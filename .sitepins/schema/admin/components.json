@@ -1,0 +1,17 @@
+{
+  "file": "",
+  "name": "components",
+  "fileType": "md",
+  "fmType": "yaml",
+  "template": [
+    {
+      "name": "admin",
+      "label": "Admin",
+      "type": "string",
+      "value": "2026-03-31",
+      "description": "",
+      "isRequired": false,
+      "defaultValue": "2026-03-31"
+    }
+  ]
+}
